@@ -1,26 +1,32 @@
-export interface categoryName {
+export interface AategoryName {
   strCategory: string;
 }
 
-export interface categoryList {
-  meals: categoryName[];
-}
-
-export interface areaName {
+export interface AreaName {
   strArea: string;
 }
 
-export interface areaList {
-  meals: areaName[];
+export interface AreaList {
+  meals: AreaName[];
 }
 
-export interface categoryDetails {
+export interface CategoryDetails {
   idCategory: string;
   strCategory: string;
   strCategoryThumb: string;
   strCategoryDescription: string;
 }
 
-export interface allCategories {
-  categories: categoryDetails[];
+export interface AllCategories {
+  categories: CategoryDetails[];
+}
+
+export interface CategoryLists {
+  meals: Meal[];
+}
+
+export interface Meal {
+  strMeal: string;
+  strMealThumb: string;
+  idMeal: string;
 }

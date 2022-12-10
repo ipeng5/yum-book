@@ -2,29 +2,38 @@ import Head from 'next/head';
 import { useState } from 'react';
 import AreaCard from '../components/AreaCard';
 import CategoryCard from '../components/CategoryCard';
-import { categoryList, areaList, allCategories, categoryDetails } from '../typings';
+import { AreaList, AllCategories } from '../typings';
 import requests from '../utils/requests';
 
 interface Props {
-  categoryList: categoryList;
-  areaList: areaList;
-  allCategories: allCategories;
-  category: categoryDetails;
+  areaList: AreaList;
+  allCategories: AllCategories;
 }
 
-const Home = ({ categoryList, areaList, allCategories }: Props) => {
+export const getStaticProps = async () => {
+  const [areaList, allCategories] = await Promise.all([
+    fetch(requests.fetchAreaList).then(res => res.json()),
+    fetch(requests.fetchAllCategories).then(res => res.json()),
+  ]);
+  return {
+    props: {
+      areaList,
+      allCategories,
+    },
+  };
+};
+
+const Home = ({ areaList, allCategories }: Props) => {
   const [filter, setFilter] = useState('area');
-  // console.log(categoryList);
-  console.log(areaList.meals);
-  // console.log(allCategories);
+  console.log(allCategories);
 
   return (
     <>
       <Head>
-        <title>Yum Book | Home</title>
+        <title>Home | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="py-6 px-20 w-screen">
+      <main className="py-6 px-20">
         <div className="py-4 max-w-screen-2xl mx-auto text-2xl flex space-x-4 items-center">
           <span>Filter by:</span>
           <button
@@ -64,18 +73,3 @@ const Home = ({ categoryList, areaList, allCategories }: Props) => {
 };
 
 export default Home;
-
-export const getServerSideProps = async () => {
-  const [categoryList, areaList, allCategories] = await Promise.all([
-    fetch(requests.fetchCategoryList).then(res => res.json()),
-    fetch(requests.fetchAreaList).then(res => res.json()),
-    fetch(requests.fetchAllCategories).then(res => res.json()),
-  ]);
-  return {
-    props: {
-      categoryList,
-      areaList,
-      allCategories,
-    },
-  };
-};

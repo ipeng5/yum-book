@@ -1,15 +1,15 @@
 import Head from 'next/head';
 
-function Login() {
+function Signup() {
   return (
     <>
       <Head>
-        <title>Login | Yum Book</title>
+        <title>Signup | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>login</div>;
+      <div>Signup</div>;
     </>
   );
 }
 
-export default Login;
+export default Signup;
