@@ -20,7 +20,7 @@
     "**/*.ts",
     "**/*.tsx",
     "pages/category/[category].jsx",
-    "components/Pagination.js"
+    "components/Pagination.tsx"
   ],
   "exclude": ["node_modules"]
 }

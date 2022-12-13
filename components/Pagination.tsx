@@ -1,4 +1,16 @@
-function Pagination({ mealsPerPage, totalMeals, paginate, currentPage }) {
+interface Props {
+  mealsPerPage: number;
+  totalMeals: number;
+  paginate: Function;
+  currentPage: number;
+}
+
+function Pagination({
+  mealsPerPage,
+  totalMeals,
+  paginate,
+  currentPage,
+}: Props) {
   const pageNumbers = [];
 
   for (let i = 1; i <= Math.ceil(totalMeals / mealsPerPage); i++) {

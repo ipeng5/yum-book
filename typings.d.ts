@@ -1,4 +1,4 @@
-export interface AategoryName {
+export interface CategoryName {
   strCategory: string;
 }
 

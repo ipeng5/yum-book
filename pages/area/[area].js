@@ -61,7 +61,7 @@ function Area({ area }) {
         </div>
         <div className="py-4 grid grid-cols-4 gap-10 max-w-screen-2xl mx-auto">
           {currentMeals.map(meal => (
-            <MealCard meal={meal} key={meal.idMeal} id={meal.idMeal} />
+            <MealCard meal={meal} key={meal.idMeal} />
           ))}
         </div>
         <Pagination
