@@ -25,7 +25,6 @@ export const getStaticProps = async () => {
 
 const Home = ({ areaList, allCategories }: Props) => {
   const [filter, setFilter] = useState('area');
-  console.log(allCategories);
 
   return (
     <>
@@ -65,7 +64,9 @@ const Home = ({ areaList, allCategories }: Props) => {
               <CategoryCard category={category} key={category.idCategory} />
             ))}
           {filter === 'area' &&
-            areaList.meals.map(area => <AreaCard area={area} key={area.strArea} />)}
+            areaList.meals.map(area => (
+              <AreaCard area={area} key={area.strArea} />
+            ))}
         </div>
       </main>
     </>
