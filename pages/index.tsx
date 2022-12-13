@@ -58,7 +58,7 @@ const Home = ({ areaList, allCategories }: Props) => {
             Category
           </button>
         </div>
-        <div className="py-4 grid grid-cols-4 gap-10 max-w-screen-2xl mx-auto">
+        <div className="pt-4 pb-10 grid grid-cols-4 gap-10 max-w-screen-2xl mx-auto">
           {filter === 'category' &&
             allCategories.categories.map(category => (
               <CategoryCard category={category} key={category.idCategory} />

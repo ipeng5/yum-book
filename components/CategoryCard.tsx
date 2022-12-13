@@ -9,7 +9,7 @@ function CategoryCard({ category }: Props) {
   return (
     <Link
       href={`/category/${category.strCategory}`}
-      className="rounded-3xl overflow-hidden h-[200px] relative shadow-xl bg-gold-light cursor-pointer">
+      className="rounded-3xl overflow-hidden h-[200px] relative shadow-xl bg-[#F8E7C4] cursor-pointer">
       <img
         src={category.strCategoryThumb}
         alt=""

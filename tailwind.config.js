@@ -21,10 +21,6 @@ module.exports = {
           light: '#F5F5F5',
           normal: '#584E4A',
         },
-        gold: {
-          normal: '#F0DCB2',
-          light: '#F8E7C4',
-        },
       },
     },
   },
