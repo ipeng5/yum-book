@@ -7,7 +7,7 @@ function SearchBar() {
   const router = useRouter();
 
   const handleChange = e => {
-    setSearchInput(e.target.value);
+    setSearchInput(e.target.value.trim());
   };
 
   const handleSearch = e => {

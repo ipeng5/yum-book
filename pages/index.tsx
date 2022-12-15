@@ -27,6 +27,7 @@ export const getStaticProps = async () => {
 
 const Home = ({ areaList, allCategories }: Props) => {
   const [filter, setFilter] = useState('area');
+
   const { query } = useRouter();
 
   return (

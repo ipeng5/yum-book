@@ -30,7 +30,8 @@ function SearchResults({ searchInput }) {
       <main className="py-6 px-20">
         <div className="py-4 max-w-screen-2xl mx-auto text-3xl flex space-x-4 items-center">
           <span>
-            {recipeList ? recipeList.length : 'No'} recipes for "{searchInput}"
+            {recipeList ? recipeList.length : 'No'} search results for "
+            {searchInput}"
           </span>
         </div>
         <div className="py-4 grid grid-cols-4 gap-10 max-w-screen-2xl mx-auto">

@@ -50,7 +50,7 @@ function Details() {
   const stepsArr: string[] = meal.strInstructions
     ?.replace(/[0-9]\./g, '')
     .replace(/STEP\s[0-9]/g, '')
-    .split('. ');
+    .split('.');
 
   return (
     <>
@@ -133,15 +133,17 @@ function Details() {
           </h1>
 
           <ol>
-            {stepsArr?.map((step: string, i: number) => {
-              if (step === '') return;
-              return (
-                <li key={i} className="pb-4 flex text-xl relative">
-                  <div className="w-4 h-4 bg-primary-normal rounded-full absolute top-1"></div>
-                  <span className=" pl-8 rounded">{step}</span>
-                </li>
-              );
-            })}
+            {stepsArr
+              ?.filter(sentence => sentence !== '')
+              .map((step: string, i: number) => {
+                if (step === '') return;
+                return (
+                  <li key={i} className="pb-4 flex text-xl relative">
+                    <div className="w-4 h-4 bg-primary-normal rounded-full absolute top-1"></div>
+                    <span className=" pl-8 rounded">{step}</span>
+                  </li>
+                );
+              })}
           </ol>
         </section>
       </main>
