@@ -49,6 +49,7 @@ function Details() {
 
   const stepsArr: string[] = meal.strInstructions
     ?.replace(/[0-9]\./g, '')
+    .replace(/STEP\s[0-9]/g, '')
     .split('. ');
 
   return (
@@ -136,11 +137,8 @@ function Details() {
               if (step === '') return;
               return (
                 <li key={i} className="pb-4 flex text-xl relative">
-                  <span className=" pr-4 text-primary-normal absolute text-center w-10">
-                    {' '}
-                    {i + 1}
-                  </span>
-                  <span className="pl-10">{step}</span>
+                  <div className="w-4 h-4 bg-primary-normal rounded-full absolute top-1"></div>
+                  <span className=" pl-8 rounded">{step}</span>
                 </li>
               );
             })}

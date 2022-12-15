@@ -17,6 +17,7 @@ function Pagination({
     pageNumbers.push(i);
   }
 
+  if (pageNumbers.length <= 1) return;
   return (
     <nav className="w-ful flex justify-center">
       <ul className="flex space-x-10 pt-10 pb-6 text-lg">
