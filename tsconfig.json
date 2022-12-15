@@ -23,7 +23,8 @@
     "components/Pagination.tsx",
     "pages/area/[area].js",
     "components/SearchBar.js",
-    "pages/search.js"
+    "pages/search.js",
+    "pages/[filter].js"
   ],
   "exclude": ["node_modules"]
 }

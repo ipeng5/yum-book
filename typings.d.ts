@@ -25,13 +25,17 @@ export interface CategoryLists {
   meals: Meal[];
 }
 
+export interface MealList {
+  meals: Meal[];
+}
+
 export interface Meal {
   strMeal: string;
   strMealThumb: string;
   idMeal: string;
 }
 
-export interface mealDetails {
+export interface MealDetails {
   idMeal: string;
   strArea: string;
   strCategory: string;

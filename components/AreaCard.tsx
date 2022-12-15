@@ -8,7 +8,10 @@ interface Props {
 function AreaCard({ area }: Props) {
   return (
     <Link
-      href={`/area/${area.strArea}`}
+      href={{
+        pathname: `/area`,
+        query: { filterTerm: `${area.strArea}` },
+      }}
       className="rounded-3xl overflow-hidden h-[200px] relative shadow-xl cursor-pointer">
       <img
         src={`../assets/${area.strArea.toLowerCase()}.jpeg`}

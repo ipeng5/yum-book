@@ -5,16 +5,16 @@ import { useEffect, useState } from 'react';
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 import { BsInfoCircle, BsPlayFill, BsCheck2 } from 'react-icons/bs';
 
-import { mealDetails } from '../../typings';
+import { MealDetails } from '../../typings';
 
 export interface Props {
-  meal: mealDetails;
+  meal: MealDetails;
 }
 
 function Details() {
   const [meal, setMeal] = useState<Props | any>([]);
   const router = useRouter();
-  const id = router.query.id;
+  const { id } = router.query;
 
   useEffect(() => {
     const fetchDetails = async () => {
