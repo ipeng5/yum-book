@@ -4,7 +4,7 @@ import React from 'react';
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen flex flex-col justify-between text-gray-normal">
+    <div className="min-h-screen flex flex-col justify-between text-gray-normal bg-gray-light">
       <div>
         <Header />
         {children}

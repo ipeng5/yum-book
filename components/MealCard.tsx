@@ -11,7 +11,7 @@ function MealCard({ meal }: Props) {
   return (
     <Link
       href={`/recipe/${meal.idMeal}`}
-      className="shadow-lg cursor-pointer rounded-md overflow-hidden transition duration-300 hover:scale-[1.03] ">
+      className="shadow-lg cursor-pointer rounded-md overflow-hidden transition duration-300 hover:scale-[1.03] hover:shadow-xl">
       <div className=" overflow-hidden h-[250px] relative">
         <img
           src={meal.strMealThumb}

@@ -27,19 +27,17 @@ function SearchResults({ searchInput }) {
         <title>Recipes: {searchInput} | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="py-6 px-20">
-        <div className="py-4 max-w-screen-2xl mx-auto text-3xl flex space-x-4 items-center">
-          <span>
-            {recipeList ? recipeList.length : 'No'} search results for "
-            {searchInput}"
-          </span>
-        </div>
-        <div className="py-4 grid grid-cols-4 gap-10 max-w-screen-2xl mx-auto">
-          {recipeList?.map(meal => (
-            <MealCard meal={meal} key={meal.idMeal} />
-          ))}
-        </div>
-      </main>
+      <div className="py-4 max-w-screen-2xl mx-auto text-3xl flex space-x-4 items-center">
+        <span>
+          {recipeList ? recipeList.length : 'No'} search results for "
+          {searchInput}"
+        </span>
+      </div>
+      <div className="py-4 grid grid-cols-4 gap-10 max-w-screen-2xl mx-auto">
+        {recipeList?.map(meal => (
+          <MealCard meal={meal} key={meal.idMeal} />
+        ))}
+      </div>
     </>
   );
 }

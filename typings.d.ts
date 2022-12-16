@@ -25,10 +25,6 @@ export interface CategoryLists {
   meals: Meal[];
 }
 
-export interface MealList {
-  meals: Meal[];
-}
-
 export interface Meal {
   strMeal: string;
   strMealThumb: string;

@@ -24,7 +24,8 @@
     "pages/area/[area].js",
     "components/SearchBar.js",
     "pages/search.js",
-    "pages/[filter].js"
+    "pages/[filter].js",
+    "pages/add-recipe.js"
   ],
   "exclude": ["node_modules"]
 }
