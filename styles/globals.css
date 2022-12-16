@@ -2,20 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html,
-  body {
-    padding: 0;
-    margin: 0;
-    scroll-behavior: smooth;
-  }
-}
-
 @layer components {
+  .header-link {
+    @apply flex items-center space-x-2 hover:bg-gray-200 py-2 px-3 rounded transition;
+  }
+
+  .filter {
+    @apply px-6 py-2 rounded-lg bg-gray-light hover:text-primary-normal transition;
+  }
+
+  .filter-active {
+    @apply px-6 py-2 rounded-lg transition bg-primary-light text-primary-normal;
+  }
+
   .form-button {
     @apply bg-primary-normal rounded py-3 text-white text-xl shadow-inner !mt-10 hover:opacity-95;
   }
-}
 
-@layer utilities {
+  .form-link {
+    @apply text-primary-normal border-b-2 border-primary-normal hover:text-primary-medium px-1;
+  }
+
+  .form-input {
+    @apply border-2 border-gray-200 rounded p-2 outline-primary-medium;
+  }
+
+  .icon-add {
+    @apply w-8 h-8 text-[1.8rem] rounded flex justify-center items-center  text-primary-normal cursor-pointer hover:bg-primary-light  transition;
+  }
+
+  .icon-remove {
+    @apply w-10 h-10 text-3xl rounded bg-transparent font-thin flex justify-center items-end cursor-pointer hover:bg-gray-100  transition;
+  }
 }

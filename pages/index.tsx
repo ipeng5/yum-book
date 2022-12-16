@@ -27,7 +27,6 @@ export const getStaticProps = async () => {
 
 const Home = ({ areaList, allCategories }: Props) => {
   const [filter, setFilter] = useState('area');
-
   const { query } = useRouter();
 
   return (
@@ -36,20 +35,16 @@ const Home = ({ areaList, allCategories }: Props) => {
         <title>Home | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="py-6 px-20  bg-white min-h-[calc(100vh-250px)]">
+      <main className="min-h-[calc(100vh-250px)] bg-white py-6 px-20">
         {query.search && <SearchResults searchInput={query.search} />}
         {!query.search && (
-          <div className="py-4 max-w-screen-2xl mx-auto text-2xl flex space-x-4 items-center">
+          <div className="max-w-screen-2xl py-4  mx-auto text-2xl flex space-x-4 items-center">
             <span>Filter by:</span>
             <button
               onClick={() => {
                 setFilter('area');
               }}
-              className={`${
-                filter === 'area'
-                  ? 'px-6 py-2 bg-primary-light text-primary-normal rounded-xl transition'
-                  : 'px-6 py-2 rounded-xl bg-gray-light hover:text-primary-normal transition'
-              }`}>
+              className={`${filter === 'area' ? 'filter-active' : 'filter'}`}>
               Area
             </button>
             <button
@@ -57,15 +52,13 @@ const Home = ({ areaList, allCategories }: Props) => {
                 setFilter('category');
               }}
               className={`${
-                filter === 'category'
-                  ? 'px-6 py-2 bg-primary-light text-primary-normal rounded-xl transition'
-                  : 'px-6 py-2 rounded-xl bg-gray-light hover:text-primary-normal transition'
+                filter === 'category' ? 'filter-active' : 'filter'
               }`}>
               Category
             </button>
           </div>
         )}
-        <div className="pt-4 pb-10 grid grid-cols-4 gap-10 max-w-screen-2xl mx-auto">
+        <div className="max-w-screen-2xl pt-4 pb-10 grid grid-cols-4 gap-10 mx-auto">
           {filter === 'category' &&
             !query.search &&
             allCategories.categories.map(category => (

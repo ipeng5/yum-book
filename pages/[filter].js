@@ -44,7 +44,7 @@ function Filter() {
         <title>{filterTerm} Meals | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="py-6 px-20 bg-white min-h-[calc(100vh-250px)]">
+      <main className="min-h-[calc(100vh-250px)] bg-white py-6 px-20 ">
         <div className="py-4 max-w-screen-2xl mx-auto text-3xl flex space-x-4 items-center">
           <span>
             {list.meals?.length} recipes for "{filterTerm}"

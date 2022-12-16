@@ -10,8 +10,8 @@ interface Props {
 function MealCard({ meal }: Props) {
   return (
     <Link
-      href={`/recipe/${meal.idMeal}`}
-      className="shadow-lg cursor-pointer rounded-md overflow-hidden transition duration-300 hover:scale-[1.03] hover:shadow-xl">
+      href={`/recipes/${meal.idMeal}`}
+      className="shadow-md cursor-pointer rounded-md overflow-hidden transition duration-300 hover:scale-[1.03] hover:shadow-xl">
       <div className=" overflow-hidden h-[250px] relative">
         <img
           src={meal.strMealThumb}
@@ -20,7 +20,7 @@ function MealCard({ meal }: Props) {
         />
         <div className="absolute h-full w-full top-0 bg-black opacity-30 pointer-events-none"></div>
       </div>
-      <div className="h-[120px] relative ">
+      <div className="h-[120px] relative">
         <span className="absolute top-1/2 -translate-y-[50%] p-4 text-lg">
           {meal.strMeal}
         </span>

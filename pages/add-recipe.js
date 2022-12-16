@@ -1,15 +1,17 @@
 import { clearPreviewData } from 'next/dist/server/api-utils';
 import Head from 'next/head';
 import { useState } from 'react';
-import { IoMdAdd } from 'react-icons/io';
+import { MdAdd } from 'react-icons/md';
+import { BsCheck2 } from 'react-icons/bs';
+
 import { nanoid } from 'nanoid';
 
 function AddRecipe() {
   const [uploadedRecipes, setUploadedRecipes] = useState({
     title: '',
     url: '',
-    ingredients: [],
-    steps: [],
+    ingredients: [{ id: nanoid(), ingredient: '' }],
+    steps: [{ id: nanoid(), step: '' }],
   });
 
   const handleAddIngredient = () => {
@@ -47,44 +49,35 @@ function AddRecipe() {
         <title>Add Recipe | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex justify-center items-center min-h-[calc(100vh-250px)]">
-        <div className="bg-white rounded space-y-10 shadow-md w-[500px] p-14">
+      <main className="min-h-[calc(100vh-300px)] my-[26px] mx-4 flex justify-center items-center">
+        <div className="bg-white rounded space-y-10 shadow-md w-[1200px] p-14">
           <h2 className="text-4xl text-primary-normal text-center font-semibold pb-4">
             ADD RECIPE
           </h2>
           <form className="flex flex-col space-y-6 text-lg">
             <label className="flex flex-col gap-1">
-              <span className="text-xl">Title</span>
-              <input
-                type="text"
-                required
-                className="border-2 border-gray-200 rounded p-2 outline-primary-medium"
-              />
+              <span className="text-xl font-semibold">Title</span>
+              <input type="text" required className="form-input" />
             </label>
             <label className="flex flex-col gap-1">
-              <span className="text-xl">Image URL</span>
-              <input
-                type="text"
-                required
-                className="border-2 border-gray-200 rounded p-2 outline-primary-medium"
-              />
+              <span className="text-xl font-semibold">Image URL</span>
+              <input type="text" required className="form-input" />
             </label>
             <fieldset className="space-y-2">
-              <legend className="flex gap-4 items-center text-xl">
-                <span>Ingredients</span>
-                <IoMdAdd
-                  className="text-white bg-primary-normal rounded hover:opacity-90 transition cursor-pointer"
-                  onClick={handleAddIngredient}
-                />
+              <legend className="flex gap-2 items-center text-xl">
+                <span className="w-[120px] font-semibold">Ingredients</span>
+                <div className="icon-add" onClick={handleAddIngredient}>
+                  <MdAdd />
+                </div>
               </legend>
-              {uploadedRecipes.ingredients.map(ing => (
+              {uploadedRecipes.ingredients.map((ing, index) => (
                 <div className="flex gap-2 items-center">
-                  <input
-                    type="text"
-                    className="w-full border-2 border-gray-200 rounded p-2 outline-primary-medium"
-                  />
+                  <span className="w-36 text-gray-400">
+                    Ingredient&nbsp;&nbsp;{index + 1}
+                  </span>
+                  <input type="text" className="w-full form-input" />
                   <div
-                    className="text-3xl bg-transparent font-thin hover:text-primary-normal transition cursor-pointer"
+                    className="icon-remove"
                     onClick={e => {
                       handleRemoveIngredient(ing.id);
                     }}>
@@ -94,31 +87,30 @@ function AddRecipe() {
               ))}
             </fieldset>
             <fieldset className="space-y-2">
-              <legend className="flex gap-4 items-center text-xl">
-                <span>Instructions</span>
-                <IoMdAdd
-                  className="text-white bg-primary-normal rounded hover:opacity-90 transition cursor-pointer"
-                  onClick={handleAddStep}
-                />
+              <legend className="flex gap-2 items-center text-xl">
+                <span className="w-[120px] font-semibold">Directions</span>
+                <div className="icon-add" onClick={handleAddStep}>
+                  <MdAdd />
+                </div>
               </legend>
-              {uploadedRecipes.steps.map(step => (
+              {uploadedRecipes.steps.map((step, index) => (
                 <div className="flex gap-2 items-center">
-                  <input
-                    type="text"
-                    className="w-full border-2 border-gray-200 rounded p-2 outline-primary-medium"
-                  />
+                  <span className="w-20 text-gray-400">
+                    Step&nbsp;&nbsp;{index + 1}
+                  </span>
+                  <input type="text" className="w-full form-input" />
                   <div
-                    className="text-3xl bg-transparent font-thin hover:text-primary-normal transition cursor-pointer"
+                    className="icon-remove"
                     onClick={e => {
                       handleRemoveStep(step.id);
                     }}>
-                    ×
+                    <span>×</span>
                   </div>
                 </div>
               ))}
             </fieldset>
-            <button type="submit" className="form-button">
-              Upload
+            <button type="submit" className="form-button w-1/3 m-auto">
+              UPLOAD
             </button>
           </form>
         </div>

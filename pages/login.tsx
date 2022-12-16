@@ -12,7 +12,7 @@ function Login() {
         <title>Login | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="flex justify-center items-center min-h-[calc(100vh-250px)] ">
+      <main className="min-h-[calc(100vh-250px)] flex justify-center items-center">
         <div className="bg-white rounded space-y-10 shadow-md w-[500px] p-14">
           <h2 className="text-4xl text-primary-normal text-center font-semibold pb-4">
             LOGIN
@@ -24,7 +24,7 @@ function Login() {
               value={email}
               placeholder="Email"
               required
-              className="border-2 border-gray-200 rounded p-2 outline-primary-medium"
+              className="form-input"
             />
             <input
               type="password"
@@ -32,18 +32,16 @@ function Login() {
               value={password}
               placeholder="Password"
               required
-              className="border-2 border-gray-200 rounded p-2 outline-primary-medium"
+              className="form-input"
             />
 
             <button type="submit" className="form-button">
-              Login
+              LOGIN
             </button>
           </form>
           <div className="text-lg space-x-2">
             <span>Already a user?</span>
-            <Link
-              href="/signup"
-              className="text-primary-normal border-b-2 border-primary-normal hover:text-primary-medium">
+            <Link href="/signup" className="form-link">
               Sign up
             </Link>
           </div>

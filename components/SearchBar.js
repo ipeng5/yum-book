@@ -6,10 +6,6 @@ function SearchBar() {
   const [searchInput, setSearchInput] = useState('');
   const router = useRouter();
 
-  const handleChange = e => {
-    setSearchInput(e.target.value.trim());
-  };
-
   const handleSearch = e => {
     e.preventDefault();
     if (!searchInput) return;
@@ -19,6 +15,8 @@ function SearchBar() {
         search: searchInput,
       },
     });
+    setSearchInput('');
+    document.querySelector('#search-bar').blur();
   };
 
   return (
@@ -26,9 +24,17 @@ function SearchBar() {
       className="flex items-center space-x-1 cursor-pointer"
       onSubmit={e => handleSearch(e)}>
       <input
+        id="search-bar"
         type="text"
-        className="bg-transparent px-2 border-b-2 border-primary-normal outline-none"
-        onChange={e => handleChange(e)}
+        className="bg-transparent px-1 border-b-2 border-primary-medium outline-none focus:drop-shadow-sm focus:border-b-3 focus:border-primary-normal transition"
+        value={searchInput}
+        onChange={e =>
+          setSearchInput(
+            e.target.value.trim() !== ''
+              ? e.target.value
+              : e.target.value.trim()
+          )
+        }
       />
       <button type="submit">
         <MdSearch className="h-6 w-6 fill-primary-normal" />

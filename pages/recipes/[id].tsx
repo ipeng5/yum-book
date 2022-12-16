@@ -38,7 +38,7 @@ function Details() {
       if (meal[`strIngredient${i}`]) {
         ingredients.push(
           <li key={i} className="flex items-center gap-4 w-[350px] relative">
-            <BsCheck2 className="text-primary-normal text-3xl absolute" />{' '}
+            <BsCheck2 className="text-primary-normal text-3xl absolute" />
             <span className="pl-12">
               {meal[`strMeasure${i}`].toLowerCase()} {meal[`strIngredient${i}`]}
             </span>
@@ -71,7 +71,7 @@ function Details() {
                 <span>Area:</span>
                 <Link
                   href={`/area?filterTerm=${meal.strArea}`}
-                  className="text-primary-normal">
+                  className="text-primary-normal hover:text-primary-medium">
                   {meal.strArea}
                 </Link>
               </p>
@@ -79,7 +79,7 @@ function Details() {
                 <span>Category:</span>
                 <Link
                   href={`/category?filterTerm=${meal.strCategory}`}
-                  className="text-primary-normal">
+                  className="text-primary-normal hover:text-primary-medium">
                   {meal.strCategory}
                 </Link>
               </p>
