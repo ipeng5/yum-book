@@ -71,7 +71,7 @@ function Details() {
                 <span>Area:</span>
                 <Link
                   href={`/area?filterTerm=${meal.strArea}`}
-                  className="text-primary-normal hover:text-primary-medium">
+                  className="text-primary-normal hover:underline">
                   {meal.strArea}
                 </Link>
               </p>
@@ -79,7 +79,7 @@ function Details() {
                 <span>Category:</span>
                 <Link
                   href={`/category?filterTerm=${meal.strCategory}`}
-                  className="text-primary-normal hover:text-primary-medium">
+                  className="text-primary-normal hover:underline">
                   {meal.strCategory}
                 </Link>
               </p>

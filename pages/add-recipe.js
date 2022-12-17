@@ -49,7 +49,7 @@ function AddRecipe() {
         <title>Add Recipe | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="min-h-[calc(100vh-300px)] my-[26px] mx-4 flex justify-center items-center">
+      <main className="min-h-[calc(100vh-301px)] my-[26px] mx-4 flex justify-center items-center">
         <div className="bg-white rounded space-y-10 shadow-md w-[1200px] p-14">
           <h2 className="text-4xl text-primary-normal text-center font-semibold pb-4">
             ADD RECIPE
@@ -71,7 +71,7 @@ function AddRecipe() {
                 </div>
               </legend>
               {uploadedRecipes.ingredients.map((ing, index) => (
-                <div className="flex gap-2 items-center">
+                <div className="flex gap-2 items-center" key={nanoid()}>
                   <span className="w-36 text-gray-400">
                     Ingredient&nbsp;&nbsp;{index + 1}
                   </span>
@@ -94,7 +94,7 @@ function AddRecipe() {
                 </div>
               </legend>
               {uploadedRecipes.steps.map((step, index) => (
-                <div className="flex gap-2 items-center">
+                <div className="flex gap-2 items-center" key={nanoid()}>
                   <span className="w-20 text-gray-400">
                     Step&nbsp;&nbsp;{index + 1}
                   </span>
@@ -110,7 +110,7 @@ function AddRecipe() {
               ))}
             </fieldset>
             <button type="submit" className="form-button w-1/3 m-auto">
-              UPLOAD
+              Upload
             </button>
           </form>
         </div>

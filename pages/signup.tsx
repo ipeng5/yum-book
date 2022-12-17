@@ -45,12 +45,12 @@ function Signup() {
             />
 
             <button type="submit" className="form-button">
-              SIGN UP
+              Sign up
             </button>
           </form>
           <div className="text-lg space-x-2">
             <span>Already a user?</span>
-            <Link href="/login" className="form-link">
+            <Link href="/login" className="text-primary-normal hover:underline">
               Login
             </Link>
           </div>

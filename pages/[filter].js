@@ -17,6 +17,7 @@ function Filter() {
 
   const paginate = pageNumber => {
     setCurrentPage(pageNumber);
+    window.scrollTo({ top: 0 });
   };
 
   const url =

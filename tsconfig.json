@@ -25,7 +25,8 @@
     "components/SearchBar.js",
     "pages/search.js",
     "pages/[filter].js",
-    "pages/add-recipe.js"
+    "pages/add-recipe.js",
+    "components/Header.js"
   ],
   "exclude": ["node_modules"]
 }

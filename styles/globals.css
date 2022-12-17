@@ -7,6 +7,10 @@
     @apply flex items-center space-x-2 hover:bg-gray-200 py-2 px-3 rounded transition;
   }
 
+  .dropdown-link {
+    @apply text-lg py-4 px-6 flex gap-4 items-center  hover:bg-gray-100 transition;
+  }
+
   .filter {
     @apply px-6 py-2 rounded-lg bg-gray-light hover:text-primary-normal transition;
   }
@@ -17,10 +21,6 @@
 
   .form-button {
     @apply bg-primary-normal rounded py-3 text-white text-xl shadow-inner !mt-10 hover:opacity-95;
-  }
-
-  .form-link {
-    @apply text-primary-normal border-b-2 border-primary-normal hover:text-primary-medium px-1;
   }
 
   .form-input {
