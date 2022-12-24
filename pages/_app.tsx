@@ -1,5 +1,6 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
+import { RecipeProvider } from '../context/RecipeContext';
 import { Poppins } from '@next/font/google';
 import Layout from '../components/Layout';
 import { useRouter } from 'next/router';
@@ -30,15 +31,17 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <div className={`${poppins.variable} font-sans`}>
-      <Layout>
-        {isLoading ? (
-          <div className="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%]">
-            <CgSpinnerTwo className="animate-spin text-8xl text-primary-normal" />
-          </div>
-        ) : (
-          <Component {...pageProps} />
-        )}
-      </Layout>
+      <RecipeProvider>
+        <Layout>
+          {isLoading ? (
+            <div className="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%]">
+              <CgSpinnerTwo className="animate-spin text-8xl text-primary-normal" />
+            </div>
+          ) : (
+            <Component {...pageProps} />
+          )}
+        </Layout>
+      </RecipeProvider>
     </div>
   );
 }
