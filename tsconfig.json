@@ -26,7 +26,10 @@
     "pages/search.js",
     "pages/[filter].js",
     "pages/add-recipe.js",
-    "components/Header.js"
+    "components/Header.js",
+    "pages/favorites.js",
+    "pages/recipes/[id].js",
+    "components/MealCard.js"
   ],
   "exclude": ["node_modules"]
 }

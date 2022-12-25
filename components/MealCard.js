@@ -1,16 +1,13 @@
-// import Link from 'next/link';
 import Link from 'next/link';
-import { Meal } from '../typings';
 
-interface Props {
-  meal: Meal;
-  id: string;
-}
-
-function MealCard({ meal }: Props) {
+function MealCard({ meal }) {
   return (
     <Link
-      href={`/recipes/${meal.idMeal}`}
+      href={
+        meal.category === 'uploads'
+          ? `/my-recipes/${meal.idMeal}`
+          : `/recipes/${meal.idMeal}`
+      }
       className="shadow-md cursor-pointer rounded-md overflow-hidden transition duration-300 hover:scale-[1.03] hover:shadow-xl">
       <div className=" overflow-hidden h-[250px] relative">
         <img

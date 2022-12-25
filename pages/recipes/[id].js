@@ -5,14 +5,8 @@ import { useEffect, useState } from 'react';
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 import { BsInfoCircle, BsPlayFill, BsCheck2 } from 'react-icons/bs';
 
-import { MealDetails } from '../../typings';
-
-export interface Props {
-  meal: MealDetails;
-}
-
 function Details() {
-  const [meal, setMeal] = useState<Props | any>([]);
+  const [meal, setMeal] = useState([]);
   const router = useRouter();
   const { id } = router.query;
 
@@ -49,7 +43,7 @@ function Details() {
     return ingredients;
   };
 
-  const stepsArr: string[] = meal.strInstructions
+  const stepsArr = meal.strInstructions
     ?.replace(/[0-9]\./g, '')
     .replace(/STEP\s[0-9]/g, '')
     .split('.');
@@ -135,7 +129,7 @@ function Details() {
             <ol>
               {stepsArr
                 ?.filter(sentence => sentence !== '')
-                .map((step: string, i: number) => {
+                .map((step, i) => {
                   if (step === '') return;
                   return (
                     <li key={i} className="pb-4 flex text-xl relative">
