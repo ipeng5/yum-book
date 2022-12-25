@@ -29,7 +29,8 @@
     "components/Header.js",
     "pages/favorites.js",
     "pages/recipes/[id].js",
-    "components/MealCard.js"
+    "components/MealCard.js",
+    "pages/signup.js"
   ],
   "exclude": ["node_modules"]
 }
