@@ -10,9 +10,11 @@ import {
 } from 'react-icons/md';
 import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri';
 import { UserAuth } from '../context/AuthContext';
+import { useLogout } from '../hooks/useLogout';
 
 function Header() {
-  const { user, logOut } = UserAuth();
+  const { user } = UserAuth();
+  const { logOut } = useLogout();
 
   return (
     <header className="flex justify-between items-center  h-[150px] px-12 bg-gray-light relative">

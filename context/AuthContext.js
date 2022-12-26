@@ -1,32 +1,86 @@
-import { useContext, createContext, useEffect, useState } from 'react';
+import {
+  useContext,
+  createContext,
+  useEffect,
+  useState,
+  useReducer,
+} from 'react';
 import { auth } from '../firebase/config';
 import {
   GoogleAuthProvider,
   signInWithPopup,
-  signInWithRedirect,
   signOut,
   onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
 } from 'firebase/auth';
 import { useRouter } from 'next/router';
 
 const AuthContext = createContext();
 
+export const authReducer = (state, action) => {
+  switch (action.type) {
+    case 'LOGIN':
+      return { ...state, user: action.payload };
+    case 'LOGOUT':
+      return { ...state, user: null };
+    default:
+      return state;
+  }
+};
+
 export function AuthProvider({ children }) {
   const [user, setUser] = useState({});
   const router = useRouter();
+  const [isPending, setIsPending] = useState(false);
+  const [state, dispatch] = useReducer(authReducer, { user: null });
 
-  const googleSignIn = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider).catch(err => {
-      console.log(err.message);
-    });
-    // signInWithRedirect(auth, provider); TODO for mobile
-  };
+  // const googleSignIn = () => {
+  //   const provider = new GoogleAuthProvider();
+  //   signInWithPopup(auth, provider)
+  //     .then(() => {
+  //       router.push('/');
+  //     })
+  //     .catch(err => {
+  //       console.log(err.message);
+  //     });
+  // };
 
-  const logOut = () => {
-    signOut(auth);
-    router.push('/');
-  };
+  // const createUser = (email, password, username) => {
+  //   setIsPending(true);
+  //   createUserWithEmailAndPassword(auth, email, password)
+  //     .then(() => {
+  //       updateProfile(auth.currentUser, { displayName: username });
+  //       router.push('/');
+  //       setIsPending(false);
+  //     })
+  //     .catch(err => {
+  //       setIsPending(false);
+  //       console.log(err.message);
+  //     });
+  // };
+
+  // const emailSignIn = async (email, password) => {
+  //   setIsPending(true);
+  //   try {
+  //     await signInWithEmailAndPassword(auth, email, password);
+  //     router.push('/');
+  //     setIsPending(false);
+  //   } catch (err) {
+  //     setIsPending(false);
+  //     console.log(err.message);
+  //   }
+  // };
+
+  // const logOut = async () => {
+  //   try {
+  //     await signOut(auth);
+  //     router.push('/');
+  //   } catch (err) {
+  //     console.log(err.message);
+  //   }
+  // };
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currentUser => {
@@ -38,7 +92,20 @@ export function AuthProvider({ children }) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ googleSignIn, logOut, user }}>
+    <AuthContext.Provider
+      value={{
+        ...state,
+        dispatch,
+      }}
+      // value={{
+      //   googleSignIn,
+      //   emailSignIn,
+      //   logOut,
+      //   user,
+      //   createUser,
+      //   isPending,
+      // }}
+    >
       {children}
     </AuthContext.Provider>
   );

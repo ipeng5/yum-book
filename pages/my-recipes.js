@@ -24,11 +24,11 @@ function myRecipes() {
     getMyRecipes();
   }, []);
 
- useEffect(() => {
+  useEffect(() => {
     if (!user) {
       setTimeout(() => {
         router.push('/login');
-      }, 3000);
+      }, 2000);
     }
   }, [user]);
 

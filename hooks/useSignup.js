@@ -1,28 +1,28 @@
 import { useState } from 'react';
 import { auth } from '../firebase/config';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { useRouter } from 'next/router';
+import { UserAuth } from '../context/AuthContext';
 
 export const useSignup = () => {
-  const [error, setError] = useState(null);
+  const router = useRouter();
   const [isPending, setIsPending] = useState(false);
+  const { dispatch } = UserAuth();
 
-  const signup = (email, password, username) => {
-    setError(null);
+  const createUser = (email, password, username) => {
     setIsPending(true);
-
     createUserWithEmailAndPassword(auth, email, password)
-      .then(res => {
-        const user = res.user;
+      .then(() => {
         updateProfile(auth.currentUser, { displayName: username });
-        setError(null);
+        dispatch({ type: 'LOGIN', payload: auth.currentUser });
+        router.push('/');
         setIsPending(false);
-        console.log(user);
       })
       .catch(err => {
-        setError(err.message);
         setIsPending(false);
+        console.log(err.message);
       });
   };
 
-  return { error, signup, isPending };
+  return { createUser, isPending };
 };
