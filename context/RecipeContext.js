@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useState } from 'react';
 
 export const RecipeContext = createContext();
 
@@ -11,3 +11,7 @@ export function RecipeProvider({ children }) {
     </RecipeContext.Provider>
   );
 }
+
+export const UserRecipes = () => {
+  return useContext(RecipeContext);
+};

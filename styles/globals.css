@@ -20,7 +20,7 @@
   }
 
   .form-button {
-    @apply bg-primary-normal rounded py-3 text-white text-xl shadow-inner !mt-10 hover:opacity-95;
+    @apply bg-primary-normal rounded py-3 text-white text-xl shadow-inner !mt-10 hover:opacity-95 transition;
   }
 
   .form-input {

@@ -9,8 +9,11 @@ import {
   MdAccountBox,
 } from 'react-icons/md';
 import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri';
+import { UserAuth } from '../context/AuthContext';
 
 function Header() {
+  const { user, logOut } = UserAuth();
+
   return (
     <header className="flex justify-between items-center  h-[150px] px-12 bg-gray-light relative">
       <Link href="/" className="flex items-center space-x-4 cursor-pointer">
@@ -19,12 +22,19 @@ function Header() {
       </Link>
       <nav className="flex space-x-4 text-xl">
         <SearchBar />
-
+        {!user && (
+          <Link href="/login" className="header-link">
+            <MdLogin className="h-6 w-6 fill-primary-normal" />
+            <span>Login</span>
+          </Link>
+        )}
         <Menu as="div" className="relative">
-          <Menu.Button className="header-link cursor-pointer">
-            ACCOUNT
-            <RiArrowDownSLine className="text-3xl text-primary-normal" />
-          </Menu.Button>
+          {user?.displayName && (
+            <Menu.Button className="header-link cursor-pointer">
+              Hi, {user.displayName}
+              <RiArrowDownSLine className="text-3xl text-primary-normal" />
+            </Menu.Button>
+          )}
           <Menu.Items className="flex flex-col absolute right-0 top-14 bg-white  rounded shadow-lg z-50 w-56 outline-none">
             <Menu.Item>
               <Link href="/add-recipe" className="dropdown-link">
@@ -45,10 +55,10 @@ function Header() {
               </Link>
             </Menu.Item>
             <Menu.Item>
-              <Link href="/" className="dropdown-link">
+              <button className="dropdown-link" onClick={logOut}>
                 <MdLogout className="text-2xl text-gray-500" />
                 <span>Logout</span>
-              </Link>
+              </button>
             </Menu.Item>
           </Menu.Items>
         </Menu>

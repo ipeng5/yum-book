@@ -30,7 +30,9 @@
     "pages/favorites.js",
     "pages/recipes/[id].js",
     "components/MealCard.js",
-    "pages/signup.js"
+    "pages/signup.js",
+    "pages/login.js",
+    "pages/_app.js"
   ],
   "exclude": ["node_modules"]
 }

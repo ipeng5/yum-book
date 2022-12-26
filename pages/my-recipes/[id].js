@@ -1,7 +1,6 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { useRecipe } from '../../hooks/useRecipe';
 import { db } from '../../firebase/config';
 import { getDoc, doc, onSnapshot } from 'firebase/firestore';
 
