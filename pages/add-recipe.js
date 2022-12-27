@@ -6,7 +6,7 @@ import { UserAuth } from '../context/AuthContext';
 import { useRouter } from 'next/router';
 
 function AddRecipe() {
-  const { user } = UserAuth();
+  const { user, authIsReady } = UserAuth();
   const router = useRouter();
   const [uploadedRecipes, setUploadedRecipes] = useState({
     title: '',
@@ -23,10 +23,8 @@ function AddRecipe() {
   };
 
   useEffect(() => {
-    if (!user) {
-      setTimeout(() => {
-        router.push('/login');
-      }, 2000);
+    if (authIsReady && !user) {
+      router.push('/login');
     }
   }, [user]);
 
@@ -59,11 +57,6 @@ function AddRecipe() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="min-h-[calc(100vh-301px)] my-[26px] mx-4 flex justify-center items-center">
-        {!user && (
-          <h2 className="text-4xl text-primary-normal text-center font-semibold pb-4">
-            Please login first
-          </h2>
-        )}
         {user && (
           <div className="bg-white rounded space-y-10 shadow-md w-[1200px] p-14">
             <h2 className="text-4xl text-primary-normal text-center font-semibold pb-4">

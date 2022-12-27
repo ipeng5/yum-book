@@ -1,9 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
 import { useGoogleLogin } from '../hooks/useGoogleLogin';
 import { useEmailLogin } from '../hooks/useEmailLogin';
+import { useRouter } from 'next/router';
 import { FcGoogle } from 'react-icons/fc';
 
 function Login() {
@@ -11,9 +12,10 @@ function Login() {
     email: '',
     password: '',
   });
-  const { user } = UserAuth();
+  const { user, authIsReady } = UserAuth();
   const { googleSignIn } = useGoogleLogin();
-  const { emailSignIn, isPending } = useEmailLogin();
+  const { emailSignIn, isPending, emailLoginError } = useEmailLogin();
+  const router = useRouter();
 
   const handleInput = e => {
     setValues(prevValues => ({
@@ -27,6 +29,12 @@ function Login() {
     emailSignIn(values.email, values.password);
   };
 
+  useEffect(() => {
+    if (authIsReady && user) {
+      router.push('/');
+    }
+  }, [user]);
+
   return (
     <>
       <Head>
@@ -34,15 +42,10 @@ function Login() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="min-h-[calc(100vh-250px)] flex justify-center items-center">
-        {user && (
-          <h2 className="text-4xl text-primary-normal text-center font-semibold  absolute top-1/3 w-full">
-            You have logged in already 😊
-          </h2>
-        )}
         {!user && (
           <div className="bg-white rounded shadow-md w-[500px] p-14">
             <h2 className="text-4xl text-primary-normal text-center font-semibold pb-4 mb-10">
-              LOGIN
+              Login
             </h2>
             <form
               className="flex flex-col space-y-4 text-lg"
@@ -58,7 +61,7 @@ function Login() {
                   className="form-input"
                 />
               </label>
-              <label className="flex flex-col gap-1">
+              <label className="flex flex-col gap-1 relative">
                 <span className="text-base text-gray-400">Password</span>{' '}
                 <input
                   type="password"
@@ -68,20 +71,24 @@ function Login() {
                   required
                   className="form-input"
                 />
+                {emailLoginError && !isPending && (
+                  <p className="text-primary-normal absolute top-[88px]">
+                    {emailLoginError}
+                  </p>
+                )}
               </label>
-
               <div className="flex flex-col gap-4">
                 {!isPending && (
                   <button
                     type="submit"
-                    className="form-button border-2 border-primary-normal">
+                    className="form-button mt-16 border-2 border-primary-normal">
                     Login
                   </button>
                 )}
                 {isPending && (
                   <button
                     disabled
-                    className="form-button border-2 border-primary-normal">
+                    className="form-button mt-16 border-2 border-primary-normal">
                     Loading
                   </button>
                 )}

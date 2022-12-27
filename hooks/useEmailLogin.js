@@ -1,5 +1,8 @@
 import { auth } from '../firebase/config';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  signInWithEmailAndPassword,
+  fetchSignInMethodsForEmail,
+} from 'firebase/auth';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
@@ -7,6 +10,7 @@ import { UserAuth } from '../context/AuthContext';
 export const useEmailLogin = () => {
   const router = useRouter();
   const [isPending, setIsPending] = useState(false);
+  const [emailLoginError, setEmailLoginError] = useState(null);
   const { dispatch } = UserAuth();
 
   const emailSignIn = async (email, password) => {
@@ -18,9 +22,19 @@ export const useEmailLogin = () => {
       setIsPending(false);
     } catch (err) {
       setIsPending(false);
-      console.log(err.message);
+      if (err.code === 'auth/user-not-found') {
+        setEmailLoginError('Email address was not found');
+      } else if (err.code === 'auth/wrong-password') {
+        fetchSignInMethodsForEmail(auth, email).then(result => {
+          result[0] === 'google.com'
+            ? setEmailLoginError('Please sign in with your Google account')
+            : setEmailLoginError('Password is incorrect');
+        });
+      } else {
+        console.log(err.message);
+      }
     }
   };
 
-  return { emailSignIn, isPending };
+  return { emailSignIn, isPending, emailLoginError };
 };

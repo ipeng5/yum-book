@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 
 function myRecipes() {
   const { recipes, setRecipes } = UserRecipes();
-  const { user } = UserAuth();
+  const { user, authIsReady } = UserAuth();
   const router = useRouter();
 
   const myRecipes = recipes.filter(recipe => recipe.category === 'uploads');
@@ -25,10 +25,8 @@ function myRecipes() {
   }, []);
 
   useEffect(() => {
-    if (!user) {
-      setTimeout(() => {
-        router.push('/login');
-      }, 2000);
+    if (authIsReady && !user) {
+      router.push('/login');
     }
   }, [user]);
 
@@ -38,11 +36,6 @@ function myRecipes() {
         <title>My Recipes | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {!user && (
-        <h2 className="text-4xl text-primary-normal text-center font-semibold  absolute top-1/3 w-full">
-          Please login first
-        </h2>
-      )}
       {user && (
         <main className="min-h-[calc(100vh-250px)] bg-white py-6 px-20 ">
           <div className="py-4 max-w-screen-2xl mx-auto text-3xl flex space-x-4 items-center">

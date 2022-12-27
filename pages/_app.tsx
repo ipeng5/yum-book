@@ -17,6 +17,7 @@ const poppins = Poppins({
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     const handleStart = () => {
       setIsLoading(true);

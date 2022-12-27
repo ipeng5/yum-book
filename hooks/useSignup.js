@@ -7,6 +7,8 @@ import { UserAuth } from '../context/AuthContext';
 export const useSignup = () => {
   const router = useRouter();
   const [isPending, setIsPending] = useState(false);
+  const [signupError, setSignupError] = useState(null);
+
   const { dispatch } = UserAuth();
 
   const createUser = (email, password, username) => {
@@ -20,9 +22,13 @@ export const useSignup = () => {
       })
       .catch(err => {
         setIsPending(false);
-        console.log(err.message);
+        if (err.code === 'auth/email-already-in-use') {
+          setSignupError('This email is registered already');
+        } else {
+          console.log(err.message);
+        }
       });
   };
 
-  return { createUser, isPending };
+  return { createUser, isPending, signupError };
 };

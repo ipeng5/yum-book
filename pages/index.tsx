@@ -6,7 +6,6 @@ import CategoryCard from '../components/CategoryCard';
 import { AreaList, AllCategories } from '../typings';
 import requests from '../utils/requests';
 import SearchResults from '../components/SearchResults';
-
 interface Props {
   areaList: AreaList;
   allCategories: AllCategories;
