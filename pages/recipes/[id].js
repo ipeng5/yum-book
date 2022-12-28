@@ -18,7 +18,8 @@ function Details() {
         );
         if (!res.ok) throw new Error(res.statusText);
         const data = await res.json();
-        setMeal(data.meals[0]);
+        if (data.meals) setMeal(data.meals[0]);
+        else router.push('/404');
       } catch (err) {
         console.log(err);
       }

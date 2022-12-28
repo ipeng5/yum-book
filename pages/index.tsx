@@ -3,19 +3,21 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import AreaCard from '../components/AreaCard';
 import CategoryCard from '../components/CategoryCard';
-import { AreaList, AllCategories } from '../typings';
-import requests from '../utils/requests';
+import { areaList } from '../lib/filterList';
+import { AllCategories } from '../typings';
 import SearchResults from '../components/SearchResults';
+
 interface Props {
-  areaList: AreaList;
+  areaList: string[];
   allCategories: AllCategories;
 }
 
 export const getStaticProps = async () => {
-  const [areaList, allCategories] = await Promise.all([
-    fetch(requests.fetchAreaList).then(res => res.json()),
-    fetch(requests.fetchAllCategories).then(res => res.json()),
-  ]);
+  const res = await fetch(
+    'https://www.themealdb.com/api/json/v1/1/categories.php'
+  );
+  const allCategories = await res.json();
+
   return {
     props: {
       areaList,
@@ -65,9 +67,7 @@ const Home = ({ areaList, allCategories }: Props) => {
             ))}
           {filter === 'area' &&
             !query.search &&
-            areaList.meals.map(area => (
-              <AreaCard area={area} key={area.strArea} />
-            ))}
+            areaList.map(area => <AreaCard area={area} key={area} />)}
         </div>
       </main>
     </>

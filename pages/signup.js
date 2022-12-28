@@ -75,6 +75,7 @@ function Signup() {
                   value={values.username}
                   required
                   className="form-input"
+                  maxLength="15"
                 />
               </label>
               <label className="flex flex-col gap-1">

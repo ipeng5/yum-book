@@ -96,7 +96,7 @@ function Login() {
             </form>
             <button
               type="submit"
-              className="py-3 w-full rounded text-xl shadow-inner bg-white text-gray-500 border-2 border-gray-300 flex gap-4 justify-center items-center hover:bg-[#fdfdfd] transition mb-10 mt-4"
+              className="py-3 w-full rounded text-xl shadow-inner bg-[#fefefe] text-gray-500 border-2 border-gray-300 flex gap-4 justify-center items-center hover:bg-[#fcfcfc] transition mb-10 mt-4"
               onClick={googleSignIn}>
               <FcGoogle className="text-2xl" />
               <span>Sign in with Google</span>

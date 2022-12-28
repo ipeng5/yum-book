@@ -13,7 +13,6 @@ export const useGoogleLogin = () => {
       .then(() => {
         dispatch({ type: 'LOGIN', payload: auth.currentUser });
         router.push('/');
-        console.log(auth.currentUser);
       })
       .catch(err => {
         console.log(err.message);

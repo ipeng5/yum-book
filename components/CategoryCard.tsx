@@ -8,10 +8,7 @@ interface Props {
 function CategoryCard({ category }: Props) {
   return (
     <Link
-      href={{
-        pathname: `/category`,
-        query: { filterTerm: `${category.strCategory}` },
-      }}
+      href={`/categories/${category.strCategory}`}
       className="rounded-3xl overflow-hidden h-[200px] relative shadow-xl bg-[#F8E7C4] cursor-pointer">
       <img
         src={category.strCategoryThumb}

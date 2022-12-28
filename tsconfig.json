@@ -32,7 +32,8 @@
     "components/MealCard.js",
     "pages/signup.js",
     "pages/login.js",
-    "pages/_app.js"
+    "pages/_app.js",
+    "components/AreaCard.js"
   ],
   "exclude": ["node_modules"]
 }

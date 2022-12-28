@@ -20,11 +20,11 @@
   }
 
   .form-button {
-    @apply bg-primary-normal rounded py-3 text-white text-xl shadow-inner hover:opacity-95 transition;
+    @apply bg-primary-normal rounded py-3 text-white text-xl shadow-inner hover:bg-primary-dark hover:border-primary-dark transition;
   }
 
   .form-input {
-    @apply border-2 border-gray-200 rounded p-2 outline-primary-medium;
+    @apply border-2 border-gray-300 bg-white rounded p-2 outline-primary-medium;
   }
 
   .icon-add {

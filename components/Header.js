@@ -8,7 +8,7 @@ import {
   MdLibraryAdd,
   MdAccountBox,
 } from 'react-icons/md';
-import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri';
+import { RiArrowDownSLine } from 'react-icons/ri';
 import { UserAuth } from '../context/AuthContext';
 import { useLogout } from '../hooks/useLogout';
 
@@ -17,7 +17,7 @@ function Header() {
   const { logOut } = useLogout();
 
   return (
-    <header className="flex justify-between items-center  h-[150px] px-12 bg-gray-light relative">
+    <header className="flex justify-between items-center  h-[150px] px-12 bg-gray-light">
       <Link href="/" className="flex items-center space-x-4 cursor-pointer">
         <img src="/assets/logo.png" alt="logo" width={80} height={80} />
         <span className="text-6xl ">Yum Book</span>
@@ -31,7 +31,7 @@ function Header() {
           </Link>
         )}
         <Menu as="div" className="relative">
-          {user?.displayName && (
+          {user && (
             <Menu.Button className="header-link cursor-pointer">
               Hi, {user.displayName}
               <RiArrowDownSLine className="text-3xl text-primary-normal" />
