@@ -37,7 +37,7 @@ function Header() {
               <RiArrowDownSLine className="text-3xl text-primary-normal" />
             </Menu.Button>
           )}
-          <Menu.Items className="flex flex-col absolute right-0 top-14 bg-white  rounded shadow-lg z-50 w-56 outline-none">
+          <Menu.Items className="flex flex-col absolute right-0 top-14 bg-white  rounded shadow-md z-50 w-56">
             <Menu.Item>
               <Link href="/add-recipe" className="dropdown-link">
                 <MdLibraryAdd className="text-2xl text-gray-500" />

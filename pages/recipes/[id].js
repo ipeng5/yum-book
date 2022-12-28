@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { UserAuth } from '../../context/AuthContext';
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 import { BsInfoCircle, BsPlayFill, BsCheck2 } from 'react-icons/bs';
 
@@ -9,6 +10,8 @@ function Details() {
   const [meal, setMeal] = useState([]);
   const router = useRouter();
   const { id } = router.query;
+  const { user } = UserAuth();
+  const [showPopup, setShowPopup] = useState(false);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -49,6 +52,13 @@ function Details() {
     .replace(/STEP\s[0-9]/g, '')
     .split('.');
 
+  const handleFavorite = () => {
+    if (!user) setShowPopup(true);
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 2000);
+  };
+
   return (
     <>
       <Head>
@@ -58,7 +68,7 @@ function Details() {
       <main className="min-h-[calc(100vh-250px)]">
         <section className="bg-white flex flex-col py-20 justify-center items-center gap-6">
           <div className="flex flex-col items-center justify-center gap-10 max-w-[1500px] ">
-            <h1 className="text-5xl text-center leading-tight">
+            <h1 className="text-5xl text-center leading-tight ">
               {meal.strMeal}
             </h1>
             <div className="flex space-x-8 text-2xl items-center">
@@ -78,7 +88,17 @@ function Details() {
                   {meal.strCategory}
                 </Link>
               </p>
-              <MdFavoriteBorder className="text-3xl cursor-pointer" />
+              <div className="relative">
+                <MdFavoriteBorder
+                  className="text-3xl cursor-pointer"
+                  onClick={handleFavorite}
+                />
+                {showPopup && (
+                  <div className="absolute text-lg p-2 w-48 text-primary-medium left-10 -top-2">
+                    <p>Please login first</p>
+                  </div>
+                )}
+              </div>
             </div>
             <div className="flex gap-6">
               {meal.strSource ? (
@@ -86,7 +106,7 @@ function Details() {
                   href={meal.strSource}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2 border-2 border-gray-500 hover:bg-gray-50 px-4 py-2 rounded transition">
+                  className="flex items-center gap-2 border-2 border-gray-400 hover:bg-gray-50 px-4 py-2 rounded transition">
                   <BsInfoCircle />
                   More Info
                 </a>
