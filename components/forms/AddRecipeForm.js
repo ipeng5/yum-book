@@ -1,7 +1,10 @@
-import { MdAdd } from 'react-icons/md';
 import { useFirestore } from '../../hooks/useFirestore';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import IngredientInput from './IngredientInput';
+import StepsInput from './StepsInput';
+import MealImageInput from './MealImageInput';
 import { nanoid } from 'nanoid';
+import { MdAdd } from 'react-icons/md';
 
 function AddRecipeForm() {
   const [uploadedRecipe, setUploadedRecipe] = useState({
@@ -9,11 +12,16 @@ function AddRecipeForm() {
     title: '',
     url: '',
     ingredients: [],
+    ingredients: [],
     steps: [],
   });
+  const [imgURL, setImgURL] = useState(
+    'https://firebasestorage.googleapis.com/v0/b/yum-book.appspot.com/o/Images%2Fdummy-img.ico?alt=media&token=f583921b-8dd7-4a8b-8dfe-8ad3addc43ce'
+  );
+
   const { addRecipeToFirebase, response } = useFirestore();
 
-  const handleInput = e => {
+  const handleTitleInput = e => {
     setUploadedRecipe(prevValues => ({
       ...prevValues,
       [e.target.name]: e.target.value,
@@ -70,31 +78,41 @@ function AddRecipeForm() {
     });
   };
 
+  useEffect(() => {
+    setUploadedRecipe(prevValues => ({
+      ...prevValues,
+      url: imgURL,
+    }));
+  }, [imgURL]);
+
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(uploadedRecipe);
-    // addRecipeToFirebase(uploadedRecipe);
+    addRecipeToFirebase(uploadedRecipe);
   };
 
   return (
     <form className="flex flex-col space-y-6 text-lg" onSubmit={handleSubmit}>
       <label className="flex flex-col gap-1">
-        <span className="text-xl font-semibold">Title</span>
+        <p className="text-xl font-semibold relative">
+          Title
+          <span className="text-primary-normal text-2xl absolute -translate-y-[10px]">
+            ∗
+          </span>
+        </p>
+
         <input
           type="text"
           required
           className="form-input"
           name="title"
-          onChange={handleInput}
+          onChange={handleTitleInput}
         />
       </label>
       <label className="flex flex-col gap-1">
-        <span className="text-xl font-semibold">Image URL</span>
-        <input
-          type="text"
-          className="form-input"
-          name="url"
-          onChange={handleInput}
+        <span className="text-xl font-semibold">Image</span>
+        <MealImageInput
+          setImgURL={setImgURL}
+          setUploadedRecipe={setUploadedRecipe}
         />
       </label>
       <fieldset className="space-y-2">
@@ -105,23 +123,13 @@ function AddRecipeForm() {
           </div>
         </legend>
         {uploadedRecipe.ingredients.map((ing, index) => (
-          <div className="flex gap-2 items-center" key={nanoid()}>
-            <span className="w-36 text-gray-400">
-              Ingredient&nbsp;&nbsp;{index + 1}
-            </span>
-            <input
-              type="text"
-              className="w-full form-input"
-              onChange={e => handleChangeIngredient(e, ing.id)}
-            />
-            <div
-              className="icon-remove"
-              onClick={e => {
-                handleRemoveIngredient(ing.id);
-              }}>
-              ×
-            </div>
-          </div>
+          <IngredientInput
+            key={ing.id}
+            index={index}
+            ing={ing}
+            handleChangeIngredient={handleChangeIngredient}
+            handleRemoveIngredient={handleRemoveIngredient}
+          />
         ))}
       </fieldset>
       <fieldset className="space-y-2">
@@ -132,27 +140,17 @@ function AddRecipeForm() {
           </div>
         </legend>
         {uploadedRecipe.steps.map((step, index) => (
-          <div className="flex gap-2 items-center" key={nanoid()}>
-            <span className="w-20 text-gray-400">
-              Step&nbsp;&nbsp;{index + 1}
-            </span>
-            <input
-              type="text"
-              className="w-full form-input"
-              onChange={e => handleChangeStep(e, step.id)}
-            />
-            <div
-              className="icon-remove"
-              onClick={e => {
-                handleRemoveStep(step.id);
-              }}>
-              <span>×</span>
-            </div>
-          </div>
+          <StepsInput
+            key={step.id}
+            step={step}
+            index={index}
+            handleChangeStep={handleChangeStep}
+            handleRemoveStep={handleRemoveStep}
+          />
         ))}
       </fieldset>
       <button type="submit" className="form-button w-1/3 m-auto">
-        Upload
+        Add
       </button>
     </form>
   );

@@ -24,7 +24,7 @@ function AddRecipe() {
         {user && (
           <div className="bg-white rounded space-y-10 shadow-md w-[1200px] p-14">
             <h2 className="text-4xl text-primary-normal text-center font-semibold pb-4">
-              ADD RECIPE
+              Add recipe
             </h2>
             <AddRecipeForm />
           </div>

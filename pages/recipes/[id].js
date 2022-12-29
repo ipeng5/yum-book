@@ -75,7 +75,7 @@ function Details() {
               <p className="flex space-x-2">
                 <span>Area:</span>
                 <Link
-                  href={`/area?filterTerm=${meal.strArea}`}
+                  href={`/areas/${meal.strArea}`}
                   className="text-primary-normal hover:underline">
                   {meal.strArea}
                 </Link>
@@ -83,7 +83,7 @@ function Details() {
               <p className="flex space-x-2">
                 <span>Category:</span>
                 <Link
-                  href={`/category?filterTerm=${meal.strCategory}`}
+                  href={`/categories/${meal.strCategory}`}
                   className="text-primary-normal hover:underline">
                   {meal.strCategory}
                 </Link>
@@ -129,11 +129,7 @@ function Details() {
           </div>
         </section>
         <section className="flex gap-20 justify-center p-20">
-          <img
-            src={meal.strMealThumb}
-            alt=""
-            className="object-cover w-96 h-96"
-          />
+          <img src={meal.strMealThumb} alt="" className="object-cover w-96" />
           <div>
             <h1 className="text-3xl  pb-10 text-primary-normal">INGREDIENTS</h1>
             <ul className="text-xl grid grid-cols-2 gap-4">
