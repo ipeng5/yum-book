@@ -108,7 +108,7 @@ function AddRecipeForm({ uid }) {
           required
           className="form-input"
           name="strMeal"
-          maxLeng="60"
+          maxLength="60"
           onChange={handleTitleInput}
         />
       </label>
