@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { UserAuth } from '../../context/AuthContext';
+import { useFirestore } from '../../hooks/useFirestore';
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 import { BsInfoCircle, BsPlayFill, BsCheck2 } from 'react-icons/bs';
 
@@ -12,6 +13,8 @@ function Details() {
   const { id } = router.query;
   const { user } = UserAuth();
   const [showPopup, setShowPopup] = useState(false);
+  const [bookmarked, setBookmarked] = useState(false);
+  const { addRecipeToFirebase } = useFirestore();
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -53,10 +56,20 @@ function Details() {
     .split('.');
 
   const handleFavorite = () => {
-    if (!user) setShowPopup(true);
-    setTimeout(() => {
-      setShowPopup(false);
-    }, 2000);
+    if (!user) {
+      setShowPopup(true);
+      setTimeout(() => {
+        setShowPopup(false);
+      }, 2000);
+    }
+    if (bookmarked) setBookmarked(false);
+    else {
+      setBookmarked(true);
+      addRecipeToFirebase(
+        { ...meal, category: 'favorites', uid: user.uid },
+        'favorite'
+      );
+    }
   };
 
   return (
@@ -89,10 +102,18 @@ function Details() {
                 </Link>
               </p>
               <div className="relative">
-                <MdFavoriteBorder
-                  className="text-3xl cursor-pointer"
-                  onClick={handleFavorite}
-                />
+                {!bookmarked && (
+                  <MdFavoriteBorder
+                    className="text-3xl cursor-pointer"
+                    onClick={handleFavorite}
+                  />
+                )}
+                {bookmarked && (
+                  <MdFavorite
+                    className="text-3xl cursor-pointer"
+                    onClick={handleFavorite}
+                  />
+                )}
                 {showPopup && (
                   <div className="absolute text-lg p-2 w-48 text-primary-medium left-10 -top-2">
                     <p>Please login first</p>

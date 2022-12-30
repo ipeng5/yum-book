@@ -45,8 +45,8 @@ export const useFirestore = () => {
     if (!isCancelled) dispatch(action);
   };
 
-  const addRecipeToFirebase = async doc => {
-    dispatch({ type: 'IS_PENDING' });
+  const addRecipeToFirebase = async (doc, type) => {
+    if (type === 'upload') dispatch({ type: 'IS_PENDING' });
     try {
       const addedDocument = await addDoc(collection(db, 'recipes'), {
         ...doc,

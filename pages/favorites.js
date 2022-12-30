@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { db } from '../firebase/config';
 import { collection, getDocs } from 'firebase/firestore';
 import MealCard from '../components/MealCard';
-import Pagination from '../components/Pagination';
 import Head from 'next/head';
 import { UserRecipes } from '../context/RecipeContext';
 import { UserAuth } from '../context/AuthContext';
@@ -13,7 +12,9 @@ function favorites() {
   const { user, authIsReady } = UserAuth();
   const router = useRouter();
 
-  const favorites = recipes.filter(recipe => recipe.category === 'favorites');
+  const favorites = recipes.filter(
+    recipe => recipe.category === 'favorites' && recipe.uid === user?.uid
+  );
 
   useEffect(() => {
     const ref = collection(db, 'recipes');
@@ -48,12 +49,6 @@ function favorites() {
               <MealCard meal={meal} key={meal.idMeal} />
             ))}
           </div>
-          {/* <Pagination
-          mealsPerPage={mealsPerPage}
-          totalMeals={list.meals?.length}
-          paginate={paginate}
-          currentPage={currentPage}
-        /> */}
         </main>
       )}
     </>

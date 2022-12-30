@@ -13,7 +13,7 @@ function myRecipes() {
   const router = useRouter();
 
   const myRecipes = recipes.filter(
-    recipe => recipe.category === 'uploads' && recipe.uid === user.uid
+    recipe => recipe.category === 'uploads' && recipe.uid === user?.uid
   );
 
   useEffect(() => {

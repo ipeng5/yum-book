@@ -89,7 +89,7 @@ function AddRecipeForm({ uid }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    addRecipeToFirebase({ ...uploadedRecipe, uid });
+    addRecipeToFirebase({ ...uploadedRecipe, uid }, 'upload');
     router.push(`/my-recipes`);
   };
 
