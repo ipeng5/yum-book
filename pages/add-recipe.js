@@ -26,7 +26,7 @@ function AddRecipe() {
             <h2 className="text-4xl text-primary-normal text-center font-semibold pb-4">
               Add recipe
             </h2>
-            <AddRecipeForm />
+            <AddRecipeForm uid={user.uid} />
           </div>
         )}
       </main>

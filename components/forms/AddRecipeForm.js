@@ -1,25 +1,27 @@
 import { useFirestore } from '../../hooks/useFirestore';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import IngredientInput from './IngredientInput';
 import StepsInput from './StepsInput';
 import MealImageInput from './MealImageInput';
 import { nanoid } from 'nanoid';
 import { MdAdd } from 'react-icons/md';
 
-function AddRecipeForm() {
+function AddRecipeForm({ uid }) {
+  const router = useRouter();
   const [uploadedRecipe, setUploadedRecipe] = useState({
     category: 'uploads',
-    title: '',
-    url: '',
+    strMeal: '',
+    strMealThumb: '',
     ingredients: [],
     ingredients: [],
     steps: [],
   });
   const [imgURL, setImgURL] = useState(
-    'https://firebasestorage.googleapis.com/v0/b/yum-book.appspot.com/o/Images%2Fdummy-img.ico?alt=media&token=f583921b-8dd7-4a8b-8dfe-8ad3addc43ce'
+    'https://firebasestorage.googleapis.com/v0/b/yum-book.appspot.com/o/Images%2Fdummy.png?alt=media&token=1ec04784-cffc-4b86-ba89-f8d221206c28'
   );
 
-  const { addRecipeToFirebase, response } = useFirestore();
+  const { addRecipeToFirebase } = useFirestore();
 
   const handleTitleInput = e => {
     setUploadedRecipe(prevValues => ({
@@ -81,13 +83,14 @@ function AddRecipeForm() {
   useEffect(() => {
     setUploadedRecipe(prevValues => ({
       ...prevValues,
-      url: imgURL,
+      strMealThumb: imgURL,
     }));
   }, [imgURL]);
 
   const handleSubmit = e => {
     e.preventDefault();
-    addRecipeToFirebase(uploadedRecipe);
+    addRecipeToFirebase({ ...uploadedRecipe, uid });
+    router.push(`/my-recipes`);
   };
 
   return (
@@ -104,7 +107,8 @@ function AddRecipeForm() {
           type="text"
           required
           className="form-input"
-          name="title"
+          name="strMeal"
+          maxLeng="60"
           onChange={handleTitleInput}
         />
       </label>

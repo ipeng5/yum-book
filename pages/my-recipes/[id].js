@@ -3,11 +3,9 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { db } from '../../firebase/config';
 import { getDoc, doc, onSnapshot } from 'firebase/firestore';
-
 import { MdDeleteOutline, MdOutlineModeEditOutline } from 'react-icons/md';
-import { BsInfoCircle, BsPlayFill, BsCheck2 } from 'react-icons/bs';
+import { BsCheck2 } from 'react-icons/bs';
 import Link from 'next/link';
-import { async } from '@firebase/util';
 
 function Details() {
   const [meal, setMeal] = useState([]);
@@ -15,11 +13,11 @@ function Details() {
   const { id } = router.query;
 
   useEffect(() => {
-    if (!id) return;
     const docRef = doc(db, 'recipes', id);
     const getMeal = async () => {
       const docSnap = await getDoc(docRef);
       const data = docSnap.data();
+      if (!data) router.push('/404');
       setMeal(data);
     };
     getMeal();
@@ -28,7 +26,7 @@ function Details() {
   return (
     <>
       <Head>
-        <title>My Recipe | Yum Book</title>
+        <title>My Recipes | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="min-h-[calc(100vh-250px)]">
@@ -65,7 +63,7 @@ function Details() {
                   key={i}
                   className="flex items-center gap-4 w-[350px] relative">
                   <BsCheck2 className="text-primary-normal text-3xl absolute" />
-                  <span className="pl-12">{ing}</span>
+                  <span className="pl-12">{ing.ingredient}</span>
                 </li>
               ))}
             </ul>
@@ -77,10 +75,10 @@ function Details() {
               HOW TO COOK IT
             </h1>
             <ol>
-              {meal.instructions?.map((step, i) => (
+              {meal.steps?.map((step, i) => (
                 <li key={i} className="pb-4 flex text-xl relative">
                   <div className="w-4 h-4 bg-primary-normal rounded-full absolute top-1"></div>
-                  <span className=" pl-8 rounded">{step}</span>
+                  <span className=" pl-8 rounded">{step.step}</span>
                 </li>
               ))}
             </ol>

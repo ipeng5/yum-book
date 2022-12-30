@@ -50,13 +50,12 @@ function MealImageInput({ setImgURL }) {
 
   return (
     <div
-      className="flex justify-center gap-4 items-center text-gray-500 bg-white border-2 border-dashed border-gray-400 p-5 rounded cursor-pointer"
+      className="flex justify-center h-24 gap-4 items-center text-gray-500 bg-white border-2 border-dashed border-gray-400 rounded cursor-pointer hover:bg-gray-50"
       {...getRootProps({
         style,
       })}>
       {files[0] !== undefined && (
         <img
-          width={100}
           src={files[0].preview}
           alt=""
           onLoad={() => {

@@ -38,7 +38,7 @@ const firestoreReducer = (state, action) => {
 };
 
 export const useFirestore = () => {
-  const [response, dispatch] = useReducer(firestoreReducer, initialState);
+  const [dispatch] = useReducer(firestoreReducer, initialState);
   const [isCancelled, setIsCancelled] = useState(false);
 
   const dispatchIfNotCancelled = action => {
@@ -67,5 +67,5 @@ export const useFirestore = () => {
     return () => setIsCancelled(true);
   }, []);
 
-  return { addRecipeToFirebase, deleteDoc, response };
+  return { addRecipeToFirebase, deleteDoc };
 };

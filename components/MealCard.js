@@ -15,7 +15,9 @@ function MealCard({ meal }) {
           alt=""
           className="object-cover w-full h-full"
         />
-        <div className="absolute h-full w-full top-0 bg-black opacity-30 pointer-events-none"></div>
+        {meal.category !== 'uploads' && (
+          <div className="absolute h-full w-full top-0 bg-black opacity-30 pointer-events-none"></div>
+        )}
       </div>
       <div className="h-[120px] relative">
         <span className="absolute top-1/2 -translate-y-[50%] p-4 text-lg">
