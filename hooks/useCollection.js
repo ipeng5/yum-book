@@ -1,17 +1,10 @@
 import { useEffect, useState } from 'react';
 import { db } from '../firebase/config';
-import {
-  collection,
-  getDocs,
-  query,
-  where,
-  onSnapshot,
-} from 'firebase/firestore';
+import { collection, query, where, onSnapshot } from 'firebase/firestore';
 
 export const useCollection = (category, user) => {
   const [documents, setDocuments] = useState(null);
   if (!user) return;
-
   useEffect(() => {
     const collRef = collection(db, 'recipes');
     const userColl = query(collRef, where('uid', '==', user.uid));

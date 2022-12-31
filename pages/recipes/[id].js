@@ -4,18 +4,20 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { UserAuth } from '../../context/AuthContext';
 import { useFirestore } from '../../hooks/useFirestore';
+import { useCollection } from '../../hooks/useCollection';
+import { useModal } from '../../hooks/useModal';
+import { LoginModal } from '../../components/modals/LoginModal';
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 import { BsInfoCircle, BsPlayFill, BsCheck2 } from 'react-icons/bs';
-import { useCollection } from '../../hooks/useCollection';
 
 function Details() {
   const [meal, setMeal] = useState([]);
   const router = useRouter();
   const { id } = router.query;
   const { user } = UserAuth();
-  const [showPopup, setShowPopup] = useState(false);
   const [bookmarked, setBookmarked] = useState(false);
   const { addRecipeToFirebase, deleteRecipe } = useFirestore();
+  const { open, openModal, closeModal } = useModal();
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -45,10 +47,7 @@ function Details() {
 
   const handleFavorite = () => {
     if (!user) {
-      setShowPopup(true);
-      setTimeout(() => {
-        setShowPopup(false);
-      }, 2000);
+      openModal();
     } else {
       if (bookmarked) {
         deleteRecipe(documents.find(doc => doc.idMeal === id).idDoc);
@@ -91,7 +90,9 @@ function Details() {
         <title>Recipe | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <main className="min-h-[calc(100vh-250px)]">
+        <LoginModal open={open} closeModal={closeModal} />
         <section className="bg-white flex flex-col py-20 justify-center items-center gap-6">
           <div className="flex flex-col items-center justify-center gap-10 max-w-[1500px] ">
             <h1 className="text-5xl text-center leading-tight ">
@@ -114,25 +115,18 @@ function Details() {
                   {meal.strCategory}
                 </Link>
               </p>
-              <div className="relative">
-                {!bookmarked && (
-                  <MdFavoriteBorder
-                    className="text-3xl cursor-pointer"
-                    onClick={handleFavorite}
-                  />
-                )}
-                {bookmarked && (
-                  <MdFavorite
-                    className="text-3xl cursor-pointer"
-                    onClick={handleFavorite}
-                  />
-                )}
-                {showPopup && (
-                  <div className="absolute text-lg p-2 w-48 text-primary-medium left-10 -top-2">
-                    <p>Please login first</p>
-                  </div>
-                )}
-              </div>
+              {!bookmarked && (
+                <MdFavoriteBorder
+                  className="text-3xl cursor-pointer"
+                  onClick={handleFavorite}
+                />
+              )}
+              {bookmarked && (
+                <MdFavorite
+                  className="text-3xl cursor-pointer"
+                  onClick={handleFavorite}
+                />
+              )}
             </div>
             <div className="flex gap-6">
               {meal.strSource ? (
