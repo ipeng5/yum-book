@@ -1,31 +1,14 @@
-import { useEffect, useState } from 'react';
-import { db } from '../firebase/config';
-import { collection, getDocs } from 'firebase/firestore';
+import { useEffect } from 'react';
 import MealCard from '../components/MealCard';
 import Head from 'next/head';
-import { UserRecipes } from '../context/RecipeContext';
 import { UserAuth } from '../context/AuthContext';
 import { useRouter } from 'next/router';
+import { useCollection } from '../hooks/useCollection';
 
 function favorites() {
-  const { recipes, setRecipes } = UserRecipes();
   const { user, authIsReady } = UserAuth();
   const router = useRouter();
-
-  const favorites = recipes.filter(
-    recipe => recipe.category === 'favorites' && recipe.uid === user?.uid
-  );
-
-  useEffect(() => {
-    const ref = collection(db, 'recipes');
-    getDocs(ref).then(snapshot => {
-      let results = [];
-      snapshot.docs.forEach(doc => {
-        results.push({ id: doc.id, ...doc.data() });
-      });
-      setRecipes(results);
-    });
-  }, []);
+  const { documents } = useCollection('favorites', user);
 
   useEffect(() => {
     if (authIsReady && !user) {
@@ -45,7 +28,7 @@ function favorites() {
             <span>Favorites</span>
           </div>
           <div className="py-4 grid grid-cols-4 gap-10 max-w-screen-2xl mx-auto">
-            {favorites.map(meal => (
+            {documents?.map(meal => (
               <MealCard meal={meal} key={meal.idMeal} />
             ))}
           </div>

@@ -1,29 +1,14 @@
-import { useEffect, useState } from 'react';
-import { db } from '../firebase/config';
-import { collection, getDocs } from 'firebase/firestore';
-import MealCard from '../components/MealCard';
+import { useEffect } from 'react';
+import MealCard from '../../components/MealCard';
 import Head from 'next/head';
-import { UserRecipes } from '../context/RecipeContext';
-import { UserAuth } from '../context/AuthContext';
+import { UserAuth } from '../../context/AuthContext';
 import { useRouter } from 'next/router';
+import { useCollection } from '../../hooks/useCollection';
 
 function myRecipes() {
-  const { recipes, setRecipes } = UserRecipes();
   const { user, authIsReady } = UserAuth();
   const router = useRouter();
-
-  const myRecipes = recipes.filter(
-    recipe => recipe.category === 'uploads' && recipe.uid === user?.uid
-  );
-
-  useEffect(() => {
-    const collRef = collection(db, 'recipes');
-    const getMyRecipes = async () => {
-      const data = await getDocs(collRef);
-      setRecipes(data.docs.map(doc => ({ ...doc.data(), idMeal: doc.id })));
-    };
-    getMyRecipes();
-  }, []);
+  const { documents } = useCollection('uploads', user);
 
   useEffect(() => {
     if (authIsReady && !user) {
@@ -43,8 +28,8 @@ function myRecipes() {
             <span>My Recipes</span>
           </div>
           <div className="py-4 grid grid-cols-4 gap-10 max-w-screen-2xl mx-auto">
-            {myRecipes.map(meal => (
-              <MealCard meal={meal} key={meal.idMeal} />
+            {documents?.map(meal => (
+              <MealCard meal={meal} key={meal.idDoc} />
             ))}
           </div>
         </main>

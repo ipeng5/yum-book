@@ -5,7 +5,7 @@ function MealCard({ meal }) {
     <Link
       href={
         meal.category === 'uploads'
-          ? `/my-recipes/${meal.idMeal}`
+          ? `/my-recipes/${meal.idDoc}`
           : `/recipes/${meal.idMeal}`
       }
       className="shadow-md cursor-pointer rounded-md overflow-hidden transition duration-300 hover:scale-[1.03] hover:shadow-xl">

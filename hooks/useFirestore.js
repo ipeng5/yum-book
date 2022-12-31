@@ -1,6 +1,12 @@
 import { useReducer, useEffect, useState } from 'react';
 import { db } from '../firebase/config';
-import { collection, addDoc, Timestamp } from 'firebase/firestore';
+import {
+  collection,
+  addDoc,
+  deleteDoc,
+  doc,
+  Timestamp,
+} from 'firebase/firestore';
 
 let initialState = {
   document: null,
@@ -19,6 +25,13 @@ const firestoreReducer = (state, action) => {
         error: null,
       };
     case 'ADDED_DOCUMENT':
+      return {
+        isPending: false,
+        document: action.payload,
+        success: true,
+        error: null,
+      };
+    case 'DELETED_DOCUMENT':
       return {
         isPending: false,
         document: action.payload,
@@ -45,8 +58,8 @@ export const useFirestore = () => {
     if (!isCancelled) dispatch(action);
   };
 
-  const addRecipeToFirebase = async (doc, type) => {
-    if (type === 'upload') dispatch({ type: 'IS_PENDING' });
+  const addRecipeToFirebase = async (doc, uploadType) => {
+    if (uploadType === 'upload') dispatchIfNotCancelled({ type: 'IS_PENDING' });
     try {
       const addedDocument = await addDoc(collection(db, 'recipes'), {
         ...doc,
@@ -61,11 +74,19 @@ export const useFirestore = () => {
     }
   };
 
-  const deleteDoc = async id => {};
+  const deleteRecipe = async id => {
+    dispatchIfNotCancelled({ type: 'IS_PENDING' });
+    try {
+      const deletedDoc = await deleteDoc(doc(db, 'recipes', id));
+      dispatchIfNotCancelled({ type: 'DELETED_DOCUMENT', payload: deletedDoc });
+    } catch (err) {
+      dispatchIfNotCancelled({ type: 'ERROR', payload: err.message });
+    }
+  };
 
   useEffect(() => {
     return () => setIsCancelled(true);
   }, []);
 
-  return { addRecipeToFirebase, deleteDoc };
+  return { addRecipeToFirebase, deleteRecipe };
 };

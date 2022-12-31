@@ -6,6 +6,7 @@ import { UserAuth } from '../../context/AuthContext';
 import { useFirestore } from '../../hooks/useFirestore';
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 import { BsInfoCircle, BsPlayFill, BsCheck2 } from 'react-icons/bs';
+import { useCollection } from '../../hooks/useCollection';
 
 function Details() {
   const [meal, setMeal] = useState([]);
@@ -14,7 +15,7 @@ function Details() {
   const { user } = UserAuth();
   const [showPopup, setShowPopup] = useState(false);
   const [bookmarked, setBookmarked] = useState(false);
-  const { addRecipeToFirebase } = useFirestore();
+  const { addRecipeToFirebase, deleteRecipe } = useFirestore();
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -31,7 +32,36 @@ function Details() {
       }
     };
     fetchDetails();
-  }, [id]);
+  }, []);
+
+  if (user) {
+    const { documents } = useCollection('favorites', user);
+    useEffect(() => {
+      if (documents?.map(doc => doc.idMeal).some(idMeal => idMeal === id))
+        setBookmarked(true);
+      else setBookmarked(false);
+    }, [JSON.stringify(documents), user]);
+  }
+
+  const handleFavorite = () => {
+    if (!user) {
+      setShowPopup(true);
+      setTimeout(() => {
+        setShowPopup(false);
+      }, 2000);
+    } else {
+      if (bookmarked) {
+        deleteRecipe(documents.find(doc => doc.idMeal === id).idDoc);
+        setBookmarked(false);
+      } else {
+        setBookmarked(true);
+        addRecipeToFirebase(
+          { ...meal, category: 'favorites', uid: user.uid },
+          'favorite'
+        );
+      }
+    }
+  };
 
   const getIngredientsMarkup = () => {
     let ingredients = [];
@@ -54,23 +84,6 @@ function Details() {
     ?.replace(/[0-9]\./g, '')
     .replace(/STEP\s[0-9]/g, '')
     .split('.');
-
-  const handleFavorite = () => {
-    if (!user) {
-      setShowPopup(true);
-      setTimeout(() => {
-        setShowPopup(false);
-      }, 2000);
-    }
-    if (bookmarked) setBookmarked(false);
-    else {
-      setBookmarked(true);
-      addRecipeToFirebase(
-        { ...meal, category: 'favorites', uid: user.uid },
-        'favorite'
-      );
-    }
-  };
 
   return (
     <>

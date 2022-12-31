@@ -2,7 +2,8 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { db } from '../../firebase/config';
-import { getDoc, doc, onSnapshot } from 'firebase/firestore';
+import { getDoc, doc } from 'firebase/firestore';
+import { useFirestore } from '../../hooks/useFirestore';
 import { MdDeleteOutline, MdOutlineModeEditOutline } from 'react-icons/md';
 import { BsCheck2 } from 'react-icons/bs';
 import Link from 'next/link';
@@ -11,6 +12,7 @@ function Details() {
   const [meal, setMeal] = useState([]);
   const router = useRouter();
   const { id } = router.query;
+  const { deleteRecipe } = useFirestore();
 
   useEffect(() => {
     const docRef = doc(db, 'recipes', id);
@@ -22,6 +24,11 @@ function Details() {
     };
     getMeal();
   }, [id]);
+
+  const handleDelete = () => {
+    deleteRecipe(id);
+    router.push('/my-recipes');
+  };
 
   return (
     <>
@@ -45,7 +52,10 @@ function Details() {
                 </Link>
               </p>
               <MdOutlineModeEditOutline className="text-3xl cursor-pointer" />
-              <MdDeleteOutline className="text-3xl cursor-pointer" />
+              <MdDeleteOutline
+                className="text-3xl cursor-pointer"
+                onClick={handleDelete}
+              />
             </div>
           </div>
         </section>
