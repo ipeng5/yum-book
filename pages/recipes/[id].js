@@ -6,6 +6,7 @@ import { UserAuth } from '../../context/AuthContext';
 import { useFirestore } from '../../hooks/useFirestore';
 import { useCollection } from '../../hooks/useCollection';
 import { useModal } from '../../hooks/useModal';
+import { Modal } from '../../components/modals/Modal';
 import { LoginModal } from '../../components/modals/LoginModal';
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 import { BsInfoCircle, BsPlayFill, BsCheck2 } from 'react-icons/bs';
@@ -92,7 +93,9 @@ function Details() {
       </Head>
 
       <main className="min-h-[calc(100vh-250px)]">
-        <LoginModal open={open} closeModal={closeModal} />
+        <Modal open={open} closeModal={closeModal}>
+          <LoginModal closeModal={closeModal} />
+        </Modal>
         <section className="bg-white flex flex-col py-20 justify-center items-center gap-6">
           <div className="flex flex-col items-center justify-center gap-10 max-w-[1500px] ">
             <h1 className="text-5xl text-center leading-tight ">

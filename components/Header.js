@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import SearchBar from './SearchBar.js';
 import { Menu } from '@headlessui/react';
+import { UserAuth } from '../context/AuthContext';
+import { useLogout } from '../hooks/useLogout';
+import { RiArrowDownSLine, RiArrowUpSLine } from 'react-icons/ri';
 import {
   MdLogin,
   MdFavorite,
@@ -8,9 +11,6 @@ import {
   MdLibraryAdd,
   MdAccountBox,
 } from 'react-icons/md';
-import { RiArrowDownSLine } from 'react-icons/ri';
-import { UserAuth } from '../context/AuthContext';
-import { useLogout } from '../hooks/useLogout';
 
 function Header() {
   const { user } = UserAuth();
@@ -31,38 +31,51 @@ function Header() {
           </Link>
         )}
         <Menu as="div" className="relative">
-          {user && (
-            <Menu.Button className="header-link cursor-pointer">
-              Hi, {user.displayName}
-              <RiArrowDownSLine className="text-3xl text-primary-normal" />
-            </Menu.Button>
+          {({ open }) => (
+            <>
+              {user && (
+                <Menu.Button className="header-link cursor-pointer">
+                  Hi, {user.displayName}
+                  {!open && (
+                    <RiArrowDownSLine className="text-3xl text-primary-normal" />
+                  )}
+                  {open && (
+                    <RiArrowUpSLine className="text-3xl text-primary-normal" />
+                  )}
+                </Menu.Button>
+              )}
+              {open && (
+                <Menu.Items
+                  className="flex flex-col absolute right-0 top-14 bg-white  rounded shadow-md z-50 w-56"
+                  static>
+                  <Menu.Item>
+                    <Link href="/add-recipe" className="dropdown-link">
+                      <MdLibraryAdd className="text-2xl text-gray-500" />
+                      <span>Add recipe</span>
+                    </Link>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <Link href="/favorites" className="dropdown-link">
+                      <MdFavorite className="text-2xl text-gray-500" />
+                      <span>Favorites</span>
+                    </Link>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <Link href="/my-recipes" className="dropdown-link">
+                      <MdAccountBox className="text-2xl text-gray-500" />
+                      <span>My recipes</span>
+                    </Link>
+                  </Menu.Item>
+                  <Menu.Item>
+                    <button className="dropdown-link" onClick={logOut}>
+                      <MdLogout className="text-2xl text-gray-500" />
+                      <span>Logout</span>
+                    </button>
+                  </Menu.Item>
+                </Menu.Items>
+              )}
+            </>
           )}
-          <Menu.Items className="flex flex-col absolute right-0 top-14 bg-white  rounded shadow-md z-50 w-56">
-            <Menu.Item>
-              <Link href="/add-recipe" className="dropdown-link">
-                <MdLibraryAdd className="text-2xl text-gray-500" />
-                <span>Add recipe</span>
-              </Link>
-            </Menu.Item>
-            <Menu.Item>
-              <Link href="/favorites" className="dropdown-link">
-                <MdFavorite className="text-2xl text-gray-500" />
-                <span>Favorites</span>
-              </Link>
-            </Menu.Item>
-            <Menu.Item>
-              <Link href="/my-recipes" className="dropdown-link">
-                <MdAccountBox className="text-2xl text-gray-500" />
-                <span>My recipes</span>
-              </Link>
-            </Menu.Item>
-            <Menu.Item>
-              <button className="dropdown-link" onClick={logOut}>
-                <MdLogout className="text-2xl text-gray-500" />
-                <span>Logout</span>
-              </button>
-            </Menu.Item>
-          </Menu.Items>
         </Menu>
       </nav>
     </header>

@@ -3,8 +3,8 @@ import { db } from '../firebase/config';
 import { collection, query, where, onSnapshot } from 'firebase/firestore';
 
 export const useCollection = (category, user) => {
+  if (!user) return [];
   const [documents, setDocuments] = useState(null);
-  if (!user) return;
   useEffect(() => {
     const collRef = collection(db, 'recipes');
     const userColl = query(collRef, where('uid', '==', user.uid));
