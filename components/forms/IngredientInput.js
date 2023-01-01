@@ -11,6 +11,7 @@ function IngredientInput({
       </span>
       <input
         type="text"
+        value={ing.ingredient}
         className="w-full form-input"
         onChange={e => handleChangeIngredient(e, ing.id)}
       />

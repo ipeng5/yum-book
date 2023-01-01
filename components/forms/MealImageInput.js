@@ -16,25 +16,20 @@ function MealImageInput({ setImgURL }) {
     backgroundColor: '#ffe8ec',
   };
 
-  const {
-    acceptedFiles,
-    getRootProps,
-    getInputProps,
-    isDragAccept,
-    isDragReject,
-  } = useDropzone({
-    accept: { 'image/*': [] },
-    onDrop: acceptedFiles => {
-      setFiles(
-        acceptedFiles.map(file =>
-          Object.assign({
-            preview: URL.createObjectURL(file),
-          })
-        )
-      );
-      uploadImage(acceptedFiles, setImgURL, 'Images');
-    },
-  });
+  const { getRootProps, getInputProps, isDragAccept, isDragReject } =
+    useDropzone({
+      accept: { 'image/*': [] },
+      onDrop: acceptedFiles => {
+        setFiles(
+          acceptedFiles.map(file =>
+            Object.assign({
+              preview: URL.createObjectURL(file),
+            })
+          )
+        );
+        uploadImage(acceptedFiles, setImgURL, 'Images');
+      },
+    });
 
   const style = useMemo(
     () => ({

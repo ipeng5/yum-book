@@ -1,43 +1,40 @@
 import { useFirestore } from '../../hooks/useFirestore';
 import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
 import IngredientInput from './IngredientInput';
 import StepsInput from './StepsInput';
 import MealImageInput from './MealImageInput';
 import { nanoid } from 'nanoid';
 import { MdAdd } from 'react-icons/md';
 
-function AddRecipeForm({ uid }) {
-  const router = useRouter();
-  const [uploadedRecipe, setUploadedRecipe] = useState({
+function AddRecipeForm({ uid, meal, closeModal }) {
+  const [updatedRecipe, setUpdatedRecipe] = useState({
     category: 'uploads',
-    strMeal: '',
-    strMealThumb: '',
-    ingredients: [],
-    steps: [],
+    strMeal: meal.strMeal,
+    strMealThumb: meal.strMealThumb,
+    ingredients: meal.ingredients,
+    steps: meal.steps,
   });
-  const [imgURL, setImgURL] = useState(
-    'https://firebasestorage.googleapis.com/v0/b/yum-book.appspot.com/o/Images%2Fdummy.png?alt=media&token=1ec04784-cffc-4b86-ba89-f8d221206c28'
-  );
+
+  const [imgURL, setImgURL] = useState(meal.strMealThumb);
 
   const { addRecipeToFirebase } = useFirestore();
 
   const handleTitleInput = e => {
-    setUploadedRecipe(prevValues => ({
+    setUpdatedRecipe(prevValues => ({
       ...prevValues,
       [e.target.name]: e.target.value,
     }));
   };
 
   const handleAddIngredient = () => {
-    setUploadedRecipe(preValues => ({
+    setUpdatedRecipe(preValues => ({
       ...preValues,
       ingredients: [...preValues.ingredients, { id: nanoid(), ingredient: '' }],
     }));
   };
 
   const handleChangeIngredient = (e, id) => {
-    setUploadedRecipe(prevValues => {
+    setUpdatedRecipe(prevValues => {
       const updatedIngredients = prevValues.ingredients.map(ing => {
         if (ing.id === id) return { ...ing, ingredient: e.target.value };
         return ing;
@@ -47,7 +44,7 @@ function AddRecipeForm({ uid }) {
   };
 
   const handleChangeStep = (e, id) => {
-    setUploadedRecipe(prevValues => {
+    setUpdatedRecipe(prevValues => {
       const updatedSteps = prevValues.steps.map(step => {
         if (step.id === id) return { ...step, step: e.target.value };
         return step;
@@ -57,7 +54,7 @@ function AddRecipeForm({ uid }) {
   };
 
   const handleRemoveIngredient = id => {
-    setUploadedRecipe(preValues => {
+    setUpdatedRecipe(preValues => {
       const updatedIngredients = preValues.ingredients.filter(
         ing => ing.id !== id
       );
@@ -66,21 +63,21 @@ function AddRecipeForm({ uid }) {
   };
 
   const handleAddStep = () => {
-    setUploadedRecipe(preValues => ({
+    setUpdatedRecipe(preValues => ({
       ...preValues,
       steps: [...preValues.steps, { id: nanoid(), step: '' }],
     }));
   };
 
   const handleRemoveStep = id => {
-    setUploadedRecipe(preValues => {
+    setUpdatedRecipe(preValues => {
       const updatedSteps = preValues.steps.filter(ing => ing.id !== id);
       return { ...preValues, steps: updatedSteps };
     });
   };
 
   useEffect(() => {
-    setUploadedRecipe(prevValues => ({
+    setUpdatedRecipe(prevValues => ({
       ...prevValues,
       strMealThumb: imgURL,
     }));
@@ -88,8 +85,8 @@ function AddRecipeForm({ uid }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    addRecipeToFirebase({ ...uploadedRecipe, uid }, 'upload');
-    router.push(`/my-recipes`);
+    // addRecipeToFirebase({ ...uploadedRecipe, uid }, 'upload');
+    // router.push(`/my-recipes`);
   };
 
   return (
@@ -107,13 +104,14 @@ function AddRecipeForm({ uid }) {
           required
           className="form-input"
           name="strMeal"
+          value={updatedRecipe.strMeal}
           maxLength="60"
           onChange={handleTitleInput}
         />
       </label>
       <label className="flex flex-col gap-1">
         <span className="text-xl font-semibold">Image</span>
-        <MealImageInput setImgURL={setImgURL} />
+        <MealImageInput setImgURL={updatedRecipe.strMealThumb} />
       </label>
       <fieldset className="space-y-2">
         <legend className="flex gap-2 items-center text-xl">
@@ -122,7 +120,7 @@ function AddRecipeForm({ uid }) {
             <MdAdd />
           </div>
         </legend>
-        {uploadedRecipe.ingredients.map((ing, index) => (
+        {updatedRecipe.ingredients.map((ing, index) => (
           <IngredientInput
             key={ing.id}
             index={index}
@@ -139,7 +137,7 @@ function AddRecipeForm({ uid }) {
             <MdAdd />
           </div>
         </legend>
-        {uploadedRecipe.steps.map((step, index) => (
+        {updatedRecipe.steps.map((step, index) => (
           <StepsInput
             key={step.id}
             step={step}
@@ -149,9 +147,14 @@ function AddRecipeForm({ uid }) {
           />
         ))}
       </fieldset>
-      <button type="submit" className="form-button w-1/3 m-auto">
-        Add
-      </button>
+      <div className="flex m-auto space-x-10 !mt-10">
+        <button className="modal-button-light" onClick={closeModal}>
+          Cancel
+        </button>
+        <button type="submit" className="modal-button-dark">
+          Add
+        </button>
+      </div>
     </form>
   );
 }

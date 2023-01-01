@@ -5,6 +5,7 @@ function StepsInput({ step, index, handleChangeStep, handleRemoveStep }) {
       <input
         type="text"
         className="w-full form-input"
+        value={step.step}
         onChange={e => handleChangeStep(e, step.id)}
       />
       <div

@@ -4,15 +4,19 @@ import { useEffect, useState } from 'react';
 import { db } from '../../firebase/config';
 import { getDoc, doc } from 'firebase/firestore';
 import { useFirestore } from '../../hooks/useFirestore';
+import { useModal } from '../../hooks/useModal';
+import { Modal } from '../../components/modals/Modal';
+import { EditModal } from '../../components/modals/EditModal';
+import Link from 'next/link';
 import { MdDeleteOutline, MdOutlineModeEditOutline } from 'react-icons/md';
 import { BsCheck2 } from 'react-icons/bs';
-import Link from 'next/link';
 
 function Details() {
   const [meal, setMeal] = useState([]);
   const router = useRouter();
   const { id } = router.query;
   const { deleteRecipe } = useFirestore();
+  const { open, openModal, closeModal } = useModal();
 
   useEffect(() => {
     const docRef = doc(db, 'recipes', id);
@@ -36,26 +40,36 @@ function Details() {
         <title>My Recipes | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
       <main className="mt-[150px]">
+        <Modal open={open} closeModal={closeModal}>
+          <EditModal closeModal={closeModal} meal={meal} />
+        </Modal>
         <section className="bg-white flex flex-col py-20 justify-center items-center gap-6">
           <div className="flex flex-col items-center justify-center gap-10 max-w-[1500px] ">
             <h1 className="text-5xl text-center leading-tight">
               {meal && meal.strMeal}
             </h1>
             <div className="flex space-x-8 text-2xl items-center">
-              <p className="flex space-x-2">
+              <div className="flex space-x-2">
                 <span>Category:</span>
                 <Link
                   href={`/my-recipes`}
                   className="text-primary-normal hover:underline">
                   My Recipes
                 </Link>
-              </p>
-              <MdOutlineModeEditOutline className="text-3xl cursor-pointer" />
-              <MdDeleteOutline
-                className="text-3xl cursor-pointer"
-                onClick={handleDelete}
-              />
+              </div>
+              <div className="flex space-x-2">
+                <MdOutlineModeEditOutline
+                  className="text-5xl cursor-pointer p-2 rounded-full hover:bg-gray-100 transition"
+                  onClick={openModal}
+                />
+
+                <MdDeleteOutline
+                  className="text-5xl cursor-pointer p-2 rounded-full hover:bg-gray-100 transition"
+                  onClick={handleDelete}
+                />
+              </div>
             </div>
           </div>
         </section>
