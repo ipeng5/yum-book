@@ -18,6 +18,7 @@ function Details() {
   const [bookmarked, setBookmarked] = useState(false);
   const { addRecipeToFirebase, deleteRecipe } = useFirestore();
   const { open, openModal, closeModal } = useModal();
+  const { documents } = useCollection('favorites', user);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -37,7 +38,6 @@ function Details() {
   }, []);
 
   if (user) {
-    const { documents } = useCollection('favorites', user);
     useEffect(() => {
       if (documents?.map(doc => doc.idMeal).some(idMeal => idMeal === id))
         setBookmarked(true);
