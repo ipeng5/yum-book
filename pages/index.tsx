@@ -36,7 +36,7 @@ const Home = ({ areaList, allCategories }: Props) => {
         <title>Home | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="min-h-[calc(100vh-250px)] bg-white py-6 px-20">
+      <main className="min-h-[calc(100vh-250px)] mt-[150px] bg-white py-6 px-20">
         {query.search && <SearchResults searchInput={query.search} />}
         {!query.search && (
           <div className="max-w-screen-2xl py-4  mx-auto text-2xl flex space-x-4 items-center">

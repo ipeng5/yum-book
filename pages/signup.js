@@ -57,7 +57,7 @@ function Signup() {
         <title>Sign up | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="min-h-[calc(100vh-250px)] flex justify-center items-center">
+      <main className="min-h-[calc(100vh-250px)] mt-[150px] flex justify-center items-center">
         {!user && (
           <div className="bg-white rounded space-y-10 shadow-md w-[500px] p-14">
             <h2 className="text-4xl text-primary-normal text-center font-semibold pb-4">

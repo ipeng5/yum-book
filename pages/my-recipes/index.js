@@ -23,9 +23,9 @@ function myRecipes() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {user && (
-        <main className="min-h-[calc(100vh-250px)] bg-white py-6 px-20 ">
+        <main className="min-h-[calc(100vh-250px)] mt-[150px] bg-white py-6 px-20 ">
           <div className="py-4 max-w-screen-2xl mx-auto text-3xl flex space-x-4 items-center">
-            <span>My Recipes</span>
+            <span>My Recipes ({documents?.length})</span>
           </div>
           <div className="py-4 grid grid-cols-4 gap-10 max-w-screen-2xl mx-auto">
             {documents?.map(meal => (

@@ -96,7 +96,7 @@ function Details() {
         <Modal open={open} closeModal={closeModal}>
           <LoginModal closeModal={closeModal} />
         </Modal>
-        <section className="bg-white flex flex-col py-20 justify-center items-center gap-6">
+        <section className="mt-[150px] bg-white flex flex-col  py-20 justify-center items-center gap-6">
           <div className="flex flex-col items-center justify-center gap-10 max-w-[1500px] ">
             <h1 className="text-5xl text-center leading-tight ">
               {meal.strMeal}

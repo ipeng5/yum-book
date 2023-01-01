@@ -36,7 +36,7 @@ function Details() {
         <title>My Recipes | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="min-h-[calc(100vh-250px)]">
+      <main className="mt-[150px]">
         <section className="bg-white flex flex-col py-20 justify-center items-center gap-6">
           <div className="flex flex-col items-center justify-center gap-10 max-w-[1500px] ">
             <h1 className="text-5xl text-center leading-tight">

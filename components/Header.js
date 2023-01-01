@@ -17,7 +17,7 @@ function Header() {
   const { logOut } = useLogout();
 
   return (
-    <header className="flex justify-between items-center  h-[150px] px-12 bg-gray-light">
+    <header className="fixed w-full flex justify-between items-center  h-[150px] px-12 bg-gray-light z-10">
       <Link href="/" className="flex items-center space-x-4 cursor-pointer">
         <img src="/assets/logo.png" alt="logo" width={80} height={80} />
         <span className="text-6xl ">Yum Book</span>

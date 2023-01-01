@@ -20,7 +20,7 @@ function AddRecipe() {
         <title>Add Recipe | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="min-h-[calc(100vh-301px)] my-[26px] mx-4 flex justify-center items-center">
+      <main className="min-h-[calc(100vh-275px)] mt-[150px] mb-[26px] mx-4 flex justify-center items-center">
         {user && (
           <div className="bg-white rounded space-y-10 shadow-md w-[1200px] p-14">
             <h2 className="text-4xl text-primary-normal text-center font-semibold pb-4">
