@@ -34,7 +34,7 @@ function Header() {
           {({ open }) => (
             <>
               {user && (
-                <Menu.Button className="header-link cursor-pointer">
+                <Menu.Button className="header-link cursor-pointer outline-none">
                   Hi, {user.displayName}
                   {!open && (
                     <RiArrowDownSLine className="text-3xl text-primary-normal" />
@@ -46,31 +46,55 @@ function Header() {
               )}
               {open && (
                 <Menu.Items
-                  className="flex flex-col absolute right-0 top-14 bg-white  rounded shadow-md z-50 w-56"
+                  className="flex flex-col absolute right-0 top-14 bg-white  rounded shadow-md z-50 w-56 outline-none"
                   static>
                   <Menu.Item>
-                    <Link href="/add-recipe" className="dropdown-link">
-                      <MdLibraryAdd className="text-2xl text-gray-500" />
-                      <span>Add recipe</span>
-                    </Link>
+                    {({ active }) => (
+                      <Link
+                        href="/add-recipe"
+                        className={`${
+                          active ? 'dropdown-link-active' : 'dropdown-link'
+                        }`}>
+                        <MdLibraryAdd className="text-2xl text-gray-500" />
+                        <span>Add recipe</span>
+                      </Link>
+                    )}
                   </Menu.Item>
                   <Menu.Item>
-                    <Link href="/favorites" className="dropdown-link">
-                      <MdFavorite className="text-2xl text-gray-500" />
-                      <span>Favorites</span>
-                    </Link>
+                    {({ active }) => (
+                      <Link
+                        href="/favorites"
+                        className={`${
+                          active ? 'dropdown-link-active' : 'dropdown-link'
+                        }`}>
+                        <MdFavorite className="text-2xl text-gray-500" />
+                        <span>Favorites</span>
+                      </Link>
+                    )}
                   </Menu.Item>
                   <Menu.Item>
-                    <Link href="/my-recipes" className="dropdown-link">
-                      <MdAccountBox className="text-2xl text-gray-500" />
-                      <span>My recipes</span>
-                    </Link>
+                    {({ active }) => (
+                      <Link
+                        href="/my-recipes"
+                        className={`${
+                          active ? 'dropdown-link-active' : 'dropdown-link'
+                        }`}>
+                        <MdAccountBox className="text-2xl text-gray-500" />
+                        <span>My recipes</span>
+                      </Link>
+                    )}
                   </Menu.Item>
                   <Menu.Item>
-                    <button className="dropdown-link" onClick={logOut}>
-                      <MdLogout className="text-2xl text-gray-500" />
-                      <span>Logout</span>
-                    </button>
+                    {({ active }) => (
+                      <button
+                        onClick={logOut}
+                        className={`${
+                          active ? 'dropdown-link-active' : 'dropdown-link'
+                        }`}>
+                        <MdLogout className="text-2xl text-gray-500" />
+                        <span>Logout</span>
+                      </button>
+                    )}
                   </Menu.Item>
                 </Menu.Items>
               )}

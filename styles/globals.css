@@ -14,7 +14,11 @@
   }
 
   .dropdown-link {
-    @apply text-lg py-4 px-6 flex gap-4 items-center  hover:bg-gray-100 transition;
+    @apply text-lg py-4 px-6 flex gap-4 items-center   transition;
+  }
+
+  .dropdown-link-active {
+    @apply text-lg py-4 px-6 flex gap-4 items-center  bg-gray-100 transition;
   }
 
   .filter {
