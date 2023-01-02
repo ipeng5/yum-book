@@ -4,6 +4,8 @@ import {
   collection,
   addDoc,
   deleteDoc,
+  updateDoc,
+  setDoc,
   doc,
   Timestamp,
 } from 'firebase/firestore';
@@ -32,6 +34,13 @@ const firestoreReducer = (state, action) => {
         error: null,
       };
     case 'DELETED_DOCUMENT':
+      return {
+        isPending: false,
+        document: action.payload,
+        success: true,
+        error: null,
+      };
+    case 'UPDATED_DOCUMENT':
       return {
         isPending: false,
         document: action.payload,
@@ -84,9 +93,20 @@ export const useFirestore = () => {
     }
   };
 
+  const updateRecipe = async (id, updatedRecipe) => {
+    dispatchIfNotCancelled({ type: 'IS_PENDING' });
+    try {
+      const docRef = doc(db, 'recipes', id);
+      const updatedDoc = await setDoc(docRef, updatedRecipe);
+      dispatchIfNotCancelled({ type: 'UPDATED_DOCUMENT', payload: updatedDoc });
+    } catch (err) {
+      dispatchIfNotCancelled({ type: 'ERROR', payload: err.message });
+    }
+  };
+
   useEffect(() => {
     return () => setIsCancelled(true);
   }, []);
 
-  return { addRecipeToFirebase, deleteRecipe };
+  return { addRecipeToFirebase, deleteRecipe, updateRecipe };
 };

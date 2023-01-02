@@ -3,10 +3,11 @@ import { useEffect, useState } from 'react';
 import IngredientInput from './IngredientInput';
 import StepsInput from './StepsInput';
 import MealImageInput from './MealImageInput';
+import { useRouter } from 'next/router';
 import { nanoid } from 'nanoid';
 import { MdAdd } from 'react-icons/md';
 
-function AddRecipeForm({ uid, meal, closeModal }) {
+function AddRecipeForm({ meal, closeModal }) {
   const [updatedRecipe, setUpdatedRecipe] = useState({
     category: 'uploads',
     strMeal: meal.strMeal,
@@ -17,7 +18,9 @@ function AddRecipeForm({ uid, meal, closeModal }) {
 
   const [imgURL, setImgURL] = useState(meal.strMealThumb);
 
-  const { addRecipeToFirebase } = useFirestore();
+  const { updateRecipe } = useFirestore();
+  const router = useRouter();
+  const { id } = router.query;
 
   const handleTitleInput = e => {
     setUpdatedRecipe(prevValues => ({
@@ -85,12 +88,14 @@ function AddRecipeForm({ uid, meal, closeModal }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    // addRecipeToFirebase({ ...uploadedRecipe, uid }, 'upload');
-    // router.push(`/my-recipes`);
+    updateRecipe(id, updatedRecipe);
+    closeModal();
   };
 
   return (
-    <form className="flex flex-col space-y-6 text-lg" onSubmit={handleSubmit}>
+    <form
+      className="flex flex-col space-y-6 text-lg w-full"
+      onSubmit={handleSubmit}>
       <label className="flex flex-col gap-1">
         <p className="text-xl font-semibold relative">
           Title
@@ -152,7 +157,7 @@ function AddRecipeForm({ uid, meal, closeModal }) {
           Cancel
         </button>
         <button type="submit" className="modal-button-dark">
-          Add
+          Edit
         </button>
       </div>
     </form>

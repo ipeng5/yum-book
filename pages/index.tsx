@@ -40,7 +40,7 @@ const Home = ({ areaList, allCategories }: Props) => {
         {query.search && <SearchResults searchInput={query.search} />}
         {!query.search && (
           <div className="max-w-screen-2xl py-4  mx-auto text-2xl flex space-x-4 items-center">
-            <span>Filter by:</span>
+            <span className="text-3xl">Filter by:</span>
             <button
               onClick={() => {
                 setFilter('area');

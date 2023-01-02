@@ -49,7 +49,7 @@ function Categories({ category }) {
         <title>Meals by Category | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="min-h-[calc(100vh-250px)] bg-white py-6 px-20 ">
+      <main className="min-h-[calc(100vh-250px)] mt-[150px] bg-white py-6 px-20 ">
         <div className="py-4 max-w-screen-2xl mx-auto text-3xl flex space-x-4 items-center">
           <span>
             {category.meals.length} recipes for "{router.query.categories}"

@@ -22,7 +22,7 @@
   }
 
   .filter {
-    @apply px-6 py-2 rounded-lg bg-gray-light hover:text-primary-normal transition;
+    @apply px-6 py-2 rounded-lg bg-gray-light hover:bg-gray-200 transition;
   }
 
   .filter-active {
@@ -38,18 +38,18 @@
   }
 
   .icon-add {
-    @apply w-8 h-8 text-[1.8rem] rounded flex justify-center items-center  text-primary-normal cursor-pointer hover:bg-primary-light  transition;
+    @apply w-8 h-8 text-[1.8rem] rounded flex justify-center items-center text-primary-normal cursor-pointer hover:bg-primary-light  transition;
   }
 
   .icon-remove {
-    @apply w-10 h-10 text-3xl rounded bg-transparent font-thin flex justify-center items-end cursor-pointer hover:bg-gray-100  transition;
+    @apply w-10 h-10 text-3xl rounded bg-transparent font-thin flex justify-center cursor-pointer hover:bg-gray-100  transition;
   }
 
   .modal-button-light {
-    @apply py-2 w-24 bg-[#ebebeb] rounded hover:bg-[#e2e2e2] shadow-inner;
+    @apply py-2 w-36 bg-[#ebebeb] rounded hover:bg-[#e2e2e2] shadow-inner;
   }
 
   .modal-button-dark {
-    @apply py-2 w-24 bg-primary-normal text-white rounded hover:bg-primary-dark text-center shadow-inner;
+    @apply py-2 w-36 bg-primary-normal text-white rounded hover:bg-primary-dark text-center shadow-inner;
   }
 }
