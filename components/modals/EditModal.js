@@ -9,7 +9,7 @@ export function EditModal({ closeModal, meal }) {
       <h2 className="text-4xl text-primary-normal text-center font-semibold pb-4">
         Edit recipe
       </h2>
-      <EditRecipeForm closeModal={closeModal} meal={meal} />
+      <EditRecipeForm closeModal={closeModal} meal={meal} uid={user.uid}/>
     </div>
   );
 }

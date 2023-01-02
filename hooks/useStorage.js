@@ -8,9 +8,13 @@ import {
 } from 'firebase/storage';
 import { dummyImg } from '../lib/dummyImg';
 import { nanoid } from 'nanoid';
+import { useState } from 'react';
 
 export const useStorage = () => {
+  const [isUploading, setIsUploading] = useState(false);
+
   const uploadImage = (acceptedFiles, setState, uploadFolder) => {
+    setIsUploading(true);
     const imageUpload = acceptedFiles[0];
     if (imageUpload === null) return;
     const imageRef = ref(
@@ -22,6 +26,7 @@ export const useStorage = () => {
     uploadBytes(imageRef, imageUpload).then(() => {
       getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
         setState(downloadURL);
+        setIsUploading(false);
       });
     });
   };
@@ -34,5 +39,5 @@ export const useStorage = () => {
     });
   };
 
-  return { uploadImage, deleteImage };
+  return { uploadImage, deleteImage, isUploading };
 };

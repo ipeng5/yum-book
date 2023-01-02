@@ -80,7 +80,7 @@ function Header() {
                           active ? 'dropdown-link-active' : 'dropdown-link'
                         }`}>
                         <MdAccountBox className="text-2xl text-gray-500" />
-                        <span>My recipes</span>
+                        <span>My Recipes</span>
                       </Link>
                     )}
                   </Menu.Item>

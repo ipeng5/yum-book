@@ -5,7 +5,7 @@ import { MdUploadFile } from 'react-icons/md';
 
 function MealImageInput({ setImgURL }) {
   const [files, setFiles] = useState([]);
-  const { uploadImage } = useStorage();
+  const { uploadImage, isUploading } = useStorage();
 
   const acceptStyle = {
     backgroundColor: '#eff9f6',
@@ -49,7 +49,7 @@ function MealImageInput({ setImgURL }) {
       {...getRootProps({
         style,
       })}>
-      {files[0] !== undefined && (
+      {files[0] !== undefined && !isUploading && (
         <img
           src={files[0].preview}
           alt=""
@@ -61,8 +61,13 @@ function MealImageInput({ setImgURL }) {
       )}
       <div className="flex gap-2">
         <input {...getInputProps()} />
-        <MdUploadFile className="text-3xl text-gray-400" />
-        <p>Drag and drop, or click to select an image</p>
+        {!isUploading && (
+          <>
+            <MdUploadFile className="text-3xl text-gray-400" />
+            <p>Drag and drop, or click to select an image</p>
+          </>
+        )}
+        {isUploading && <p>Uploading image...</p>}
       </div>
     </div>
   );

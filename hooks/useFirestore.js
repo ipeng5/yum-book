@@ -97,7 +97,10 @@ export const useFirestore = () => {
     dispatchIfNotCancelled({ type: 'IS_PENDING' });
     try {
       const docRef = doc(db, 'recipes', id);
-      const updatedDoc = await setDoc(docRef, updatedRecipe);
+      const updatedDoc = await setDoc(docRef, {
+        ...updatedRecipe,
+        createdAt: Timestamp.now(),
+      });
       dispatchIfNotCancelled({ type: 'UPDATED_DOCUMENT', payload: updatedDoc });
     } catch (err) {
       dispatchIfNotCancelled({ type: 'ERROR', payload: err.message });

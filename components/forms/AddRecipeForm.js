@@ -18,7 +18,6 @@ function AddRecipeForm({ uid }) {
     steps: [],
   });
   const [imgURL, setImgURL] = useState(dummyImg);
-
   const { addRecipeToFirebase } = useFirestore();
 
   const handleTitleInput = e => {

@@ -3,11 +3,13 @@ import { useEffect, useState } from 'react';
 import IngredientInput from './IngredientInput';
 import StepsInput from './StepsInput';
 import MealImageInput from './MealImageInput';
+import { dummyImg } from '../../lib/dummyImg';
 import { useRouter } from 'next/router';
+import { useStorage } from '../../hooks/useStorage';
 import { nanoid } from 'nanoid';
 import { MdAdd } from 'react-icons/md';
 
-function AddRecipeForm({ meal, closeModal }) {
+function AddRecipeForm({ meal, closeModal, uid }) {
   const [updatedRecipe, setUpdatedRecipe] = useState({
     category: 'uploads',
     strMeal: meal.strMeal,
@@ -17,7 +19,7 @@ function AddRecipeForm({ meal, closeModal }) {
   });
 
   const [imgURL, setImgURL] = useState(meal.strMealThumb);
-
+  const { deleteImage } = useStorage();
   const { updateRecipe } = useFirestore();
   const router = useRouter();
   const { id } = router.query;
@@ -86,16 +88,24 @@ function AddRecipeForm({ meal, closeModal }) {
     }));
   }, [imgURL]);
 
+  const handleCancel = e => {
+    e.preventDefault();
+    closeModal();
+    if (imgURL) deleteImage(imgURL);
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
-    updateRecipe(id, updatedRecipe);
-    closeModal();
+    updateRecipe(id, { ...updatedRecipe, uid });
+    router.push('/my-recipes');
+    if (dummyImg === meal.strMealThumb || imgURL === meal.strMealThumb) return;
+    deleteImage(meal.strMealThumb);
   };
 
   return (
     <form
       className="flex flex-col space-y-6 text-lg w-full"
-      onSubmit={handleSubmit}>
+      onSubmit={e => e.preventDefault()}>
       <label className="flex flex-col gap-1">
         <p className="text-xl font-semibold relative">
           Title
@@ -116,7 +126,7 @@ function AddRecipeForm({ meal, closeModal }) {
       </label>
       <label className="flex flex-col gap-1">
         <span className="text-xl font-semibold">Image</span>
-        <MealImageInput setImgURL={updatedRecipe.strMealThumb} />
+        <MealImageInput setImgURL={setImgURL} />
       </label>
       <fieldset className="space-y-2">
         <legend className="flex gap-2 items-center text-xl">
@@ -153,10 +163,10 @@ function AddRecipeForm({ meal, closeModal }) {
         ))}
       </fieldset>
       <div className="flex m-auto space-x-10 !mt-10">
-        <button className="modal-button-light" onClick={closeModal}>
+        <button className="modal-button-light" onClick={handleCancel}>
           Cancel
         </button>
-        <button type="submit" className="modal-button-dark">
+        <button className="modal-button-dark" onClick={handleSubmit}>
           Edit
         </button>
       </div>
