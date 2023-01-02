@@ -1,9 +1,10 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { db } from '../../firebase/config';
+import { db, storage } from '../../firebase/config';
 import { getDoc, doc } from 'firebase/firestore';
 import { useFirestore } from '../../hooks/useFirestore';
+import { useStorage } from '../../hooks/useStorage';
 import { useModal } from '../../hooks/useModal';
 import { Modal } from '../../components/modals/Modal';
 import { EditModal } from '../../components/modals/EditModal';
@@ -17,6 +18,7 @@ function Details() {
   const { id } = router.query;
   const { deleteRecipe } = useFirestore();
   const { open, openModal, closeModal } = useModal();
+  const { deleteImage } = useStorage();
 
   useEffect(() => {
     const docRef = doc(db, 'recipes', id);
@@ -31,6 +33,7 @@ function Details() {
 
   const handleDelete = () => {
     deleteRecipe(id);
+    deleteImage(meal.strMealThumb);
     router.push('/my-recipes');
   };
 

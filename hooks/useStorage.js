@@ -1,11 +1,12 @@
 import { storage } from '../firebase/config';
-
 import {
   ref,
   uploadBytes,
   getDownloadURL,
   uploadBytesResumable,
+  deleteObject,
 } from 'firebase/storage';
+import { dummyImg } from '../lib/dummyImg';
 import { nanoid } from 'nanoid';
 
 export const useStorage = () => {
@@ -25,5 +26,13 @@ export const useStorage = () => {
     });
   };
 
-  return { uploadImage };
+  const deleteImage = imgURL => {
+    if (imgURL === dummyImg) return;
+    const desertRef = ref(storage, imgURL);
+    deleteObject(desertRef).catch(err => {
+      console.log(err.message);
+    });
+  };
+
+  return { uploadImage, deleteImage };
 };

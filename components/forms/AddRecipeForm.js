@@ -4,6 +4,7 @@ import { useRouter } from 'next/router';
 import IngredientInput from './IngredientInput';
 import StepsInput from './StepsInput';
 import MealImageInput from './MealImageInput';
+import { dummyImg } from '../../lib/dummyImg';
 import { nanoid } from 'nanoid';
 import { MdAdd } from 'react-icons/md';
 
@@ -16,9 +17,7 @@ function AddRecipeForm({ uid }) {
     ingredients: [],
     steps: [],
   });
-  const [imgURL, setImgURL] = useState(
-    'https://firebasestorage.googleapis.com/v0/b/yum-book.appspot.com/o/Images%2Fdummy.png?alt=media&token=1ec04784-cffc-4b86-ba89-f8d221206c28'
-  );
+  const [imgURL, setImgURL] = useState(dummyImg);
 
   const { addRecipeToFirebase } = useFirestore();
 
