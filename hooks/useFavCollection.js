@@ -8,29 +8,25 @@ import {
   orderBy,
 } from 'firebase/firestore';
 
-export const useCollection = (category, user) => {
+export const useFavCollection = user => {
   if (!user) return [];
-  const [documents, setDocuments] = useState(null);
+  const [favDocs, setFavDocs] = useState(null);
 
   useEffect(() => {
-    const collRef = collection(db, 'recipes');
+    const collRef = collection(db, 'favorites');
     const userColl = query(collRef, where('uid', '==', user.uid));
-    const userDocs = query(
-      userColl,
-      where('category', '==', category),
-      orderBy('createdAt', 'desc')
-    );
+    const userDocs = query(userColl, orderBy('createdAt', 'desc'));
 
     const unsubscribe = onSnapshot(userDocs, snapshot => {
       let results = [];
       snapshot.docs.forEach(doc => {
         results.push({ ...doc.data(), idDoc: doc.id });
       });
-      setDocuments(results);
+      setFavDocs(results);
     });
 
     return () => unsubscribe();
   }, [db]);
 
-  return { documents };
+  return { favDocs };
 };

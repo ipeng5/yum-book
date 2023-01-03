@@ -18,7 +18,7 @@ function AddRecipeForm({ uid }) {
     steps: [],
   });
   const [imgURL, setImgURL] = useState(dummyImg);
-  const { addRecipeToFirebase } = useFirestore();
+  const { addRecipeToUploads } = useFirestore();
 
   const handleTitleInput = e => {
     setUploadedRecipe(prevValues => ({
@@ -86,7 +86,7 @@ function AddRecipeForm({ uid }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    addRecipeToFirebase({ ...uploadedRecipe, uid }, 'upload');
+    addRecipeToUploads({ ...uploadedRecipe, uid }, 'upload');
     router.push(`/my-recipes`);
   };
 

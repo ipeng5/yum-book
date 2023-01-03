@@ -17,7 +17,7 @@ function Details() {
   const [meal, setMeal] = useState([]);
   const router = useRouter();
   const { id } = router.query;
-  const { deleteRecipe } = useFirestore();
+  const { deleteMyRecipe } = useFirestore();
   const { open, openModal, closeModal } = useModal();
   const { deleteImage } = useStorage();
   const [notFound, setNotFound] = useState(false);
@@ -40,7 +40,7 @@ function Details() {
   const handleDelete = () => {
     setDeleted(true);
     router.push('/my-recipes');
-    deleteRecipe(id);
+    deleteMyRecipe(id);
     deleteImage(meal.strMealThumb);
   };
 

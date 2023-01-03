@@ -4,12 +4,11 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { UserAuth } from '../../context/AuthContext';
 import { useFirestore } from '../../hooks/useFirestore';
-import { useCollection } from '../../hooks/useCollection';
+import { useFavCollection } from '../../hooks/useFavCollection';
 import { useModal } from '../../hooks/useModal';
 import { Modal } from '../../components/modals/Modal';
 import { LoginModal } from '../../components/modals/LoginModal';
 import Error from '../../components/Error';
-
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 import { BsInfoCircle, BsPlayFill, BsCheck2 } from 'react-icons/bs';
 
@@ -19,9 +18,9 @@ function Details() {
   const { id } = router.query;
   const { user } = UserAuth();
   const [bookmarked, setBookmarked] = useState(false);
-  const { addRecipeToFirebase, deleteRecipe } = useFirestore();
+  const { addRecipeToFavorites, deleteFavRecipe } = useFirestore();
   const { open, openModal, closeModal } = useModal();
-  const { documents } = useCollection('favorites', user);
+  const { favDocs } = useFavCollection(user);
   const [notFound, setNotFound] = useState(false);
 
   useEffect(() => {
@@ -45,10 +44,10 @@ function Details() {
 
   if (user) {
     useEffect(() => {
-      if (documents?.map(doc => doc.idMeal).some(idMeal => idMeal === id))
+      if (favDocs?.map(doc => doc.idMeal).some(idMeal => idMeal === id))
         setBookmarked(true);
       else setBookmarked(false);
-    }, [JSON.stringify(documents), user]);
+    }, [JSON.stringify(favDocs), user]);
   }
 
   const handleFavorite = () => {
@@ -56,11 +55,11 @@ function Details() {
       openModal();
     } else {
       if (bookmarked) {
-        deleteRecipe(documents.find(doc => doc.idMeal === id).idDoc);
+        deleteFavRecipe(favDocs.find(doc => doc.idMeal === id).idDoc);
         setBookmarked(false);
       } else {
         setBookmarked(true);
-        addRecipeToFirebase(
+        addRecipeToFavorites(
           { ...meal, category: 'favorites', uid: user.uid },
           'favorite'
         );

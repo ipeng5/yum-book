@@ -66,8 +66,8 @@ export const useFirestore = () => {
     if (!isCancelled) dispatch(action);
   };
 
-  const addRecipeToFirebase = async (doc, uploadType) => {
-    if (uploadType === 'upload') dispatchIfNotCancelled({ type: 'IS_PENDING' });
+  const addRecipeToUploads = async doc => {
+    dispatchIfNotCancelled({ type: 'IS_PENDING' });
     try {
       const addedDocument = await addDoc(collection(db, 'recipes'), {
         ...doc,
@@ -82,10 +82,36 @@ export const useFirestore = () => {
     }
   };
 
-  const deleteRecipe = async id => {
+  const addRecipeToFavorites = async doc => {
+    dispatchIfNotCancelled({ type: 'IS_PENDING' });
+    try {
+      const addedDocument = await addDoc(collection(db, 'favorites'), {
+        ...doc,
+        createdAt: serverTimestamp(),
+      });
+      dispatchIfNotCancelled({
+        type: 'ADDED_DOCUMENT',
+        payload: addedDocument,
+      });
+    } catch (err) {
+      dispatchIfNotCancelled({ type: 'ERROR', payload: err.message });
+    }
+  };
+
+  const deleteMyRecipe = async id => {
     dispatchIfNotCancelled({ type: 'IS_PENDING' });
     try {
       const deletedDoc = await deleteDoc(doc(db, 'recipes', id));
+      dispatchIfNotCancelled({ type: 'DELETED_DOCUMENT', payload: deletedDoc });
+    } catch (err) {
+      dispatchIfNotCancelled({ type: 'ERROR', payload: err.message });
+    }
+  };
+
+  const deleteFavRecipe = async id => {
+    dispatchIfNotCancelled({ type: 'IS_PENDING' });
+    try {
+      const deletedDoc = await deleteDoc(doc(db, 'favorites', id));
       dispatchIfNotCancelled({ type: 'DELETED_DOCUMENT', payload: deletedDoc });
     } catch (err) {
       dispatchIfNotCancelled({ type: 'ERROR', payload: err.message });
@@ -110,5 +136,11 @@ export const useFirestore = () => {
     return () => setIsCancelled(true);
   }, []);
 
-  return { addRecipeToFirebase, deleteRecipe, updateRecipe };
+  return {
+    addRecipeToUploads,
+    addRecipeToFavorites,
+    deleteMyRecipe,
+    deleteFavRecipe,
+    updateRecipe,
+  };
 };
