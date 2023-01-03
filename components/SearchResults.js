@@ -37,7 +37,7 @@ function SearchResults({ searchInput }) {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.3 }}
         className="max-w-screen-2xl grid grid-cols-4 gap-10 py-4  mx-auto">
         {recipeList?.map(meal => (
           <MealCard meal={meal} key={meal.idMeal} />

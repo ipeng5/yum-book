@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 
 const variants = [
   {
-    initial: { opacity: 0, x: '-30px' },
+    initial: { opacity: 0, x: -50 },
     animate: { opacity: 1, x: 0 },
     transition: { duration: 0.5 },
   },
   {
-    initial: { opacity: 0, x: '30px' },
+    initial: { opacity: 0, x: 50 },
     animate: { opacity: 1, x: 0 },
     transition: { duration: 0.5 },
   },

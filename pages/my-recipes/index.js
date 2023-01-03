@@ -27,7 +27,7 @@ function myRecipes() {
         <motion.main
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.3 }}
           className="min-h-[calc(100vh-250px)] mt-[150px] bg-white py-6 px-20 ">
           <div className="py-4 max-w-screen-2xl mx-auto text-3xl flex space-x-4 items-center">
             <span>My Recipes ({uploadedDocs?.length})</span>
