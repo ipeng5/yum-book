@@ -6,6 +6,7 @@ import CategoryCard from '../components/CategoryCard';
 import { areaList } from '../lib/filterList';
 import { AllCategories } from '../typings';
 import SearchResults from '../components/SearchResults';
+import { motion } from 'framer-motion';
 
 interface Props {
   areaList: string[];
@@ -59,7 +60,11 @@ const Home = ({ areaList, allCategories }: Props) => {
             </button>
           </div>
         )}
-        <div className="max-w-screen-2xl pt-4 pb-10 grid grid-cols-4 gap-10 mx-auto">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="max-w-screen-2xl pt-4 pb-10 grid grid-cols-4 gap-10 mx-auto">
           {filter === 'category' &&
             !query.search &&
             allCategories.categories.map(category => (
@@ -68,7 +73,7 @@ const Home = ({ areaList, allCategories }: Props) => {
           {filter === 'area' &&
             !query.search &&
             areaList.map(area => <AreaCard area={area} key={area} />)}
-        </div>
+        </motion.div>
       </main>
     </>
   );

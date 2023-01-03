@@ -11,6 +11,7 @@ import { LoginModal } from '../../components/modals/LoginModal';
 import Error from '../../components/Error';
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 import { BsInfoCircle, BsPlayFill, BsCheck2 } from 'react-icons/bs';
+import { motion } from 'framer-motion';
 
 function Details() {
   const [meal, setMeal] = useState([]);
@@ -94,7 +95,10 @@ function Details() {
       </Head>
       {notFound && <Error />}
       {!notFound && (
-        <main className="min-h-[calc(100vh-250px)]">
+        <motion.main
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }} className="min-h-[calc(100vh-250px)]">
           <Modal open={open} closeModal={closeModal}>
             <LoginModal closeModal={closeModal} />
           </Modal>
@@ -193,7 +197,7 @@ function Details() {
               </ol>
             </div>
           </section>
-        </main>
+        </motion.main>
       )}
     </>
   );

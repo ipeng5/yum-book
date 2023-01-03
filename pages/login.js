@@ -4,8 +4,10 @@ import { useEffect, useState } from 'react';
 import { UserAuth } from '../context/AuthContext';
 import { useGoogleLogin } from '../hooks/useGoogleLogin';
 import { useEmailLogin } from '../hooks/useEmailLogin';
+import LoginForm from '../components/forms/LoginForm';
 import { useRouter } from 'next/router';
 import { FcGoogle } from 'react-icons/fc';
+import { motion } from 'framer-motion';
 
 function Login() {
   const [values, setValues] = useState({
@@ -41,59 +43,23 @@ function Login() {
         <title>Login | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="min-h-[calc(100vh-250px)] mt-[150px] flex justify-center items-center">
+      <motion.main
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.3 }}
+        className="min-h-[calc(100vh-250px)] mt-[150px] flex justify-center items-center">
         {!user && (
           <div className="bg-white rounded shadow-md w-[500px] p-14">
             <h2 className="text-4xl text-primary-normal text-center font-semibold pb-4 mb-10">
               Login
             </h2>
-            <form
-              className="flex flex-col space-y-4 text-lg"
-              onSubmit={handleSubmit}>
-              <label className="flex flex-col gap-1">
-                <span className="text-base text-gray-400">Email</span>
-                <input
-                  type="email"
-                  onChange={handleInput}
-                  name="email"
-                  value={values.email}
-                  required
-                  className="form-input"
-                />
-              </label>
-              <label className="flex flex-col gap-1 relative">
-                <span className="text-base text-gray-400">Password</span>{' '}
-                <input
-                  type="password"
-                  name="password"
-                  value={values.password}
-                  onChange={handleInput}
-                  required
-                  className="form-input"
-                />
-                {emailLoginError && !isPending && (
-                  <p className="text-primary-normal absolute top-[88px]">
-                    {emailLoginError}
-                  </p>
-                )}
-              </label>
-              <div className="flex flex-col gap-4">
-                {!isPending && (
-                  <button
-                    type="submit"
-                    className="form-button mt-16 border-2 border-primary-normal">
-                    Login
-                  </button>
-                )}
-                {isPending && (
-                  <button
-                    disabled
-                    className="form-button mt-16 border-2 border-primary-normal">
-                    Loading
-                  </button>
-                )}
-              </div>
-            </form>
+            <LoginForm
+              values={values}
+              handleSubmit={handleSubmit}
+              handleInput={handleInput}
+              isPending={isPending}
+              emailLoginError={emailLoginError}
+            />
             <button
               type="submit"
               className="py-3 w-full rounded text-xl shadow-inner bg-[#fefefe] text-gray-500 border-2 border-gray-300 flex gap-4 justify-center items-center hover:bg-[#fcfcfc] transition mb-10 mt-4"
@@ -111,7 +77,7 @@ function Login() {
             </div>
           </div>
         )}
-      </main>
+      </motion.main>
     </>
   );
 }

@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { UserAuth } from '../../context/AuthContext';
 import { useRouter } from 'next/router';
 import { useUploadCollection } from '../../hooks/useUploadCollection';
+import { motion } from 'framer-motion';
 
 function myRecipes() {
   const { user, authIsReady } = UserAuth();
@@ -23,7 +24,10 @@ function myRecipes() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {user && (
-        <main className="min-h-[calc(100vh-250px)] mt-[150px] bg-white py-6 px-20 ">
+        <motion.main
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }} className="min-h-[calc(100vh-250px)] mt-[150px] bg-white py-6 px-20 ">
           <div className="py-4 max-w-screen-2xl mx-auto text-3xl flex space-x-4 items-center">
             <span>My Recipes ({uploadedDocs?.length})</span>
           </div>
@@ -32,7 +36,7 @@ function myRecipes() {
               <MealCard meal={meal} key={meal.idDoc} />
             ))}
           </div>
-        </main>
+        </motion.main>
       )}
     </>
   );

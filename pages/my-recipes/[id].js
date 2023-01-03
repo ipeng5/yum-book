@@ -12,6 +12,7 @@ import Error from '../../components/Error';
 import Link from 'next/link';
 import { MdDeleteOutline, MdOutlineModeEditOutline } from 'react-icons/md';
 import { BsCheck2 } from 'react-icons/bs';
+import {motion} from 'framer-motion'
 
 function Details() {
   const [meal, setMeal] = useState([]);
@@ -53,7 +54,10 @@ function Details() {
 
       {!deleted && notFound && <Error />}
       {!deleted && !notFound && (
-        <main className="mt-[150px]">
+        <motion.main
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }} className="mt-[150px]">
           <Modal open={open} closeModal={closeModal}>
             <EditModal closeModal={closeModal} meal={meal} />
           </Modal>
@@ -121,7 +125,7 @@ function Details() {
               </ol>
             </div>
           </section>
-        </main>
+        </motion.main>
       )}
     </>
   );

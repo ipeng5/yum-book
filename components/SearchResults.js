@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
 import MealCard from '../components/MealCard';
+import { motion } from 'framer-motion';
 
 function SearchResults({ searchInput }) {
   const [recipeList, setRecipeList] = useState([]);
@@ -33,11 +34,15 @@ function SearchResults({ searchInput }) {
           {searchInput}"
         </span>
       </div>
-      <div className="max-w-screen-2xl grid grid-cols-4 gap-10 py-4  mx-auto">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="max-w-screen-2xl grid grid-cols-4 gap-10 py-4  mx-auto">
         {recipeList?.map(meal => (
           <MealCard meal={meal} key={meal.idMeal} />
         ))}
-      </div>
+      </motion.div>
     </>
   );
 }
