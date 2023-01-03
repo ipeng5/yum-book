@@ -4,10 +4,9 @@ import {
   collection,
   addDoc,
   deleteDoc,
-  updateDoc,
   setDoc,
   doc,
-  Timestamp,
+  serverTimestamp,
 } from 'firebase/firestore';
 
 let initialState = {
@@ -72,7 +71,7 @@ export const useFirestore = () => {
     try {
       const addedDocument = await addDoc(collection(db, 'recipes'), {
         ...doc,
-        createdAt: Timestamp.now(),
+        createdAt: serverTimestamp(),
       });
       dispatchIfNotCancelled({
         type: 'ADDED_DOCUMENT',
@@ -99,7 +98,7 @@ export const useFirestore = () => {
       const docRef = doc(db, 'recipes', id);
       const updatedDoc = await setDoc(docRef, {
         ...updatedRecipe,
-        createdAt: Timestamp.now(),
+        createdAt: serverTimestamp(),
       });
       dispatchIfNotCancelled({ type: 'UPDATED_DOCUMENT', payload: updatedDoc });
     } catch (err) {

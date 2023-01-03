@@ -97,7 +97,7 @@ function AddRecipeForm({ meal, closeModal, uid }) {
   const handleSubmit = e => {
     e.preventDefault();
     updateRecipe(id, { ...updatedRecipe, uid });
-    router.push('/my-recipes');
+    closeModal();
     if (dummyImg === meal.strMealThumb || imgURL === meal.strMealThumb) return;
     deleteImage(meal.strMealThumb);
   };

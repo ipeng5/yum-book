@@ -9,6 +9,7 @@ import {
 import { dummyImg } from '../lib/dummyImg';
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 export const useStorage = () => {
   const [isUploading, setIsUploading] = useState(false);
