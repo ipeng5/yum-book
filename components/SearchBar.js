@@ -1,5 +1,5 @@
-import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import { MdSearch } from 'react-icons/md';
 
 function SearchBar() {

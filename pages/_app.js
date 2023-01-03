@@ -1,14 +1,11 @@
 import '../styles/globals.css';
-import type { AppProps } from 'next/app';
 import { AuthProvider } from '../context/AuthContext';
 import Layout from '../components/Layout';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { CgSpinnerTwo } from 'react-icons/cg';
 
-
-
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps }) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 

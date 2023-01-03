@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { auth } from '../firebase/config';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { useRouter } from 'next/router';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { auth } from '../firebase/config';
 import { UserAuth } from '../context/AuthContext';
 
 export const useSignup = () => {

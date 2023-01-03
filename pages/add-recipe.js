@@ -1,7 +1,7 @@
-import Head from 'next/head';
 import { useEffect } from 'react';
-import { UserAuth } from '../context/AuthContext';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { UserAuth } from '../context/AuthContext';
 import AddRecipeForm from '../components/forms/AddRecipeForm';
 import { motion } from 'framer-motion';
 

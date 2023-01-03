@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
 import { categoryList } from '../../lib/filterList';
 import Pagination from '../../components/Pagination';
 import MealCard from '../../components/MealCard';

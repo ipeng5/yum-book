@@ -20,7 +20,7 @@
     "**/*.ts",
     "**/*.tsx",
     "pages/category/[category].jsx",
-    "components/Pagination.tsx",
+    "components/Pagination.js",
     "pages/area/[area].js",
     "components/SearchBar.js",
     "pages/search.js",
@@ -33,7 +33,14 @@
     "pages/signup.js",
     "pages/login.js",
     "pages/_app.js",
-    "components/AreaCard.js"
+    "components/AreaCard.js",
+    "components/CategoryCard.js",
+    "components/Error.js",
+    "components/Footer.js",
+    "components/Layout.js",
+    "hooks/useModal.js",
+    "pages/404.js",
+    "pages/index.js"
   ],
   "exclude": ["node_modules"]
 }

@@ -1,17 +1,11 @@
+import { useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
 import AreaCard from '../components/AreaCard';
 import CategoryCard from '../components/CategoryCard';
 import { areaList } from '../lib/filterList';
-import { AllCategories } from '../typings';
 import SearchResults from '../components/SearchResults';
 import { motion } from 'framer-motion';
-
-interface Props {
-  areaList: string[];
-  allCategories: AllCategories;
-}
 
 export const getStaticProps = async () => {
   const res = await fetch(
@@ -27,7 +21,7 @@ export const getStaticProps = async () => {
   };
 };
 
-const Home = ({ areaList, allCategories }: Props) => {
+const Home = ({ areaList, allCategories }) => {
   const [filter, setFilter] = useState('area');
   const { query } = useRouter();
 

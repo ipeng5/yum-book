@@ -1,4 +1,4 @@
-import { storage } from '../firebase/config';
+import { useState } from 'react';
 import {
   ref,
   uploadBytes,
@@ -6,10 +6,10 @@ import {
   uploadBytesResumable,
   deleteObject,
 } from 'firebase/storage';
+import { storage } from '../firebase/config';
 import { dummyImg } from '../lib/dummyImg';
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
-import { useRouter } from 'next/router';
+
 
 export const useStorage = () => {
   const [isUploading, setIsUploading] = useState(false);

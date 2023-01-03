@@ -1,10 +1,10 @@
-import { useFirestore } from '../../hooks/useFirestore';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { useFirestore } from '../../hooks/useFirestore';
 import IngredientInput from './IngredientInput';
 import StepsInput from './StepsInput';
 import MealImageInput from './MealImageInput';
 import { dummyImg } from '../../lib/dummyImg';
-import { useRouter } from 'next/router';
 import { useStorage } from '../../hooks/useStorage';
 import { nanoid } from 'nanoid';
 import { MdAdd } from 'react-icons/md';

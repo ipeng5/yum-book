@@ -1,11 +1,6 @@
 import Link from 'next/link';
-import { CategoryDetails } from '../typings';
 
-interface Props {
-  category: CategoryDetails;
-}
-
-function CategoryCard({ category }: Props) {
+function CategoryCard({ category }) {
   return (
     <Link
       href={`/categories/${category.strCategory}`}

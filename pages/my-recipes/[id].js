@@ -1,6 +1,7 @@
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 import { db } from '../../firebase/config';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { useFirestore } from '../../hooks/useFirestore';
@@ -9,10 +10,9 @@ import { useModal } from '../../hooks/useModal';
 import { Modal } from '../../components/modals/Modal';
 import { EditModal } from '../../components/modals/EditModal';
 import Error from '../../components/Error';
-import Link from 'next/link';
+import { motion } from 'framer-motion';
 import { MdDeleteOutline, MdOutlineModeEditOutline } from 'react-icons/md';
 import { BsCheck2 } from 'react-icons/bs';
-import {motion} from 'framer-motion'
 
 function Details() {
   const [meal, setMeal] = useState([]);
@@ -57,7 +57,8 @@ function Details() {
         <motion.main
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }} className="mt-[150px]">
+          transition={{ duration: 0.5 }}
+          className="mt-[150px]">
           <Modal open={open} closeModal={closeModal}>
             <EditModal closeModal={closeModal} meal={meal} />
           </Modal>

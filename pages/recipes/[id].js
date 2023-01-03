@@ -1,7 +1,7 @@
+import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 import { UserAuth } from '../../context/AuthContext';
 import { useFirestore } from '../../hooks/useFirestore';
 import { useFavCollection } from '../../hooks/useFavCollection';
@@ -9,9 +9,9 @@ import { useModal } from '../../hooks/useModal';
 import { Modal } from '../../components/modals/Modal';
 import { LoginModal } from '../../components/modals/LoginModal';
 import Error from '../../components/Error';
+import { motion } from 'framer-motion';
 import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
 import { BsInfoCircle, BsPlayFill, BsCheck2 } from 'react-icons/bs';
-import { motion } from 'framer-motion';
 
 function Details() {
   const [meal, setMeal] = useState([]);
@@ -98,7 +98,8 @@ function Details() {
         <motion.main
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }} className="min-h-[calc(100vh-250px)]">
+          transition={{ duration: 0.5 }}
+          className="min-h-[calc(100vh-250px)]">
           <Modal open={open} closeModal={closeModal}>
             <LoginModal closeModal={closeModal} />
           </Modal>

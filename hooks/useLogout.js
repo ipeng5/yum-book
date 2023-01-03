@@ -1,6 +1,6 @@
-import { auth } from '../firebase/config';
-import { signOut } from 'firebase/auth';
 import { useRouter } from 'next/router';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase/config';
 import { UserAuth } from '../context/AuthContext';
 
 export const useLogout = () => {

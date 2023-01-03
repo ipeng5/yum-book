@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import MealCard from '../components/MealCard';
 import Head from 'next/head';
-import { UserAuth } from '../context/AuthContext';
 import { useRouter } from 'next/router';
+import MealCard from '../components/MealCard';
+import { UserAuth } from '../context/AuthContext';
 import { useFavCollection } from '../hooks/useFavCollection';
 import { motion } from 'framer-motion';
 

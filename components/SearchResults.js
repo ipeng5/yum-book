@@ -1,5 +1,5 @@
-import Head from 'next/head';
 import React, { useEffect, useState } from 'react';
+import Head from 'next/head';
 import MealCard from '../components/MealCard';
 import { motion } from 'framer-motion';
 

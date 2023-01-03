@@ -1,11 +1,6 @@
 import Link from 'next/link';
-import { AreaName } from '../typings';
 
-interface Props {
-  area: string;
-}
-
-function AreaCard({ area }: Props) {
+function AreaCard({ area }) {
   return (
     <Link
       href={`/areas/${area}`}
