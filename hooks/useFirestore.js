@@ -73,7 +73,7 @@ export const useFirestore = () => {
         ...doc,
         createdAt: serverTimestamp(),
       });
-      await dispatchIfNotCancelled({
+      dispatchIfNotCancelled({
         type: 'ADDED_DOCUMENT',
         payload: addedDocument,
       });
@@ -89,7 +89,7 @@ export const useFirestore = () => {
         ...doc,
         createdAt: serverTimestamp(),
       });
-      await dispatchIfNotCancelled({
+      dispatchIfNotCancelled({
         type: 'ADDED_DOCUMENT',
         payload: addedDocument,
       });
@@ -102,10 +102,7 @@ export const useFirestore = () => {
     dispatchIfNotCancelled({ type: 'IS_PENDING' });
     try {
       const deletedDoc = await deleteDoc(doc(db, 'recipes', id));
-      await dispatchIfNotCancelled({
-        type: 'DELETED_DOCUMENT',
-        payload: deletedDoc,
-      });
+      dispatchIfNotCancelled({ type: 'DELETED_DOCUMENT', payload: deletedDoc });
     } catch (err) {
       dispatchIfNotCancelled({ type: 'ERROR', payload: err.message });
     }
@@ -115,10 +112,7 @@ export const useFirestore = () => {
     dispatchIfNotCancelled({ type: 'IS_PENDING' });
     try {
       const deletedDoc = await deleteDoc(doc(db, 'favorites', id));
-      await dispatchIfNotCancelled({
-        type: 'DELETED_DOCUMENT',
-        payload: deletedDoc,
-      });
+      dispatchIfNotCancelled({ type: 'DELETED_DOCUMENT', payload: deletedDoc });
     } catch (err) {
       dispatchIfNotCancelled({ type: 'ERROR', payload: err.message });
     }
@@ -132,10 +126,7 @@ export const useFirestore = () => {
         ...updatedRecipe,
         createdAt: serverTimestamp(),
       });
-      await dispatchIfNotCancelled({
-        type: 'UPDATED_DOCUMENT',
-        payload: updatedDoc,
-      });
+      dispatchIfNotCancelled({ type: 'UPDATED_DOCUMENT', payload: updatedDoc });
     } catch (err) {
       dispatchIfNotCancelled({ type: 'ERROR', payload: err.message });
     }
