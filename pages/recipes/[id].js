@@ -59,10 +59,7 @@ function Details() {
         setBookmarked(false);
       } else {
         setBookmarked(true);
-        addRecipeToFavorites(
-          { ...meal, category: 'favorites', uid: user.uid },
-          'favorite'
-        );
+        addRecipeToFavorites({ ...meal, category: 'favorites', uid: user.uid });
       }
     }
   };

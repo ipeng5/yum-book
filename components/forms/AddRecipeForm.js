@@ -86,7 +86,7 @@ function AddRecipeForm({ uid }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    addRecipeToUploads({ ...uploadedRecipe, uid }, 'upload');
+    addRecipeToUploads({ ...uploadedRecipe, uid });
     router.push(`/my-recipes`);
   };
 
