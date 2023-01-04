@@ -98,7 +98,6 @@ function AddRecipeForm({ meal, closeModal, uid }) {
     e.preventDefault();
     updateRecipe(id, { ...updatedRecipe, uid });
     closeModal();
-    if (dummyImg === meal.strMealThumb || imgURL === meal.strMealThumb) return;
     deleteImage(meal.strMealThumb);
   };
 

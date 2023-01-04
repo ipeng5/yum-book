@@ -46,7 +46,7 @@ function LoginForm({
           <button
             disabled
             className="form-button mt-16 border-2 border-primary-normal">
-            Loading
+            Loading...
           </button>
         )}
       </div>

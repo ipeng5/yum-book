@@ -18,7 +18,7 @@ const variants = [
   },
 ];
 
-export const [backdrop, modal] = variants;
+const [backdrop, modal] = variants;
 
 export function Modal({ open, closeModal, children }) {
   return (

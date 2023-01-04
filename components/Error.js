@@ -3,9 +3,9 @@ import { motion } from 'framer-motion';
 
 const variants = [
   {
-    initial: { opacity: 0, x: -50 },
-    animate: { opacity: 1, x: 0 },
-    transition: { duration: 0.5 },
+    initial: { opacity: 0 },
+    animate: { opacity: 1 },
+    transition: { duration: 0.3 },
   },
   {
     initial: { opacity: 0, x: 50 },
@@ -14,13 +14,12 @@ const variants = [
   },
 ];
 
-export const [toRight, toLeft] = variants;
+const [toShow, toLeft] = variants;
 
 const Error = () => {
   return (
     <main className="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] flex items-center gap-10">
-      <motion.img {...toRight} src="/assets/404-Icon.png" alt="" width={350} />
-
+      <motion.img {...toShow} src="/assets/404-Icon.png" alt="" width={350} />
       <motion.div {...toLeft} className="flex flex-col gap-4 items-center">
         <p className="text-9xl text-primary-normal">404</p>
         <p className="text-5xl">Ooops...</p>

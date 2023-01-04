@@ -23,7 +23,7 @@ function AddRecipeForm({ uid }) {
   const handleTitleInput = e => {
     setUploadedRecipe(prevValues => ({
       ...prevValues,
-      [e.target.name]: e.target.value,
+      strMeal: e.target.value,
     }));
   };
 

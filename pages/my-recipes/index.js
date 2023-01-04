@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
 import MealCard from '../../components/MealCard';
 import { UserAuth } from '../../context/AuthContext';
 import { useUploadCollection } from '../../hooks/useUploadCollection';
-import { motion } from 'framer-motion';
 
 function myRecipes() {
   const { user, authIsReady } = UserAuth();
