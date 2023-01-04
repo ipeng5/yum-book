@@ -19,7 +19,7 @@ const [toShow, toLeft] = variants;
 const Error = () => {
   return (
     <main className="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%] flex items-center gap-10">
-      <motion.img {...toShow} src="/assets/404-Icon.png" alt="" width={350} />
+      <motion.img {...toShow} src="/assets/404-Icon.png" alt="Error image" width={350} />
       <motion.div {...toLeft} className="flex flex-col gap-4 items-center">
         <p className="text-9xl text-primary-normal">404</p>
         <p className="text-5xl">Ooops...</p>

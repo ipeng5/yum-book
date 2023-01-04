@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
 import { useFavCollection } from '../hooks/useFavCollection';
-import MealCard from '../components/view/MealCard';
+import MealCard from '../components/ui/MealCard';
 import { UserAuth } from '../context/AuthContext';
 
 function favorites() {

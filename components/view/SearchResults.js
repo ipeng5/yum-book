@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
-import MealCard from './MealCard';
+import MealCard from '../ui/MealCard';
 
 function SearchResults({ searchInput }) {
   const [recipeList, setRecipeList] = useState([]);

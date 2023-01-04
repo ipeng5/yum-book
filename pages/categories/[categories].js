@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Pagination from '../../components/ui/Pagination';
-import MealCard from '../../components/view/MealCard';
+import MealCard from '../../components/ui/MealCard';
 import { categoryList } from '../../lib/filterList';
 
 export const getStaticPaths = async () => {

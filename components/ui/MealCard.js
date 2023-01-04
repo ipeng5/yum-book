@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 function MealCard({ meal }) {
   return (
@@ -8,11 +9,11 @@ function MealCard({ meal }) {
           ? `/my-recipes/${meal.idDoc}`
           : `/recipes/${meal.idMeal}`
       }
-      className="shadow-md cursor-pointer rounded-md overflow-hidden transition duration-300 hover:scale-[1.03] hover:shadow-xl">
+      className="shadow-md cursor-pointer rounded-md overflow-hidden transition duration-300 hover:scale-[1.02] hover:shadow-xl">
       <div className=" overflow-hidden h-[250px] relative">
         <img
           src={meal.strMealThumb}
-          alt=""
+          alt={meal.strMeal}
           className="object-cover w-full h-full"
         />
         {meal.category !== 'uploads' && (
@@ -20,7 +21,7 @@ function MealCard({ meal }) {
         )}
       </div>
       <div className="h-[120px] relative">
-        <span className="absolute top-1/2 -translate-y-[50%] p-4 text-lg">
+        <span className="absolute top-1/2 -translate-y-[50%] p-4 text-xl">
           {meal.strMeal}
         </span>
       </div>

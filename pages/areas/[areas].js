@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
-import MealCard from '../../components/view/MealCard';
+import MealCard from '../../components/ui/MealCard';
 import Pagination from '../../components/ui/Pagination';
 import { areaList } from '../../lib/filterList';
 

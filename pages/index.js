@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
-import AreaCard from '../components/view/AreaCard';
-import CategoryCard from '../components/view/CategoryCard';
+import Filter from '../components/view/Filter';
 import SearchResults from '../components/view/SearchResults';
+import FilterCard from '../components/ui/FilterCard';
 import { areaList } from '../lib/filterList';
 
 export const getStaticProps = async () => {
@@ -33,27 +33,7 @@ const Home = ({ areaList, allCategories }) => {
       </Head>
       <main className="min-h-[calc(100vh-250px)] mt-[150px] bg-white py-6 px-20">
         {query.search && <SearchResults searchInput={query.search} />}
-        {!query.search && (
-          <div className="max-w-screen-2xl py-4  mx-auto text-2xl flex space-x-4 items-center">
-            <span className="text-3xl">Filter by:</span>
-            <button
-              onClick={() => {
-                setFilter('area');
-              }}
-              className={`${filter === 'area' ? 'filter-active' : 'filter'}`}>
-              Area
-            </button>
-            <button
-              onClick={() => {
-                setFilter('category');
-              }}
-              className={`${
-                filter === 'category' ? 'filter-active' : 'filter'
-              }`}>
-              Category
-            </button>
-          </div>
-        )}
+        {!query.search && <Filter filter={filter} setFilter={setFilter} />}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -62,11 +42,17 @@ const Home = ({ areaList, allCategories }) => {
           {filter === 'category' &&
             !query.search &&
             allCategories.categories.map(category => (
-              <CategoryCard category={category} key={category.idCategory} />
+              <FilterCard
+                filterData={category}
+                filterType="category"
+                key={category.idCategory}
+              />
             ))}
           {filter === 'area' &&
             !query.search &&
-            areaList.map(area => <AreaCard area={area} key={area} />)}
+            areaList.map(area => (
+              <FilterCard filterData={area} filterType="area" key={area} />
+            ))}
         </motion.div>
       </main>
     </>

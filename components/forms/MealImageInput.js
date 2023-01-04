@@ -52,7 +52,7 @@ function MealImageInput({ setImgURL }) {
       {files[0] !== undefined && !isUploading && (
         <img
           src={files[0].preview}
-          alt=""
+          alt="Recipe image"
           onLoad={() => {
             URL.revokeObjectURL(files[0].preview);
           }}

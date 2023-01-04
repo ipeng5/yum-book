@@ -8,7 +8,6 @@ import StepsInput from './StepsInput';
 import { useFirestore } from '../../hooks/useFirestore';
 import { dummyImg } from '../../lib/dummyImg';
 
-
 function AddRecipeForm({ uid }) {
   const router = useRouter();
   const [uploadedRecipe, setUploadedRecipe] = useState({
@@ -38,20 +37,10 @@ function AddRecipeForm({ uid }) {
   const handleChangeIngredient = (e, id) => {
     setUploadedRecipe(prevValues => {
       const updatedIngredients = prevValues.ingredients.map(ing => {
-        if (ing.id === id) return { ...ing, ingredient: e.target.value };
+        if (ing.id === id) return { ...ing, ingredient: e.target.value.trim() };
         return ing;
       });
       return { ...prevValues, ingredients: updatedIngredients };
-    });
-  };
-
-  const handleChangeStep = (e, id) => {
-    setUploadedRecipe(prevValues => {
-      const updatedSteps = prevValues.steps.map(step => {
-        if (step.id === id) return { ...step, step: e.target.value };
-        return step;
-      });
-      return { ...prevValues, steps: updatedSteps };
     });
   };
 
@@ -69,6 +58,16 @@ function AddRecipeForm({ uid }) {
       ...preValues,
       steps: [...preValues.steps, { id: nanoid(), step: '' }],
     }));
+  };
+
+  const handleChangeStep = (e, id) => {
+    setUploadedRecipe(prevValues => {
+      const updatedSteps = prevValues.steps.map(step => {
+        if (step.id === id) return { ...step, step: e.target.value };
+        return step;
+      });
+      return { ...prevValues, steps: updatedSteps };
+    });
   };
 
   const handleRemoveStep = id => {
