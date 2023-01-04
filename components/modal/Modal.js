@@ -20,7 +20,7 @@ const variants = [
 
 const [backdrop, modal] = variants;
 
-export function Modal({ open, closeModal, children }) {
+function Modal({ open, closeModal, children }) {
   return (
     <AnimatePresence>
       {open && (
@@ -42,3 +42,5 @@ export function Modal({ open, closeModal, children }) {
     </AnimatePresence>
   );
 }
+
+export default Modal;

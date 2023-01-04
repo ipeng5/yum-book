@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { useStorage } from '../../hooks/useStorage';
 import { MdUploadFile } from 'react-icons/md';
+import { useStorage } from '../../hooks/useStorage';
 
 function MealImageInput({ setImgURL }) {
   const [files, setFiles] = useState([]);

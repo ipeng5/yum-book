@@ -6,9 +6,10 @@ import {
   uploadBytesResumable,
   deleteObject,
 } from 'firebase/storage';
+import { nanoid } from 'nanoid';
 import { storage } from '../firebase/config';
 import { dummyImg } from '../lib/dummyImg';
-import { nanoid } from 'nanoid';
+
 
 export const useStorage = () => {
   const [isUploading, setIsUploading] = useState(false);

@@ -1,11 +1,11 @@
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useState, useEffect } from 'react';
-import { UserAuth } from '../context/AuthContext';
-import { useRouter } from 'next/router';
-import { useSignup } from '../hooks/useSignup';
-import { motion } from 'framer-motion';
 import SignupForm from '../components/forms/SignupForm';
+import { UserAuth } from '../context/AuthContext';
+import { useSignup } from '../hooks/useSignup';
 
 function Signup() {
   const [values, setValues] = useState({

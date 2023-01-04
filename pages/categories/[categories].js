@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
+import Pagination from '../../components/ui/Pagination';
+import MealCard from '../../components/view/MealCard';
 import { categoryList } from '../../lib/filterList';
-import Pagination from '../../components/Pagination';
-import MealCard from '../../components/MealCard';
 
 export const getStaticPaths = async () => {
   const paths = categoryList.map(cat => {

@@ -1,9 +1,9 @@
-import '../styles/globals.css';
-import { AuthProvider } from '../context/AuthContext';
-import Layout from '../components/Layout';
-import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import { CgSpinnerTwo } from 'react-icons/cg';
+import Layout from '../components/layout/Layout';
+import { AuthProvider } from '../context/AuthContext';
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();

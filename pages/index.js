@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
-import AreaCard from '../components/AreaCard';
-import CategoryCard from '../components/CategoryCard';
-import { areaList } from '../lib/filterList';
-import SearchResults from '../components/SearchResults';
+import Head from 'next/head';
 import { motion } from 'framer-motion';
+import AreaCard from '../components/view/AreaCard';
+import CategoryCard from '../components/view/CategoryCard';
+import SearchResults from '../components/view/SearchResults';
+import { areaList } from '../lib/filterList';
 
 export const getStaticProps = async () => {
   const res = await fetch(

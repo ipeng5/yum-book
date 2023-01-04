@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
+import { motion } from 'framer-motion';
 import { UserAuth } from '../context/AuthContext';
 import AddRecipeForm from '../components/forms/AddRecipeForm';
-import { motion } from 'framer-motion';
 
 function AddRecipe() {
   const { user, authIsReady } = UserAuth();

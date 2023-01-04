@@ -1,7 +1,7 @@
 import EditRecipeForm from '../forms/EditRecipeForm';
 import { UserAuth } from '../../context/AuthContext';
 
-export function EditModal({ closeModal, meal }) {
+function EditModal({ closeModal, meal }) {
   const { user } = UserAuth();
 
   return (
@@ -9,7 +9,9 @@ export function EditModal({ closeModal, meal }) {
       <h2 className="text-4xl text-primary-normal text-center font-semibold pb-4">
         Edit recipe
       </h2>
-      <EditRecipeForm closeModal={closeModal} meal={meal} uid={user.uid}/>
+      <EditRecipeForm closeModal={closeModal} meal={meal} uid={user.uid} />
     </div>
   );
 }
+
+export default EditModal;

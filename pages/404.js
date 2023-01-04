@@ -1,5 +1,4 @@
-import Link from 'next/link';
-import Error from '../components/Error';
+import Error from '../components/view/Error';
 
 const NotFound = () => {
   return <Error />;

@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
+import MealCard from '../../components/view/MealCard';
+import Pagination from '../../components/ui/Pagination';
 import { areaList } from '../../lib/filterList';
-import MealCard from '../../components/MealCard';
-import Pagination from '../../components/Pagination';
 
 export const getStaticPaths = async () => {
   const paths = areaList.map(area => {

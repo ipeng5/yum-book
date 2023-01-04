@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { auth } from '../firebase/config';
 import {
   signInWithEmailAndPassword,
   fetchSignInMethodsForEmail,
 } from 'firebase/auth';
 import { UserAuth } from '../context/AuthContext';
+import { auth } from '../firebase/config';
 
 export const useEmailLogin = () => {
   const router = useRouter();

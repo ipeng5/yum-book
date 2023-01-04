@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { motion } from 'framer-motion';
+import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
+import { BsInfoCircle, BsPlayFill, BsCheck2 } from 'react-icons/bs';
 import { UserAuth } from '../../context/AuthContext';
 import { useFirestore } from '../../hooks/useFirestore';
 import { useFavCollection } from '../../hooks/useFavCollection';
 import { useModal } from '../../hooks/useModal';
-import { Modal } from '../../components/modals/Modal';
-import { LoginModal } from '../../components/modals/LoginModal';
-import Error from '../../components/Error';
-import { motion } from 'framer-motion';
-import { MdFavoriteBorder, MdFavorite } from 'react-icons/md';
-import { BsInfoCircle, BsPlayFill, BsCheck2 } from 'react-icons/bs';
+import Modal from '../../components/modal/Modal';
+import LoginModal from '../../components/modal/LoginModal';
+import Error from '../../components/view/Error';
 
 function Details() {
   const [meal, setMeal] = useState([]);
@@ -37,7 +37,7 @@ function Details() {
           setNotFound(false);
         } else setNotFound(true);
       } catch (err) {
-        console.log(err);
+        console.log(err.message);
       }
     };
     fetchDetails();

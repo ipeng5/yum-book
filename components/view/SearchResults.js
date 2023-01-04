@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
-import MealCard from '../components/MealCard';
 import { motion } from 'framer-motion';
+import MealCard from './MealCard';
 
 function SearchResults({ searchInput }) {
   const [recipeList, setRecipeList] = useState([]);
@@ -16,7 +16,7 @@ function SearchResults({ searchInput }) {
         const data = await res.json();
         setRecipeList(data.meals);
       } catch (err) {
-        console.log(err);
+        console.log(err.message);
       }
     };
     fetchFilteredRecipes();

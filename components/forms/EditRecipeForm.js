@@ -1,13 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { useFirestore } from '../../hooks/useFirestore';
+import { nanoid } from 'nanoid';
+import { MdAdd } from 'react-icons/md';
 import IngredientInput from './IngredientInput';
 import StepsInput from './StepsInput';
 import MealImageInput from './MealImageInput';
-import { dummyImg } from '../../lib/dummyImg';
 import { useStorage } from '../../hooks/useStorage';
-import { nanoid } from 'nanoid';
-import { MdAdd } from 'react-icons/md';
+import { useFirestore } from '../../hooks/useFirestore';
 
 function AddRecipeForm({ meal, closeModal, uid }) {
   const [updatedRecipe, setUpdatedRecipe] = useState({
@@ -17,7 +16,6 @@ function AddRecipeForm({ meal, closeModal, uid }) {
     ingredients: meal.ingredients,
     steps: meal.steps,
   });
-
   const [imgURL, setImgURL] = useState(meal.strMealThumb);
   const { deleteImage } = useStorage();
   const { updateRecipe } = useFirestore();
@@ -81,13 +79,6 @@ function AddRecipeForm({ meal, closeModal, uid }) {
     });
   };
 
-  useEffect(() => {
-    setUpdatedRecipe(prevValues => ({
-      ...prevValues,
-      strMealThumb: imgURL,
-    }));
-  }, [imgURL]);
-
   const handleCancel = e => {
     e.preventDefault();
     closeModal();
@@ -100,6 +91,13 @@ function AddRecipeForm({ meal, closeModal, uid }) {
     closeModal();
     deleteImage(meal.strMealThumb);
   };
+
+  useEffect(() => {
+    setUpdatedRecipe(prevValues => ({
+      ...prevValues,
+      strMealThumb: imgURL,
+    }));
+  }, [imgURL]);
 
   return (
     <form

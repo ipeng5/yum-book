@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export function LoginModal({ closeModal }) {
+function LoginModal({ closeModal }) {
   return (
     <div className="bg-white px-20 py-10 rounded flex flex-col justify-center items-center gap-6 shadow-xl">
       <p className="text-2xl">Please login first</p>
@@ -15,3 +15,5 @@ export function LoginModal({ closeModal }) {
     </div>
   );
 }
+
+export default LoginModal;

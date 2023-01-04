@@ -1,13 +1,14 @@
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { FcGoogle } from 'react-icons/fc';
+import { motion } from 'framer-motion';
 import { UserAuth } from '../context/AuthContext';
 import { useGoogleLogin } from '../hooks/useGoogleLogin';
 import { useEmailLogin } from '../hooks/useEmailLogin';
 import LoginForm from '../components/forms/LoginForm';
-import { useRouter } from 'next/router';
-import { FcGoogle } from 'react-icons/fc';
-import { motion } from 'framer-motion';
+
 
 function Login() {
   const [values, setValues] = useState({

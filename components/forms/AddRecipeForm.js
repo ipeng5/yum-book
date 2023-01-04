@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import IngredientInput from './IngredientInput';
-import { useFirestore } from '../../hooks/useFirestore';
-import MealImageInput from './MealImageInput';
-import { dummyImg } from '../../lib/dummyImg';
-import StepsInput from './StepsInput';
 import { nanoid } from 'nanoid';
 import { MdAdd } from 'react-icons/md';
+import IngredientInput from './IngredientInput';
+import MealImageInput from './MealImageInput';
+import StepsInput from './StepsInput';
+import { useFirestore } from '../../hooks/useFirestore';
+import { dummyImg } from '../../lib/dummyImg';
+
 
 function AddRecipeForm({ uid }) {
   const router = useRouter();
@@ -77,18 +78,18 @@ function AddRecipeForm({ uid }) {
     });
   };
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    addRecipeToUploads({ ...uploadedRecipe, uid });
+    router.push(`/my-recipes`);
+  };
+
   useEffect(() => {
     setUploadedRecipe(prevValues => ({
       ...prevValues,
       strMealThumb: imgURL,
     }));
   }, [imgURL]);
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    addRecipeToUploads({ ...uploadedRecipe, uid });
-    router.push(`/my-recipes`);
-  };
 
   return (
     <form className="flex flex-col space-y-6 text-lg" onSubmit={handleSubmit}>
@@ -99,7 +100,6 @@ function AddRecipeForm({ uid }) {
             ∗
           </span>
         </p>
-
         <input
           type="text"
           required

@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { db } from '../firebase/config';
 import {
   collection,
   query,
@@ -7,6 +6,7 @@ import {
   onSnapshot,
   orderBy,
 } from 'firebase/firestore';
+import { db } from '../firebase/config';
 
 export const useFavCollection = user => {
   if (!user) return [];

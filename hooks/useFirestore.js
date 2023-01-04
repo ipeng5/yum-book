@@ -1,5 +1,3 @@
-import { useReducer, useEffect, useState } from 'react';
-import { db } from '../firebase/config';
 import {
   collection,
   addDoc,
@@ -8,11 +6,11 @@ import {
   doc,
   serverTimestamp,
 } from 'firebase/firestore';
+import { db } from '../firebase/config';
 
 export const useFirestore = () => {
   const addRecipeToUploads = async doc => {
     try {
-      console.log(doc);
       await addDoc(collection(db, 'recipes'), {
         ...doc,
         createdAt: serverTimestamp(),

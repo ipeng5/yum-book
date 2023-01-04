@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
-import { auth } from '../firebase/config';
 import { UserAuth } from '../context/AuthContext';
+import { auth } from '../firebase/config';
 
 export const useSignup = () => {
   const router = useRouter();

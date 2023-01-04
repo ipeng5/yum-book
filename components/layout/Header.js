@@ -1,9 +1,9 @@
 import Link from 'next/link';
-import SearchBar from './SearchBar.js';
-import { UserAuth } from '../context/AuthContext';
-import { useLogout } from '../hooks/useLogout';
-import Dropdown from './Dropdown';
 import { MdLogin } from 'react-icons/md';
+import Dropdown from '../ui/Dropdown';
+import SearchBar from '../ui/SearchBar';
+import { UserAuth } from '../../context/AuthContext';
+import { useLogout } from '../../hooks/useLogout';
 
 function Header() {
   const { user } = UserAuth();

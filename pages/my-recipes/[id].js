@@ -1,18 +1,18 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { db } from '../../firebase/config';
 import { doc, onSnapshot } from 'firebase/firestore';
-import { useFirestore } from '../../hooks/useFirestore';
-import { useStorage } from '../../hooks/useStorage';
-import { useModal } from '../../hooks/useModal';
-import { Modal } from '../../components/modals/Modal';
-import { EditModal } from '../../components/modals/EditModal';
-import Error from '../../components/Error';
 import { motion } from 'framer-motion';
 import { MdDeleteOutline, MdOutlineModeEditOutline } from 'react-icons/md';
 import { BsCheck2 } from 'react-icons/bs';
+import { db } from '../../firebase/config';
+import { useFirestore } from '../../hooks/useFirestore';
+import { useStorage } from '../../hooks/useStorage';
+import { useModal } from '../../hooks/useModal';
+import Modal from '../../components/modal/Modal';
+import EditModal from '../../components/modal/EditModal';
+import Error from '../../components/view/Error';
 
 function Details() {
   const [meal, setMeal] = useState([]);

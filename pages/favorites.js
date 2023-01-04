@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
-import MealCard from '../components/MealCard';
-import { UserAuth } from '../context/AuthContext';
-import { useFavCollection } from '../hooks/useFavCollection';
+import Head from 'next/head';
 import { motion } from 'framer-motion';
+import { useFavCollection } from '../hooks/useFavCollection';
+import MealCard from '../components/view/MealCard';
+import { UserAuth } from '../context/AuthContext';
 
 function favorites() {
   const { user, authIsReady } = UserAuth();
