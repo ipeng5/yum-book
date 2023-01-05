@@ -17,14 +17,14 @@ function DetailsHeader({
         <h1 className="text-5xl text-center leading-tight ">{meal.strMeal}</h1>
         <div className="flex space-x-8 text-2xl items-center">
           {source === 'api' && (
-            <p className="flex space -x-2">
+            <div className="flex space-x-2">
               <span>Area:</span>
               <Link
                 href={`/areas/${meal.strArea}`}
                 className="text-primary-normal hover:underline">
                 {meal.strArea}
               </Link>
-            </p>
+            </div>
           )}
           <div className="flex space-x-2">
             <span>Category:</span>

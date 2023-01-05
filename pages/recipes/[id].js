@@ -7,12 +7,12 @@ import { UserAuth } from '../../context/AuthContext';
 import { useFirestore } from '../../hooks/useFirestore';
 import { useFavCollection } from '../../hooks/useFavCollection';
 import { useModal } from '../../hooks/useModal';
-import Modal from '../../components/modal/Modal';
-import LoginModal from '../../components/modal/LoginModal';
-import Error from '../../components/view/Error';
-import DetailsHeader from '../../components/view/DetailsHeader';
-import DetailsIngredients from '../../components/view/DetailsIngredients';
-import DetailsSteps from '../../components/view/DetailsSteps';
+import Modal from '../../components/modals/Modal';
+import LoginModal from '../../components/modals/LoginModal';
+import Error from '../../components/views/Error';
+import DetailsHeader from '../../components/views/DetailsHeader';
+import DetailsIngredients from '../../components/views/DetailsIngredients';
+import DetailsSteps from '../../components/views/DetailsSteps';
 
 function Details() {
   const [meal, setMeal] = useState([]);

@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 import Head from 'next/head';
 import { motion } from 'framer-motion';
-import Filter from '../components/view/Filter';
-import SearchResults from '../components/view/SearchResults';
+import Filter from '../components/views/Filter';
+import SearchResults from '../components/views/SearchResults';
 import FilterCard from '../components/ui/FilterCard';
 import { areaList } from '../lib/filterList';
 

@@ -8,12 +8,12 @@ import { db } from '../../firebase/config';
 import { useFirestore } from '../../hooks/useFirestore';
 import { useStorage } from '../../hooks/useStorage';
 import { useModal } from '../../hooks/useModal';
-import Modal from '../../components/modal/Modal';
-import EditModal from '../../components/modal/EditModal';
-import Error from '../../components/view/Error';
-import DetailsHeader from '../../components/view/DetailsHeader';
-import DetailsIngredients from '../../components/view/DetailsIngredients';
-import DetailsSteps from '../../components/view/DetailsSteps';
+import Modal from '../../components/modals/Modal';
+import EditModal from '../../components/modals/EditModal';
+import Error from '../../components/views/Error';
+import DetailsHeader from '../../components/views/DetailsHeader';
+import DetailsIngredients from '../../components/views/DetailsIngredients';
+import DetailsSteps from '../../components/views/DetailsSteps';
 
 function Details() {
   const [meal, setMeal] = useState([]);
