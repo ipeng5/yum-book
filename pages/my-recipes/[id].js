@@ -69,7 +69,7 @@ function Details() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="min-h-[calc(100vh-250px)] mt-[150px]">
+          className="header-space">
           <Modal open={open} closeModal={closeModal}>
             <EditModal closeModal={closeModal} meal={meal} />
           </Modal>

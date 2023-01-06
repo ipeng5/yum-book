@@ -28,11 +28,11 @@ function myRecipes() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
-          className="min-h-[calc(100vh-250px)] mt-[150px] bg-white py-6 px-20 ">
-          <div className="py-4 max-w-screen-2xl mx-auto text-3xl flex space-x-4 items-center">
+          className="header-space bg-white main-padding">
+          <div className="py-4 content-width mx-auto list-title flex space-x-4 items-center">
             <span>My Recipes ({uploadedDocs?.length})</span>
           </div>
-          <div className="py-4 grid grid-cols-4 gap-10 max-w-screen-2xl mx-auto">
+          <div className="mealcard-grid">
             {uploadedDocs?.map(meal => (
               <MealCard meal={meal} key={meal.idDoc} />
             ))}

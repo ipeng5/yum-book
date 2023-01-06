@@ -25,10 +25,10 @@ function AddRecipe() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
-        className="min-h-[calc(100vh-275px)] mt-[150px] mb-[26px] mx-4 flex justify-center items-center">
+        className="min-h-[calc(100vh-205px)] lg:min-h-[calc(100vh-225px)] mt-[80px] lg:mt-[100px] mb-[26px] mx-4 flex justify-center items-center">
         {user && (
-          <div className="bg-white rounded space-y-10 shadow-md w-[1200px] p-14">
-            <h2 className="text-4xl text-primary-normal text-center font-semibold pb-4">
+          <div className="bg-white rounded space-y-10 shadow-md w-[1000px] p-14">
+            <h2 className="text-3xl text-primary-normal text-center font-semibold pb-4">
               Add recipe
             </h2>
             <AddRecipeForm uid={user.uid} />

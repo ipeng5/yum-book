@@ -23,6 +23,9 @@ module.exports = {
           normal: '#584E4A',
         },
       },
+      screens: {
+        xs: '380px',
+      },
     },
   },
   plugins: [],

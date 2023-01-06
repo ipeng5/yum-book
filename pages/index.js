@@ -31,14 +31,14 @@ const Home = ({ areaList, allCategories }) => {
         <title>Home | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="min-h-[calc(100vh-250px)] mt-[150px] bg-white py-6 px-20">
+      <main className="header-space bg-white main-padding">
         {query.search && <SearchResults searchInput={query.search} />}
         {!query.search && <Filter filter={filter} setFilter={setFilter} />}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="max-w-screen-2xl pt-4 pb-10 grid grid-cols-4 gap-10 mx-auto">
+          className="content-width pt-4 pb-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 lg:gap-4 xl:gap-6 mx-auto">
           {filter === 'category' &&
             !query.search &&
             allCategories.categories.map(category => (

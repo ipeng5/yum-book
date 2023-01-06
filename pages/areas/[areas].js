@@ -49,13 +49,13 @@ function Area({ area }) {
         <title>Meals by Area | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="min-h-[calc(100vh-250px)] mt-[150px] bg-white py-6 px-20 ">
-        <div className="py-4 max-w-screen-2xl mx-auto text-3xl flex space-x-4 items-center">
+      <main className="header-space bg-white main-padding">
+        <div className="py-4 content-width mx-auto list-title flex space-x-4 items-center">
           <span>
             {area.meals.length} recipes for "{router.query.areas}"
           </span>
         </div>
-        <div className="py-4 grid grid-cols-4 gap-10 max-w-screen-2xl mx-auto">
+        <div className="mealcard-grid">
           {currentMeals.map(meal => (
             <MealCard meal={meal} key={meal.idMeal} />
           ))}

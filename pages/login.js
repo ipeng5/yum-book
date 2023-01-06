@@ -9,7 +9,6 @@ import { useGoogleLogin } from '../hooks/useGoogleLogin';
 import { useEmailLogin } from '../hooks/useEmailLogin';
 import LoginForm from '../components/forms/LoginForm';
 
-
 function Login() {
   const [values, setValues] = useState({
     email: '',
@@ -48,12 +47,10 @@ function Login() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
-        className="min-h-[calc(100vh-250px)] mt-[150px] flex justify-center items-center">
+        className="header-space flex justify-center items-center py-6">
         {!user && (
-          <div className="bg-white rounded shadow-md w-[500px] p-14">
-            <h2 className="text-4xl text-primary-normal text-center font-semibold pb-4 mb-10">
-              Login
-            </h2>
+          <div className="bg-white rounded shadow-md w-72 sm:w-80 md:w-96 lg:w-[400px] 2xl:w-[500px] p-8 2xl:p-14">
+            <h2 className="form-title">Login</h2>
             <LoginForm
               values={values}
               handleSubmit={handleSubmit}
@@ -63,12 +60,14 @@ function Login() {
             />
             <button
               type="submit"
-              className="py-3 w-full rounded text-xl shadow-inner bg-[#fefefe] text-gray-500 border-2 border-gray-300 flex gap-4 justify-center items-center hover:bg-[#fcfcfc] transition mb-10 mt-4"
+              className="py-1.5 lg:py-2 w-full rounded shadow-inner bg-[#fefefe] text-gray-500 border-[1px] lg:border-2 border-gray-300 flex gap-2 lg:gap-4 justify-center items-center hover:bg-[#fcfcfc] transition mb-10 mt-2"
               onClick={googleSignIn}>
-              <FcGoogle className="text-2xl" />
-              <span>Sign in with Google</span>
+              <FcGoogle className="text-base md:text-lg xl:text-xl" />
+              <span className="text-sm md:text-base xl:text-lg">
+                Sign in with Google
+              </span>
             </button>
-            <div className="text-lg space-x-2">
+            <div className="text-sm md:text-base lg:text-lg xl:text-xl space-x-2">
               <span>No account?</span>
               <Link
                 href="/signup"

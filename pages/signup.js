@@ -63,12 +63,10 @@ function Signup() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
-        className="min-h-[calc(100vh-250px)] mt-[150px] flex justify-center items-center">
+        className="header-space flex justify-center items-center py-6">
         {!user && (
-          <div className="bg-white rounded space-y-10 shadow-md w-[500px] p-14">
-            <h2 className="text-4xl text-primary-normal text-center font-semibold pb-4">
-              Sign up
-            </h2>
+          <div className="bg-white rounded space-y-2 lg:space-y-4 xl:space-y-10 shadow-md w-72 sm:w-80 md:w-96 lg:w-[400px] xl:w-[500px] p-8 xl:p-14">
+            <h2 className="form-title">Sign up</h2>
             <SignupForm
               values={values}
               handleSubmit={handleSubmit}
@@ -79,7 +77,7 @@ function Signup() {
               isMatch={isMatch}
             />
 
-            <div className="text-lg space-x-2">
+            <div className="text-sm md:text-base lg:text-lg xl:text-xl space-x-2">
               <span>Already a user?</span>
               <Link
                 href="/login"

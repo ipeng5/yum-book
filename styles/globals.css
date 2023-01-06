@@ -13,6 +13,14 @@
 }
 
 @layer components {
+  .content-width {
+    @apply max-w-[1200px];
+  }
+
+  .header-space {
+    @apply min-h-[calc(100vh-180px)] lg:min-h-[calc(100vh-200px)] mt-[80px] lg:mt-[100px];
+  }
+
   .header-link {
     @apply flex items-center space-x-2 hover:bg-gray-200 py-2 px-3 rounded transition;
   }
@@ -25,20 +33,44 @@
     @apply text-lg py-4 px-6 flex gap-4 items-center  bg-gray-100 transition;
   }
 
+  .main-padding {
+    @apply px-10 md:px-14 lg:px-20 py-6;
+  }
+
+  .mealcard-grid {
+    @apply content-width py-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mx-auto;
+  }
+
+  .list-title {
+    @apply text-2xl xl:text-3xl;
+  }
+
+  .mealcard-text {
+    @apply text-2xl xl:text-3xl;
+  }
+
   .filter {
-    @apply px-6 py-2 rounded-lg bg-gray-light hover:bg-gray-200 transition;
+    @apply px-2 md:px-4 lg:px-6 py-[2px] lg:py-2 rounded lg:rounded-lg bg-gray-light hover:bg-gray-200 transition;
   }
 
   .filter-active {
-    @apply px-6 py-2 rounded-lg transition bg-primary-light text-primary-normal;
+    @apply px-2 md:px-4 lg:px-6 py-[2px] lg:py-2 rounded lg:rounded-lg transition bg-primary-light text-primary-normal;
+  }
+
+  .form-title {
+    @apply text-base lg:text-lg xl:text-xl 2xl:text-3xl text-primary-normal text-center font-semibold pb-4 xl:mb-6 2xl:mb-10;
+  }
+
+  .form-label {
+    @apply text-[10px] md:text-xs xl:text-sm text-gray-400;
   }
 
   .form-button {
-    @apply bg-primary-normal rounded py-3 text-white text-xl shadow-inner hover:bg-primary-dark hover:border-primary-dark transition;
+    @apply bg-primary-normal rounded py-2 lg:py-3 text-white text-sm md:text-base xl:text-lg shadow-inner hover:bg-primary-dark hover:border-primary-dark transition;
   }
 
   .form-input {
-    @apply border-2 border-gray-300 bg-white rounded p-2 outline-primary-medium;
+    @apply border-[1px] lg:border-2 border-gray-300 bg-white rounded p-1.5 lg:p-2 outline-primary-medium text-sm md:text-base;
   }
 
   .icon-add {

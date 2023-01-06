@@ -12,8 +12,8 @@ function DetailsHeader({
   handleDelete,
 }) {
   return (
-    <section className=" bg-white flex flex-col  py-20 justify-center items-center gap-6">
-      <div className="flex flex-col items-center justify-center gap-10 max-w-[1500px] ">
+    <section className="bg-white flex flex-col  py-20 justify-center items-center gap-6">
+      <div className="content-width flex flex-col items-center justify-center gap-10">
         <h1 className="text-5xl text-center leading-tight ">{meal.strMeal}</h1>
         <div className="flex space-x-8 text-2xl items-center">
           {source === 'api' && (

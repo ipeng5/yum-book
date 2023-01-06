@@ -49,13 +49,13 @@ function Categories({ category }) {
         <title>Meals by Category | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className="min-h-[calc(100vh-250px)] mt-[150px] bg-white py-6 px-20 ">
-        <div className="py-4 max-w-screen-2xl mx-auto text-3xl flex space-x-4 items-center">
+      <main className="header-space bg-white main-padding">
+        <div className="py-4 content-width mx-auto list-title flex space-x-4 items-center">
           <span>
             {category.meals.length} recipes for "{router.query.categories}"
           </span>
         </div>
-        <div className="py-4 grid grid-cols-4 gap-10 max-w-screen-2xl mx-auto">
+        <div className="py-4 grid grid-cols-4 gap-6 content-width mx-auto">
           {currentMeals.map(meal => (
             <MealCard meal={meal} key={meal.idMeal} />
           ))}

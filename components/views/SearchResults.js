@@ -28,7 +28,7 @@ function SearchResults({ searchInput }) {
         <title>Recipes: {searchInput} | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="max-w-screen-2xl mx-auto py-4 text-3xl flex space-x-4 items-center">
+      <div className="content-width mx-auto py-4 list-title flex space-x-4 items-center">
         <span>
           {recipeList ? recipeList.length : 'No'} search results for "
           {searchInput}"
@@ -38,7 +38,7 @@ function SearchResults({ searchInput }) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
-        className="max-w-screen-2xl grid grid-cols-4 gap-10 py-4  mx-auto">
+        className="mealcard-grid">
         {recipeList?.map(meal => (
           <MealCard meal={meal} key={meal.idMeal} />
         ))}
