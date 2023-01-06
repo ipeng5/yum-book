@@ -16,7 +16,7 @@ function Header() {
       className={
         scrollPosition > 20
           ? 'fixed w-full flex justify-between items-center h-[60px] px-2 md:px-6 bg-gray-light z-10'
-          : 'fixed w-full flex justify-between items-center h-[80px] lg:h-[100px] px-4 md:px-6 lg:px-12 bg-gray-light '
+          : 'fixed w-full flex justify-between items-center h-[80px] lg:h-[100px] px-4 md:px-6 lg:px-12 bg-gray-light z-10'
       }>
       <Link href="/" className="flex items-center space-x-4 cursor-pointer">
         <img

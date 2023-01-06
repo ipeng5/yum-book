@@ -27,7 +27,7 @@ function Dropdown({ user, logout }) {
           )}
           {open && (
             <Menu.Items
-              className="flex flex-col absolute right-0 top-14 bg-white  rounded shadow-md z-50 w-56 outline-none"
+              className="flex flex-col absolute right-0 top-14 bg-white  rounded shadow-md w-56 outline-none"
               static>
               <Menu.Item>
                 {({ active }) => (
