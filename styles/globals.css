@@ -82,10 +82,10 @@
   }
 
   .modal-button-light {
-    @apply py-2 w-36 bg-[#ebebeb] rounded hover:bg-[#e2e2e2] shadow-inner;
+    @apply py-2 w-28 lg:w-36 bg-[#ebebeb] rounded hover:bg-[#e2e2e2] shadow-inner;
   }
 
   .modal-button-dark {
-    @apply py-2 w-36 bg-primary-normal text-white rounded hover:bg-primary-dark text-center shadow-inner;
+    @apply py-2 w-28 lg:w-36 bg-primary-normal text-white rounded hover:bg-primary-dark text-center shadow-inner;
   }
 }

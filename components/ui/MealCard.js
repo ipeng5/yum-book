@@ -19,9 +19,11 @@ function MealCard({ meal }) {
           <div className="absolute h-full w-full top-0 bg-black opacity-30 pointer-events-none"></div>
         )}
       </div>
-      <div className="h-[100px] relative">
-        <span className="absolute top-1/2 -translate-y-[50%] p-4 text-base xl:text-lg">
-          {meal.strMeal}
+      <div className="h-20 relative">
+        <span className="absolute top-1/2 -translate-y-[50%] p-4 text-base lg:text-lg">
+          {meal.strMeal.length > 50
+            ? `${meal.strMeal.substring(0, 45)}...`
+            : meal.strMeal}
         </span>
       </div>
     </Link>
