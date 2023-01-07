@@ -39,7 +39,7 @@ function Header() {
           Yum Book
         </span>
       </Link>
-      <nav className="flex flex-col items-end xs:flex-row space-x-2 md:space-x-4">
+      <nav className="flex flex-col items-end xs:items-center xs:flex-row space-x-2 md:space-x-4">
         <SearchBar />
         {!user && (
           <Link href="/login" className="header-link">
