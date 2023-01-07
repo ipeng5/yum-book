@@ -1,6 +1,6 @@
 function DetailsSteps({ stepsData, source }) {
   return (
-    <section className="bg-white  flex justify-center items-center px-4 xs:px-10 lg:px-20 py-14 lg:py-20">
+    <section className="bg-white  flex justify-center items-center px-8 xs:px-10 lg:px-20 py-14 lg:py-20">
       <div className="content-width">
         <h1 className="text-lg md:text-xl xl:text-2xl pb-4 md:pb-6 xl:pb-10 text-primary-normal">
           HOW TO COOK IT

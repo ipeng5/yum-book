@@ -1,6 +1,6 @@
 function DetailsIngredients({ meal, getIngredientsMarkup, singleIng }) {
   return (
-    <section className="flex justify-center items-center px-4 xs:px-10 lg:px-20 py-14 lg:py-20">
+    <section className="flex justify-center items-center px-8 xs:px-10 lg:px-20 py-14 lg:py-20">
       <div className="content-width flex flex-col lg:flex-row items-center lg:items-start space-x-0 lg:space-x-10 2xl:space-x-20 justify-center ">
         <img
           src={meal.strMealThumb}
