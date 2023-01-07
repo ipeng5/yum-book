@@ -14,8 +14,8 @@ function Dropdown({ user, logout }) {
       {({ open }) => (
         <>
           {user && (
-            <Menu.Button className="header-link cursor-pointer outline-none mt-0.5 sm:mt-0">
-              <span className="text-xs sm:text-base lg:text-lg">
+            <Menu.Button className="header-link cursor-pointer outline-none">
+              <span className="text-sm sm:text-base lg:text-lg">
                 Hi,{' '}
                 {user.displayName.length > 10
                   ? `${user.displayName.substring(0, 8)}...`

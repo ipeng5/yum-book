@@ -33,13 +33,13 @@ function Header() {
         <span
           className={
             scrollPosition > 20
-              ? 'text-3xl hidden md:block lg:text-4xl -translate-x-4 translate-y-[2px] lg:translate-y-[4px]'
-              : 'text-4xl hidden md:block lg:text-5xl -translate-x-2 translate-y-[2px] lg:translate-y-[4px]'
+              ? 'text-xl  lg:text-4xl -translate-x-6 lg:-translate-x-4 translate-y-[2px] lg:translate-y-[4px]'
+              : 'text-2xl  lg:text-5xl -translate-x-5 lg:-translate-x-2 translate-y-[2px] lg:translate-y-[4px]'
           }>
           Yum Book
         </span>
       </Link>
-      <nav className="flex flex-col items-end xs:items-center xs:flex-row space-x-2 md:space-x-4">
+      <nav className="flex flex-col items-end xs:items-center xs:flex-row space-x-2 md:space-x-4 space-y-2 xs:space-y-0">
         <SearchBar />
         {!user && (
           <Link href="/login" className="header-link">
