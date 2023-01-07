@@ -28,6 +28,7 @@ function AddRecipeForm({ uid }) {
   };
 
   const handleAddIngredient = () => {
+    if (uploadedRecipe.ingredients.length >= 20) return;
     setUploadedRecipe(preValues => ({
       ...preValues,
       ingredients: [...preValues.ingredients, { id: nanoid(), ingredient: '' }],
@@ -54,6 +55,7 @@ function AddRecipeForm({ uid }) {
   };
 
   const handleAddStep = () => {
+    if (uploadedRecipe.steps.length >= 20) return;
     setUploadedRecipe(preValues => ({
       ...preValues,
       steps: [...preValues.steps, { id: nanoid(), step: '' }],

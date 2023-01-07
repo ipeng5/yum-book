@@ -1,8 +1,8 @@
 function DetailsSteps({ stepsData, source }) {
   return (
-    <section className="bg-white py-20">
-      <div className="max-w-[1000px] mx-auto ">
-        <h1 className="text-3xl  pb-10 text-primary-normal text-center">
+    <section className="bg-white  flex justify-center items-center px-10 lg:px-20 py-14 lg:py-20">
+      <div className="content-width">
+        <h1 className="text-lg md:text-xl xl:text-2xl pb-4 md:pb-6 xl:pb-10 text-primary-normal">
           HOW TO COOK IT
         </h1>
         {source === 'api' && (
@@ -12,9 +12,11 @@ function DetailsSteps({ stepsData, source }) {
               .map((step, i) => {
                 if (step === '') return;
                 return (
-                  <li key={i} className="pb-4 flex text-xl relative">
-                    <div className="w-4 h-4 bg-primary-normal rounded-full absolute top-1"></div>
-                    <span className=" pl-8 rounded">{step}</span>
+                  <li
+                    key={i}
+                    className="pb-2 xl:pb-4 flex text-sm md:text-base lg:text-lg 2xl:text-xl relative">
+                    <div className="w-3 h-3 lg:w-4 lg:h-4 bg-primary-normal rounded-full absolute top-1"></div>
+                    <span className="pl-8 rounded">{step}</span>
                   </li>
                 );
               })}

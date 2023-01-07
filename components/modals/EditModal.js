@@ -5,7 +5,7 @@ function EditModal({ closeModal, meal }) {
   const { user } = UserAuth();
 
   return (
-    <div className="bg-white px-20 py-10 w-[1000px] flex flex-col justify-center items-center gap-6 shadow-xl">
+    <div className="mt-96 bg-white px-20 py-10 w-[1000px] flex flex-col justify-center items-center gap-6 shadow-xl">
       <h2 className="text-4xl text-primary-normal text-center font-semibold pb-4">
         Edit recipe
       </h2>

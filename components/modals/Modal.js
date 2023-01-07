@@ -30,7 +30,7 @@ function Modal({ open, closeModal, children }) {
           onClose={closeModal}
           static>
           <div
-            className="fixed inset-0 bg-black/40 flex justify-center items-center"
+            className="fixed overflow-y-scroll inset-0 bg-black/40 flex justify-center items-center"
             aria-hidden="true"
             {...backdrop}>
             <Dialog.Panel as={motion.div} {...modal}>

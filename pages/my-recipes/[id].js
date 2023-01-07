@@ -48,9 +48,11 @@ function Details() {
 
   const getIngredientsMarkup = () => {
     const markup = meal?.ingredients?.map((ing, i) => (
-      <li key={i} className="flex items-center gap-4 w-[350px] relative">
-        <BsCheck2 className="text-primary-normal text-3xl absolute" />
-        <span className="pl-12">{ing.ingredient}</span>
+      <li key={i} className="flex items-center gap-4 min-w-[300px] relative">
+        <BsCheck2 className="text-primary-normal text-lg xl:text-2xl absolute" />
+        <span className="pl-12 text-sm md:text-base lg:text-lg 2xl:text-xl">
+          {ing.ingredient}
+        </span>
       </li>
     ));
     return markup;

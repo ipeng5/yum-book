@@ -12,6 +12,7 @@ function IngredientInput({
       <input
         type="text"
         value={ing.ingredient}
+        maxLength="100"
         className="w-full form-input"
         onChange={e => handleChangeIngredient(e, ing.id)}
       />
