@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import EditRecipeForm from '../forms/EditRecipeForm';
 import { UserAuth } from '../../context/AuthContext';
 
@@ -5,12 +6,16 @@ function EditModal({ closeModal, meal }) {
   const { user } = UserAuth();
 
   return (
-    <div className="mt-96 bg-white px-20 py-10 w-[1000px] flex flex-col justify-center items-center gap-6 shadow-xl">
-      <h2 className="text-4xl text-primary-normal text-center font-semibold pb-4">
-        Edit recipe
-      </h2>
-      <EditRecipeForm closeModal={closeModal} meal={meal} uid={user.uid} />
-    </div>
+    <motion.main
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="w-full h-full flex justify-center items-center">
+      <div className="header-space bg-white rounded space-y-10 shadow-md w-[600px] lg:w-[800px] p-8 md:p-10 xl:p-14 mx-4">
+        <h2 className="form-title !pb-0">Edit recipe</h2>
+        <EditRecipeForm closeModal={closeModal} meal={meal} uid={user.uid} />
+      </div>
+    </motion.main>
   );
 }
 

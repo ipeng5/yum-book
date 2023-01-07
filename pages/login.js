@@ -47,7 +47,7 @@ function Login() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
-        className="header-space flex justify-center items-center py-6">
+        className="header-space flex justify-center items-center py-6 mx-4">
         {!user && (
           <div className="bg-white rounded shadow-md w-72 sm:w-80 md:w-96 lg:w-[400px] 2xl:w-[500px] p-8 2xl:p-14">
             <h2 className="form-title">Login</h2>

@@ -63,7 +63,7 @@ function Signup() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.3 }}
-        className="header-space flex justify-center items-center py-6">
+        className="header-space flex justify-center items-center py-6 mx-4">
         {!user && (
           <div className="bg-white rounded space-y-2 lg:space-y-4 xl:space-y-10 shadow-md w-72 sm:w-80 md:w-96 lg:w-[400px] xl:w-[500px] p-8 xl:p-14">
             <h2 className="form-title">Sign up</h2>

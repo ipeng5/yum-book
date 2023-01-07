@@ -95,9 +95,9 @@ function AddRecipeForm({ uid }) {
   return (
     <form className="flex flex-col space-y-6 text-lg" onSubmit={handleSubmit}>
       <label className="flex flex-col gap-1">
-        <p className="text-xl font-semibold relative">
+        <p className="text-base lg:text-lg xl:text-xl font-semibold relative">
           Title
-          <span className="text-primary-normal text-2xl absolute -translate-y-[10px]">
+          <span className="text-primary-normal text-base xl:text-xl absolute -translate-y-[10px]">
             ∗
           </span>
         </p>
@@ -111,12 +111,16 @@ function AddRecipeForm({ uid }) {
         />
       </label>
       <label className="flex flex-col gap-1">
-        <span className="text-xl font-semibold">Image</span>
+        <span className="text-base lg:text-lg xl:text-xl font-semibold">
+          Image
+        </span>
         <MealImageInput setImgURL={setImgURL} />
       </label>
       <fieldset className="space-y-2">
-        <legend className="flex gap-2 items-center text-xl">
-          <span className="w-[120px] font-semibold">Ingredients</span>
+        <legend className="flex gap-2 items-center">
+          <span className="w-24 lg:w-28 xl:w-[120px] text-base lg:text-lg xl:text-xl font-semibold">
+            Ingredients
+          </span>
           <div className="icon-add" onClick={handleAddIngredient}>
             <MdAdd />
           </div>
@@ -132,8 +136,10 @@ function AddRecipeForm({ uid }) {
         ))}
       </fieldset>
       <fieldset className="space-y-2">
-        <legend className="flex gap-2 items-center text-xl">
-          <span className="w-[120px] font-semibold">Directions</span>
+        <legend className="flex gap-2 items-center">
+          <span className="w-24 lg:w-28 xl:w-[120px] text-base lg:text-lg xl:text-x font-semibold">
+            Instructions
+          </span>
           <div className="icon-add" onClick={handleAddStep}>
             <MdAdd />
           </div>

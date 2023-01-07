@@ -14,7 +14,7 @@ function Header() {
   return (
     <header
       className={
-        scrollPosition > 20
+        scrollPosition > 5
           ? 'fixed w-full flex justify-between items-center h-[60px] px-2 md:px-6 bg-gray-light z-10'
           : 'fixed w-full flex justify-between items-center h-[80px] lg:h-[100px] px-4 md:px-6 lg:px-12 bg-gray-light z-10'
       }>
@@ -25,7 +25,9 @@ function Header() {
           width={60}
           height={60}
           className={
-            scrollPosition > 20 ? 'scale-[0.65]' : 'scale-[0.85] lg:scale-100'
+            scrollPosition > 5
+              ? 'scale-50 sm:scale-[0.65]'
+              : 'scale-[0.65] sm:scale-[0.85] lg:scale-100'
           }
         />
         <span
@@ -37,12 +39,12 @@ function Header() {
           Yum Book
         </span>
       </Link>
-      <nav className="flex space-x-2 md:space-x-4 text-base lg:text-xl">
+      <nav className="flex flex-col items-end xs:flex-row space-x-2 md:space-x-4">
         <SearchBar />
         {!user && (
           <Link href="/login" className="header-link">
-            <MdLogin className="h-6 w-6 fill-primary-normal" />
-            <span>Login</span>
+            <MdLogin className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 fill-primary-normal" />
+            <span className="text-xs sm:text-base lg:text-lg">Login</span>
           </Link>
         )}
         <Dropdown user={user} logout={logout} />

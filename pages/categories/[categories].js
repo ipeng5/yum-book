@@ -55,7 +55,7 @@ function Categories({ category }) {
             {category.meals.length} recipes for "{router.query.categories}"
           </span>
         </div>
-        <div className="py-4 grid grid-cols-4 gap-6 content-width mx-auto">
+        <div className="mealcard-grid">
           {currentMeals.map(meal => (
             <MealCard meal={meal} key={meal.idMeal} />
           ))}

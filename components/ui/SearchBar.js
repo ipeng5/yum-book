@@ -26,7 +26,7 @@ function SearchBar() {
       <input
         id="search-bar"
         type="text"
-        className="bg-transparent px-1 border-b-[1px] w-24 md:w-36 border-primary-medium outline-none focus:drop-shadow-sm focus:border-b-3 focus:border-primary-normal transition"
+        className="bg-transparent text-xs sm:text-base lg:text-lg px-1 border-b-[1px] w-16 sm:w-24 md:w-36 border-primary-medium outline-none focus:drop-shadow-sm focus:border-b-3 focus:border-primary-normal transition"
         value={searchInput}
         onChange={e =>
           setSearchInput(
@@ -37,7 +37,7 @@ function SearchBar() {
         }
       />
       <button type="submit">
-        <MdSearch className="h-5 w-5 md:h-6 md:w-6 fill-primary-normal" />
+        <MdSearch className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 fill-primary-normal" />
       </button>
     </form>
   );

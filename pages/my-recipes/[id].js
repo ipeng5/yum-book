@@ -24,6 +24,7 @@ function Details() {
   const { deleteImage } = useStorage();
   const [notFound, setNotFound] = useState(false);
   const [deleted, setDeleted] = useState(false);
+  const [singleIng, setSingleIng] = useState(true);
 
   useEffect(() => {
     const docRef = doc(db, 'recipes', id);
@@ -47,10 +48,11 @@ function Details() {
   };
 
   const getIngredientsMarkup = () => {
+    if (meal?.ingredients?.length > 1) setSingleIng(false);
     const markup = meal?.ingredients?.map((ing, i) => (
-      <li key={i} className="flex items-center gap-4 min-w-[300px] relative">
+      <li key={i} className="flex items-center gap-4 xs:min-w-[300px] relative">
         <BsCheck2 className="text-primary-normal text-lg xl:text-2xl absolute" />
-        <span className="pl-12 text-sm md:text-base lg:text-lg 2xl:text-xl">
+        <span className="pl-6 xs:pl-8 text-sm md:text-base lg:text-lg 2xl:text-xl">
           {ing.ingredient}
         </span>
       </li>
@@ -66,15 +68,15 @@ function Details() {
       </Head>
 
       {!deleted && notFound && <Error />}
-      {!deleted && !notFound && (
+      {!deleted && !notFound && open && (
+        <EditModal closeModal={closeModal} meal={meal} />
+      )}
+      {!deleted && !notFound && !open && (
         <motion.main
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
           className="header-space">
-          <Modal open={open} closeModal={closeModal}>
-            <EditModal closeModal={closeModal} meal={meal} />
-          </Modal>
           <DetailsHeader
             meal={meal}
             source="firestore"
@@ -85,6 +87,7 @@ function Details() {
             meal={meal}
             getIngredientsMarkup={getIngredientsMarkup}
             source="firestore"
+            singleIng={singleIng}
           />
           <DetailsSteps stepsData={meal.steps} source="firestore" />
         </motion.main>

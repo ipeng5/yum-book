@@ -22,19 +22,19 @@
   }
 
   .header-link {
-    @apply flex items-center space-x-2 hover:bg-gray-200 py-2 px-3 rounded transition;
+    @apply flex items-center space-x-2 hover:bg-gray-200 py-1 sm:py-2 px-2 sm:px-3 rounded transition;
   }
 
   .dropdown-link {
-    @apply text-lg py-4 px-6 flex gap-4 items-center   transition;
+    @apply py-3 lg:py-4 px-4 lg:px-6 flex gap-4 items-center   transition;
   }
 
   .dropdown-link-active {
-    @apply text-lg py-4 px-6 flex gap-4 items-center  bg-gray-100 transition;
+    @apply py-3 lg:py-4 px-4 lg:px-6 flex gap-4 items-center  bg-gray-100 transition;
   }
 
   .main-padding {
-    @apply px-6 md:px-14 lg:px-20 py-6;
+    @apply px-4 xs:px-6 md:px-14 lg:px-20 py-6;
   }
 
   .mealcard-grid {
@@ -42,7 +42,7 @@
   }
 
   .list-title {
-    @apply text-2xl xl:text-3xl;
+    @apply text-base xs:text-lg sm:text-xl lg:text-2xl xl:text-3xl;
   }
 
   .mealcard-text {
@@ -58,7 +58,7 @@
   }
 
   .form-title {
-    @apply text-base lg:text-lg xl:text-xl 2xl:text-3xl text-primary-normal text-center font-semibold pb-4 xl:mb-6 2xl:mb-10;
+    @apply text-xl 2xl:text-3xl text-primary-normal text-center font-semibold pb-4 xl:mb-6 2xl:mb-10;
   }
 
   .form-label {
@@ -74,18 +74,18 @@
   }
 
   .icon-add {
-    @apply w-8 h-8 text-[1.8rem] rounded flex justify-center items-center text-primary-normal cursor-pointer hover:bg-primary-light  transition;
+    @apply w-6 h-6 xl:w-8 xl:h-8 text-[1.8rem] rounded flex justify-center items-center text-primary-normal cursor-pointer hover:bg-primary-light  transition;
   }
 
   .icon-remove {
-    @apply w-10 h-10 text-3xl rounded bg-transparent font-thin flex justify-center cursor-pointer hover:bg-gray-100  transition;
+    @apply w-10 h-8 lg:h-10 text-lg lg:text-2xl 2xl:text-3xl rounded bg-transparent font-thin flex justify-center items-center cursor-pointer hover:bg-gray-100  transition;
   }
 
   .modal-button-light {
-    @apply py-2 w-28 lg:w-36 bg-[#ebebeb] rounded hover:bg-[#e2e2e2] shadow-inner;
+    @apply py-2 w-20 xs:w-24 lg:w-36 bg-[#ebebeb] rounded text-xs xs:text-sm md:text-base xl:text-lg hover:bg-[#e2e2e2] shadow-inner;
   }
 
   .modal-button-dark {
-    @apply py-2 w-28 lg:w-36 bg-primary-normal text-white rounded hover:bg-primary-dark text-center shadow-inner;
+    @apply py-2 w-20 xs:w-24 lg:w-36 bg-primary-normal text-white rounded text-xs xs:text-sm md:text-base xl:text-lg hover:bg-primary-dark text-center shadow-inner;
   }
 }

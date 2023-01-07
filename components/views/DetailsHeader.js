@@ -12,12 +12,12 @@ function DetailsHeader({
   handleDelete,
 }) {
   return (
-    <section className="bg-white flex flex-col  py-14 lg:py-20 justify-center items-center gap-6">
+    <section className="main-padding bg-white flex flex-col  py-14 lg:py-20 justify-center items-center gap-6">
       <div className="content-width flex flex-col items-center justify-center gap-8 lg:gap-10">
-        <h1 className="text-2xl lg:text-3xl 2xl:text-4xl text-center leading-tight ">
+        <h1 className="text-lg md:text-2xl lg:text-3xl 2xl:text-4xl text-center leading-tight ">
           {meal.strMeal}
         </h1>
-        <div className="flex space-x-4 lg:space-x-8 text-sm md:text-base lg:text-lg 2xl:text-xl items-center">
+        <div className="flex flex-col xs:flex-row space-y-2 xs:space-y-0 xs:space-x-4 lg:space-x-8 text-sm md:text-base lg:text-lg 2xl:text-xl items-center">
           {source === 'api' && (
             <div className="flex space-x-2">
               <span>Area:</span>
@@ -66,13 +66,13 @@ function DetailsHeader({
           )}
         </div>
         {source === 'api' && (
-          <div className="flex gap-4 lg:gap-6">
+          <div className="flex flex-col xs:flex-row gap-4 lg:gap-6">
             {meal.strSource && (
               <a
                 href={meal.strSource}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 border-2 border-gray-400 hover:bg-gray-50 px-2 xl:px-4 py-1 lg:py-1.5 xl:py-2 shadow-inner rounded transition">
+                className="flex justify-center items-center gap-2 border-[1px] xs:border-2 border-gray-400 hover:bg-gray-50 px-2 xl:px-4 py-2 xs:py-1 lg:py-1.5 xl:py-2 shadow-inner rounded transition">
                 <BsInfoCircle />
                 <span className="text-xs md:text-sm lg:text-base xl:text-lg">
                   More Info

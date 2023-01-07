@@ -6,9 +6,10 @@ function IngredientInput({
 }) {
   return (
     <div className="flex gap-2 items-center">
-      <span className="w-36 text-gray-400">
-        Ingredient&nbsp;&nbsp;{index + 1}
-      </span>
+      <div className="w-6 md:w-36 text-gray-400 text-sm md:text-base xl:text-lg">
+        <span className="hidden md:inline">Ingredient</span>&nbsp;&nbsp;
+        {index + 1}
+      </div>
       <input
         type="text"
         value={ing.ingredient}

@@ -30,6 +30,7 @@ function AddRecipeForm({ meal, closeModal, uid }) {
   };
 
   const handleAddIngredient = () => {
+    if (updatedRecipe.ingredients.length >= 20) return;
     setUpdatedRecipe(preValues => ({
       ...preValues,
       ingredients: [...preValues.ingredients, { id: nanoid(), ingredient: '' }],
@@ -66,6 +67,7 @@ function AddRecipeForm({ meal, closeModal, uid }) {
   };
 
   const handleAddStep = () => {
+    if (updatedRecipe.steps.length >= 20) return;
     setUpdatedRecipe(preValues => ({
       ...preValues,
       steps: [...preValues.steps, { id: nanoid(), step: '' }],
@@ -104,9 +106,9 @@ function AddRecipeForm({ meal, closeModal, uid }) {
       className="flex flex-col space-y-6 text-lg w-full"
       onSubmit={e => e.preventDefault()}>
       <label className="flex flex-col gap-1">
-        <p className="text-xl font-semibold relative">
+        <p className="w-24 lg:w-28 xl:w-[120px] text-base lg:text-lg xl:text-x font-semibold">
           Title
-          <span className="text-primary-normal text-2xl absolute -translate-y-[10px]">
+          <span className="text-primary-normal text-base xl:text-xl absolute -translate-y-[10px]">
             ∗
           </span>
         </p>
@@ -122,12 +124,16 @@ function AddRecipeForm({ meal, closeModal, uid }) {
         />
       </label>
       <label className="flex flex-col gap-1">
-        <span className="text-xl font-semibold">Image</span>
+        <span className="w-24 lg:w-28 xl:w-[120px] text-base lg:text-lg xl:text-x font-semibold">
+          Image
+        </span>
         <MealImageInput setImgURL={setImgURL} />
       </label>
       <fieldset className="space-y-2">
         <legend className="flex gap-2 items-center text-xl">
-          <span className="w-[120px] font-semibold">Ingredients</span>
+          <span className="w-24 lg:w-28 xl:w-[120px] text-base lg:text-lg xl:text-x font-semibold">
+            Ingredients
+          </span>
           <div className="icon-add" onClick={handleAddIngredient}>
             <MdAdd />
           </div>
@@ -144,7 +150,9 @@ function AddRecipeForm({ meal, closeModal, uid }) {
       </fieldset>
       <fieldset className="space-y-2">
         <legend className="flex gap-2 items-center text-xl">
-          <span className="w-[120px] font-semibold">Directions</span>
+          <span className="w-24 lg:w-28 xl:w-[120px] text-base lg:text-lg xl:text-x font-semibold">
+            Instructions
+          </span>
           <div className="icon-add" onClick={handleAddStep}>
             <MdAdd />
           </div>
@@ -159,7 +167,7 @@ function AddRecipeForm({ meal, closeModal, uid }) {
           />
         ))}
       </fieldset>
-      <div className="flex m-auto space-x-10 !mt-10">
+      <div className="flex m-auto space-x-4 lg:space-x-10 !mt-10">
         <button className="modal-button-light" onClick={handleCancel}>
           Cancel
         </button>

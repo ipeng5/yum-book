@@ -73,9 +73,9 @@ function Details() {
         ingredients.push(
           <li
             key={i}
-            className="flex items-center gap-4 min-w-[300px] relative">
+            className="flex items-center gap-4 xs:min-w-[300px] relative">
             <BsCheck2 className="text-primary-normal text-lg xl:text-2xl absolute" />
-            <span className="pl-12 text-sm md:text-base lg:text-lg 2xl:text-xl">
+            <span className="pl-6 xs:pl-8 text-sm md:text-base lg:text-lg 2xl:text-xl">
               {meal[`strMeasure${i}`].toLowerCase()} {meal[`strIngredient${i}`]}
             </span>
           </li>
@@ -116,6 +116,7 @@ function Details() {
             meal={meal}
             getIngredientsMarkup={getIngredientsMarkup}
             source="api"
+            singleIng={false}
           />
           <DetailsSteps stepsData={stepsArr} source="api" />
         </motion.main>

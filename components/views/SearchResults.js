@@ -28,7 +28,7 @@ function SearchResults({ searchInput }) {
         <title>Recipes: {searchInput} | Yum Book</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="content-width mx-auto py-4 list-title flex space-x-4 items-center">
+      <div className="content-width list-title mx-auto py-4 flex space-x-4 items-center">
         <span>
           {recipeList ? recipeList.length : 'No'} search results for "
           {searchInput}"

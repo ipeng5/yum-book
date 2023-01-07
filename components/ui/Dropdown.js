@@ -14,20 +14,25 @@ function Dropdown({ user, logout }) {
       {({ open }) => (
         <>
           {user && (
-            <Menu.Button className="header-link cursor-pointer outline-none text-base lg:text-lg">
-              Hi, {user.displayName}
+            <Menu.Button className="header-link cursor-pointer outline-none mt-0.5 sm:mt-0">
+              <span className="text-xs sm:text-base lg:text-lg">
+                Hi,{' '}
+                {user.displayName.length > 10
+                  ? `${user.displayName.substring(0, 8)}...`
+                  : user.displayName}
+              </span>
               <RiArrowDownSLine
                 className={
                   open
-                    ? 'text-3xl text-primary-normal rotate-180'
-                    : 'text-3xl text-primary-normal'
+                    ? 'text-base sm:text-2xl lg:text-3xl text-primary-normal rotate-180'
+                    : 'text-base sm:text-2xl lg:text-3xl text-primary-normal'
                 }
               />
             </Menu.Button>
           )}
           {open && (
             <Menu.Items
-              className="flex flex-col absolute right-0 top-14 bg-white rounded shadow-md w-44 lg:w-56 outline-none border-[1px] border-gray-200"
+              className="flex flex-col absolute right-0 top-10 md:top-14 bg-white rounded shadow-md w-36 sm:w-44 lg:w-56 outline-none border-[1px] border-gray-200"
               static>
               <Menu.Item>
                 {({ active }) => (
@@ -36,8 +41,10 @@ function Dropdown({ user, logout }) {
                     className={`${
                       active ? 'dropdown-link-active' : 'dropdown-link'
                     }`}>
-                    <MdLibraryAdd className="text-xl lg:text-2xl text-gray-500" />
-                    <span className="text-sm lg:text-base">Add recipe</span>
+                    <MdLibraryAdd className="text-sm sm:text-base lg:text-xl 2xl:text-2xl text-gray-500" />
+                    <span className="text-xs xs:text-sm lg:text-base">
+                      Add recipe
+                    </span>
                   </Link>
                 )}
               </Menu.Item>
@@ -48,8 +55,10 @@ function Dropdown({ user, logout }) {
                     className={`${
                       active ? 'dropdown-link-active' : 'dropdown-link'
                     }`}>
-                    <MdFavorite className="text-xl lg:text-2xl text-gray-500" />
-                    <span className="text-sm lg:text-base">Favorites</span>
+                    <MdFavorite className="text-sm sm:text-base lg:text-xl 2xl:text-2xl text-gray-500" />
+                    <span className="text-xs xs:text-sm lg:text-base">
+                      Favorites
+                    </span>
                   </Link>
                 )}
               </Menu.Item>
@@ -60,8 +69,10 @@ function Dropdown({ user, logout }) {
                     className={`${
                       active ? 'dropdown-link-active' : 'dropdown-link'
                     }`}>
-                    <MdAccountBox className="text-xl lg:text-2xl text-gray-500" />
-                    <span className="text-sm lg:text-base">My Recipes</span>
+                    <MdAccountBox className="text-sm sm:text-base lg:text-xl 2xl:text-2xl text-gray-500" />
+                    <span className="text-xs xs:text-sm lg:text-base">
+                      My Recipes
+                    </span>
                   </Link>
                 )}
               </Menu.Item>
@@ -72,8 +83,10 @@ function Dropdown({ user, logout }) {
                     className={`${
                       active ? 'dropdown-link-active' : 'dropdown-link'
                     }`}>
-                    <MdLogout className="text-xl lg:text-2xl text-gray-500" />
-                    <span className="text-sm lg:text-base">Logout</span>
+                    <MdLogout className="text-sm sm:text-base lg:text-xl 2xl:text-2xl text-gray-500" />
+                    <span className="text-xs xs:text-sm lg:text-base">
+                      Logout
+                    </span>
                   </button>
                 )}
               </Menu.Item>

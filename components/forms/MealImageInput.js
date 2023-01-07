@@ -45,7 +45,7 @@ function MealImageInput({ setImgURL }) {
 
   return (
     <div
-      className="flex justify-center h-24 gap-4 items-center text-gray-500 bg-white border-2 border-dashed border-gray-400 rounded cursor-pointer hover:bg-gray-50"
+      className="flex justify-center h-24 gap-4 items-center text-gray-500 bg-white border-2 border-dashed border-gray-400 rounded cursor-pointer hover:bg-gray-50 px-4"
       {...getRootProps({
         style,
       })}>
@@ -59,16 +59,18 @@ function MealImageInput({ setImgURL }) {
           className="rounded w-24 h-16 object-cover"
         />
       )}
-      <div className="flex gap-2">
+      <>
         <input {...getInputProps()} />
         {!isUploading && (
-          <>
-            <MdUploadFile className="text-3xl text-gray-400" />
-            <p>Drag and drop, or click to select an image</p>
-          </>
+          <div className="flex gap-2 items-center">
+            <MdUploadFile className="text-2xl xl:text-3xl text-gray-400" />
+            <p className="text-xs lg:text-base">
+              Drag and drop, or click to select an image
+            </p>
+          </div>
         )}
         {isUploading && <p>Uploading image...</p>}
-      </div>
+      </>
     </div>
   );
 }

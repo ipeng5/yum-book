@@ -29,7 +29,7 @@ function favorites() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.3 }}
           className="mt-[80px] lg:mt-[100px] min-h-[calc(100vh-180px)] lg:min-h-[calc(100vh-200px)] bg-white main-padding">
-          <div className="py-4 content-width mx-auto text-3xl flex space-x-4 items-center">
+          <div className="list-title content-width py-4 mx-auto flex space-x-4 items-center">
             <span>Favorites ({favDocs?.length})</span>
           </div>
           <div className="mealcard-grid">
