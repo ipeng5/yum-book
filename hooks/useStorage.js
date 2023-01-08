@@ -3,7 +3,6 @@ import {
   ref,
   uploadBytes,
   getDownloadURL,
-  uploadBytesResumable,
   deleteObject,
 } from 'firebase/storage';
 import { nanoid } from 'nanoid';
@@ -13,14 +12,11 @@ import { dummyImg } from '../lib/dummyImg';
 export const useStorage = () => {
   const [isUploading, setIsUploading] = useState(false);
 
-  const uploadImage = (acceptedFiles, setState, uploadFolder) => {
+  const uploadImage = (acceptedFiles, setState) => {
     setIsUploading(true);
     const imageUpload = acceptedFiles[0];
     if (imageUpload === null) return;
-    const imageRef = ref(
-      storage,
-      `${uploadFolder}/${imageUpload.name + nanoid()}`
-    );
+    const imageRef = ref(storage, `images/${imageUpload.name + nanoid()}`);
 
     uploadBytes(imageRef, imageUpload).then(() => {
       getDownloadURL(imageRef).then(url => {
