@@ -25,7 +25,7 @@ function AddRecipeForm({ meal, closeModal, uid }) {
   const handleTitleInput = e => {
     setUpdatedRecipe(prevValues => ({
       ...prevValues,
-      [e.target.name]: e.target.value,
+      strMeal: e.target.value,
     }));
   };
 
@@ -89,8 +89,8 @@ function AddRecipeForm({ meal, closeModal, uid }) {
 
   const handleSubmit = e => {
     e.preventDefault();
-    updateRecipe(id, { ...updatedRecipe, uid });
-    closeModal();
+    // updateRecipe(id, { ...updatedRecipe, uid });
+    // closeModal();
     deleteImage(meal.strMealThumb);
   };
 

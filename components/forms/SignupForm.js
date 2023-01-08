@@ -79,7 +79,7 @@ function SignupForm({
       )}
       {isPending && (
         <button className="form-button !mt-14 xl:!mt-20 !mb-6" disabled>
-          Loading
+          Loading...
         </button>
       )}
     </form>

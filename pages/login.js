@@ -67,7 +67,7 @@ function Login() {
                 Sign in with Google
               </span>
             </button>
-            <div className="text-sm md:text-base lg:text-lg xl:text-xl space-x-2">
+            <div className="text-sm md:text-base xl:text-lg space-x-2">
               <span>No account?</span>
               <Link
                 href="/signup"

@@ -77,7 +77,7 @@ function Signup() {
               isMatch={isMatch}
             />
 
-            <div className="text-sm md:text-base lg:text-lg xl:text-xl space-x-2">
+            <div className="text-sm md:text-base xl:text-lg space-x-2">
               <span>Already a user?</span>
               <Link
                 href="/login"

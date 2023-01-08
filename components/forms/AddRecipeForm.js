@@ -6,6 +6,7 @@ import IngredientInput from './IngredientInput';
 import MealImageInput from './MealImageInput';
 import StepsInput from './StepsInput';
 import { useFirestore } from '../../hooks/useFirestore';
+import { useStorage } from '../../hooks/useStorage';
 import { dummyImg } from '../../lib/dummyImg';
 
 function AddRecipeForm({ uid }) {
@@ -19,6 +20,7 @@ function AddRecipeForm({ uid }) {
   });
   const [imgURL, setImgURL] = useState(dummyImg);
   const { addRecipeToUploads } = useFirestore();
+  const { deleteImage } = useStorage();
 
   const handleTitleInput = e => {
     setUploadedRecipe(prevValues => ({
@@ -83,6 +85,12 @@ function AddRecipeForm({ uid }) {
     e.preventDefault();
     addRecipeToUploads({ ...uploadedRecipe, uid });
     router.push(`/my-recipes`);
+  };
+
+  const handleCancel = e => {
+    e.preventDefault();
+    router.push(`/my-recipes`);
+    if (imgURL) deleteImage(imgURL);
   };
 
   useEffect(() => {
@@ -154,9 +162,14 @@ function AddRecipeForm({ uid }) {
           />
         ))}
       </fieldset>
-      <button type="submit" className="form-button w-1/3 m-auto">
-        Add
-      </button>
+      <div className="flex m-auto space-x-4 lg:space-x-10">
+        <button className="modal-button-light" onClick={handleCancel}>
+          Cancel
+        </button>
+        <button type="submit" className="modal-button-dark">
+          Add
+        </button>
+      </div>
     </form>
   );
 }

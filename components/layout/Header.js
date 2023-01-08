@@ -33,8 +33,8 @@ function Header() {
         <span
           className={
             scrollPosition > 20
-              ? 'text-xl  lg:text-4xl -translate-x-6 lg:-translate-x-4 translate-y-[2px] lg:translate-y-[4px]'
-              : 'text-2xl  lg:text-5xl -translate-x-5 lg:-translate-x-2 translate-y-[2px] lg:translate-y-[4px]'
+              ? 'hidden sm:block text-xl  lg:text-4xl -translate-x-6 lg:-translate-x-4 translate-y-[2px] lg:translate-y-[4px]'
+              : 'hidden sm:block text-2xl  lg:text-5xl -translate-x-5 lg:-translate-x-2 translate-y-[2px] lg:translate-y-[4px]'
           }>
           Yum Book
         </span>

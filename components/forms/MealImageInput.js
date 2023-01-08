@@ -27,7 +27,7 @@ function MealImageInput({ setImgURL }) {
             })
           )
         );
-        uploadImage(acceptedFiles, setImgURL, 'Images');
+        uploadImage(acceptedFiles, setImgURL, 'images');
       },
     });
 

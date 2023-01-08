@@ -78,7 +78,7 @@
   }
 
   .icon-remove {
-    @apply w-10 h-8 lg:h-10 text-lg lg:text-2xl 2xl:text-3xl rounded bg-transparent font-thin flex justify-center items-center cursor-pointer hover:bg-gray-100  transition;
+    @apply w-10 h-8 lg:h-10 text-xl lg:text-2xl 2xl:text-3xl rounded bg-transparent font-thin flex justify-center items-center cursor-pointer hover:bg-gray-100  transition;
   }
 
   .modal-button-light {
