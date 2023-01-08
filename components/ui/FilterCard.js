@@ -6,7 +6,7 @@ function FilterCard({ filterData, filterType }) {
       href={
         filterType === 'area'
           ? `/areas/${filterData}`
-          : `/categories/${filterData}`
+          : `/categories/${filterData.strCategory}`
       }
       className="rounded-xl lg:rounded-2xl xl:rounded-3xl overflow-hidden h-24 md:h-32 lg:h-36  xl:h-44 relative shadow-xl cursor-pointer">
       <img

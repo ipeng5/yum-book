@@ -39,6 +39,11 @@ const Home = ({ areaList, allCategories }) => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
           className="content-width pt-4 pb-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 lg:gap-4 xl:gap-6 mx-auto">
+          {filter === 'area' &&
+            !query.search &&
+            areaList.map(area => (
+              <FilterCard filterData={area} filterType="area" key={area} />
+            ))}
           {filter === 'category' &&
             !query.search &&
             allCategories.categories.map(category => (
@@ -47,11 +52,6 @@ const Home = ({ areaList, allCategories }) => {
                 filterType="category"
                 key={category.idCategory}
               />
-            ))}
-          {filter === 'area' &&
-            !query.search &&
-            areaList.map(area => (
-              <FilterCard filterData={area} filterType="area" key={area} />
             ))}
         </motion.div>
       </main>
