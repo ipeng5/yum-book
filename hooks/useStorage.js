@@ -21,11 +21,10 @@ export const useStorage = () => {
       storage,
       `${uploadFolder}/${imageUpload.name + nanoid()}`
     );
-    const uploadTask = uploadBytesResumable(imageRef, imageUpload);
 
     uploadBytes(imageRef, imageUpload).then(() => {
-      getDownloadURL(uploadTask.snapshot.ref).then(downloadURL => {
-        setState(downloadURL);
+      getDownloadURL(imageRef).then(url => {
+        setState(url);
         setIsUploading(false);
       });
     });
