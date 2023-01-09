@@ -38,7 +38,7 @@ const Home = ({ areaList, allCategories }) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="content-width pt-4 pb-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 lg:gap-4 xl:gap-6 mx-auto">
+          className="content-width pt-4 pb-2 sm:pb-4 md:pb-8 lg:pb-10 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 lg:gap-4 xl:gap-6 mx-auto">
           {filter === 'area' &&
             !query.search &&
             areaList.map(area => (
