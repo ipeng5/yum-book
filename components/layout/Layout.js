@@ -7,7 +7,7 @@ function Layout({ children }) {
   const { authIsReady } = UserAuth();
 
   return (
-    <div className="min-h-screen flex flex-col justify-between text-gray-normal bg-gray-light">
+    <div className="min-h-screen flex flex-col justify-between">
       <div>
         {authIsReady && <Header />}
         {authIsReady && children}
