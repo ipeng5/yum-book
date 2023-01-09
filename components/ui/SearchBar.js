@@ -22,7 +22,7 @@ function SearchBar() {
 
   return (
     <form
-      className="flex items-center space-x-1 cursor-pointer rounded-full border-2 bg-gray-200  border-gray-200 focus-within:border-primary-normal focus-within:bg-white px-1.5 py-1 overflow-hidden hover:border-primary-normal transition"
+      className="flex items-center space-x-1 cursor-pointer rounded-full border-2 bg-gray-200  border-gray-200 focus-within:border-primary-normal focus-within:bg-white px-1.5 py-1 overflow-hidden xl:hover:border-primary-normal transition"
       onSubmit={e => handleSearch(e)}>
       <button onClick={e => handleSearch(e)}>
         <MdSearch className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 fill-gray-400" />
