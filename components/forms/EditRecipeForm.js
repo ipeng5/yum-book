@@ -130,7 +130,7 @@ function AddRecipeForm({ meal, closeModal, uid }) {
         <MealImageInput setImgURL={setImgURL} />
       </label>
       <fieldset className="space-y-2">
-        <legend className="flex gap-2 items-center text-xl">
+        <legend className="flex w-full gap-2 items-center text-xl">
           <span className="w-24 lg:w-28 xl:w-[120px] text-base lg:text-lg xl:text-x font-semibold">
             Ingredients
           </span>
@@ -149,7 +149,7 @@ function AddRecipeForm({ meal, closeModal, uid }) {
         ))}
       </fieldset>
       <fieldset className="space-y-2">
-        <legend className="flex gap-2 items-center text-xl">
+        <legend className="flex w-full gap-2 items-center text-xl">
           <span className="w-24 lg:w-28 xl:w-[120px] text-base lg:text-lg xl:text-x font-semibold">
             Instructions
           </span>
