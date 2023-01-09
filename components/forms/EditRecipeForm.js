@@ -130,14 +130,14 @@ function AddRecipeForm({ meal, closeModal, uid }) {
         <MealImageInput setImgURL={setImgURL} />
       </label>
       <fieldset className="space-y-2">
-        <legend className="flex w-full gap-2 items-center text-xl">
+        <div className="flex gap-2 items-center text-xl">
           <span className="w-24 lg:w-28 xl:w-[120px] text-base lg:text-lg xl:text-x font-semibold">
             Ingredients
           </span>
           <div className="icon-add" onClick={handleAddIngredient}>
             <MdAdd />
           </div>
-        </legend>
+        </div>
         {updatedRecipe.ingredients.map((ing, index) => (
           <IngredientInput
             key={ing.id}
@@ -149,14 +149,14 @@ function AddRecipeForm({ meal, closeModal, uid }) {
         ))}
       </fieldset>
       <fieldset className="space-y-2">
-        <legend className="flex w-full gap-2 items-center text-xl">
+        <div className="flex gap-2 items-center text-xl">
           <span className="w-24 lg:w-28 xl:w-[120px] text-base lg:text-lg xl:text-x font-semibold">
             Instructions
           </span>
           <div className="icon-add" onClick={handleAddStep}>
             <MdAdd />
           </div>
-        </legend>
+        </div>
         {updatedRecipe.steps.map((step, index) => (
           <StepsInput
             key={step.id}
