@@ -84,13 +84,13 @@ function AddRecipeForm({ meal, closeModal, uid }) {
   const handleCancel = e => {
     e.preventDefault();
     closeModal();
-    if (imgURL) deleteImage(imgURL);
+    if (imgURL && imgURL !== meal.strMealThumb) deleteImage(imgURL);
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    // updateRecipe(id, { ...updatedRecipe, uid });
-    // closeModal();
+    updateRecipe(id, { ...updatedRecipe, uid });
+    closeModal();
     deleteImage(meal.strMealThumb);
   };
 
