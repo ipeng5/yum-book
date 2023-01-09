@@ -11,28 +11,32 @@ import { dummyImg } from '../lib/dummyImg';
 
 export const useStorage = () => {
   const [isUploading, setIsUploading] = useState(false);
-  const [errorMsg, setErrorMsg] = useState(null);
+  const [statusMsg, setStatusMsg] = useState(null);
 
   const uploadImage = (acceptedFiles, setState) => {
-    setErrorMsg(null);
+    setStatusMsg(null);
     setIsUploading(true);
+    if (acceptedFiles === null) {
+      setStatusMsg('Please select an image first!');
+      setIsUploading(false);
+      return;
+    }
     const imageUpload = acceptedFiles[0];
 
-    if (imageUpload === null) return;
-    else if (
+    if (
       imageUpload.type !== 'image/png' &&
       imageUpload.type !== 'image/jpg' &&
       imageUpload.type !== 'image/jpeg'
     ) {
-      setErrorMsg('Accept only JPEG/PNG files');
+      setStatusMsg('Accept only JPEG/PNG files');
       setIsUploading(false);
       return;
     } else if (imageUpload.size > 1024 * 1024) {
-      setErrorMsg('Image must be < 1MB');
+      setStatusMsg('Image must be < 1MB');
       setIsUploading(false);
       return;
     } else {
-      setErrorMsg(null);
+      setStatusMsg(null);
       const imageRef = ref(storage, `images/${imageUpload.name + nanoid()}`);
 
       uploadBytes(imageRef, imageUpload)
@@ -40,6 +44,7 @@ export const useStorage = () => {
           getDownloadURL(imageRef).then(url => {
             setState(url);
             setIsUploading(false);
+            setStatusMsg('Image uploaded!');
           });
         })
         .catch(err => {
@@ -58,5 +63,5 @@ export const useStorage = () => {
     });
   };
 
-  return { uploadImage, deleteImage, isUploading, errorMsg };
+  return { uploadImage, deleteImage, isUploading, statusMsg };
 };

@@ -3,7 +3,7 @@ import { useStorage } from '../../hooks/useStorage';
 
 function MealImageInput({ setImgURL }) {
   const [files, setFiles] = useState(null);
-  const { uploadImage, isUploading, errorMsg } = useStorage();
+  const { uploadImage, isUploading, statusMsg } = useStorage();
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -34,8 +34,8 @@ function MealImageInput({ setImgURL }) {
             Uploading...
           </button>
         )}
-        <span className="text-xs md:text-sm text-primary-normal absolute top-8 left-0 xs:top-2 xs:left-[140px]">
-          {errorMsg}
+        <span className="text-xs md:text-sm lg:text-base text-primary-normal absolute top-8 left-0 xs:top-2 xs:left-[140px]">
+          {statusMsg}
         </span>
       </div>
     </div>

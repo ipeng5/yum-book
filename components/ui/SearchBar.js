@@ -7,8 +7,8 @@ function SearchBar() {
   const router = useRouter();
 
   const handleSearch = e => {
+    const searchbar = document.querySelector('#search-bar');
     e.preventDefault();
-    setShowSearchbar(false);
     if (!searchInput) return;
     router.push({
       pathname: '/',
@@ -24,7 +24,7 @@ function SearchBar() {
     <form
       className="flex items-center space-x-1 cursor-pointer rounded-full border-2 bg-gray-200  border-gray-200 focus-within:border-primary-normal focus-within:bg-white px-1.5 py-1 overflow-hidden hover:border-primary-normal transition"
       onSubmit={e => handleSearch(e)}>
-      <button type="submit">
+      <button onClick={e => handleSearch(e)}>
         <MdSearch className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6 fill-gray-400" />
       </button>
       <input

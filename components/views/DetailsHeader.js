@@ -72,7 +72,7 @@ function DetailsHeader({
                 href={meal.strSource}
                 target="_blank"
                 rel="noreferrer"
-                className="flex justify-center items-center gap-2 border-[1px] xs:border-2 border-gray-400 hover:bg-gray-50 px-2 xl:px-4 py-2 xs:py-1 lg:py-1.5 xl:py-2 shadow-inner rounded transition">
+                className="flex justify-center items-center gap-2 border-[1px] border-gray-400 hover:bg-gray-50 px-2 xl:px-4 py-2 xs:py-1 lg:py-1.5 xl:py-2 shadow-inner rounded transition">
                 <BsInfoCircle />
                 <span className="text-xs md:text-sm lg:text-base xl:text-lg">
                   More Info
@@ -84,7 +84,7 @@ function DetailsHeader({
                 href={meal.strYoutube}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 bg-primary-normal border-2 border-primary-normal shadow-inner hover:opacity-90 text-white px-2 xl:px-4 py-1 lg:py-1.5 xl:py-2 rounded transition">
+                className="flex items-center gap-2 bg-primary-normal shadow-inner hover:opacity-90 text-white px-2 xl:px-4 py-1 lg:py-1.5 xl:py-2 rounded transition">
                 <BsPlayFill className="text-2xl" />
                 <span className="text-xs md:text-sm  lg:text-base xl:text-lg">
                   Watch On YouTube

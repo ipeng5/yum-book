@@ -14,8 +14,8 @@ function Header() {
   return (
     <header
       className={
-        scrollPosition > 5
-          ? 'fixed w-full flex justify-between items-center h-[60px] px-2 md:px-6 bg-gray-light z-10'
+        scrollPosition > 2
+          ? 'fixed w-full flex justify-between items-center h-[45px] sm:h-[55px] lg:h-[70px] pr-1 sm:px-2 lg:px-6 bg-gray-light z-10'
           : 'fixed w-full flex justify-between items-center h-[80px] lg:h-[100px] px-4 md:px-6 lg:px-12 bg-gray-light z-10'
       }>
       <Link href="/" className="flex items-center space-x-4 cursor-pointer">
@@ -25,16 +25,16 @@ function Header() {
           width={60}
           height={60}
           className={
-            scrollPosition > 5
-              ? 'scale-50 sm:scale-[0.65]'
-              : 'scale-[0.65] sm:scale-[0.85] lg:scale-100'
+            scrollPosition > 2
+              ? 'scale-50 sm:scale-[0.6] lg:scale-[0.7]'
+              : 'scale-[0.8]  lg:scale-100'
           }
         />
         <span
           className={
             scrollPosition > 20
-              ? 'hidden sm:block text-xl  lg:text-4xl -translate-x-6 lg:-translate-x-4 translate-y-[2px] lg:translate-y-[4px]'
-              : 'hidden sm:block text-2xl  lg:text-5xl -translate-x-5 lg:-translate-x-2 translate-y-[2px] lg:translate-y-[4px]'
+              ? 'hidden sm:block text-xl sm:text-3xl lg:text-4xl -translate-x-6 lg:-translate-x-4 translate-y-[2px] lg:translate-y-[4px]'
+              : 'hidden sm:block text-2xl sm:text-4xl lg:text-5xl -translate-x-3 lg:-translate-x-2 translate-y-[2px] lg:translate-y-[4px]'
           }>
           Yum Book
         </span>
