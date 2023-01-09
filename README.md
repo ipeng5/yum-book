@@ -22,4 +22,4 @@ A recipe book app that allows users to find new recipes or upload their own reci
 
 ## Screenshots
 
-![Yum Book](https://i.imgur.com/Byq5MH0.png)
+![Yum Book](https://i.imgur.com/b8vUcTF.png)
