@@ -1,5 +1,8 @@
 {
   "extends": ["airbnb", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
   "rules": {
     "prettier/prettier": ["error", { "singleQuote": true }],
     "spaced-comment": "off",
@@ -12,7 +15,6 @@
     "no-underscore-dangle": "off",
     "class-methods-use-this": "off",
     "prefer-destructuring": ["error", { "object": true, "array": false }],
-    "no-unused-vars": "error",
-    "parseOptions": { "ecmaVersion": 2020 }
+    "no-unused-vars": "error"
   }
 }
